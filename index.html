@@ -35,24 +35,7 @@
             color: #555;
             font-weight: bold;
         }
-        .currency-fields {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-        }
-        .currency-fields input {
-            width: 48%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-        .currency-fields input:focus {
-            border-color: #4CAF50;
-            outline: none;
-        }
-        input, select {
+        input {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
@@ -80,12 +63,6 @@
         button:active {
             transform: scale(0.98);
         }
-        .footer {
-            text-align: center;
-            margin-top: 10px;
-            color: #777;
-            font-size: 14px;
-        }
         .error-message {
             color: #d32f2f;
             background-color: #fbe9e7;
@@ -98,6 +75,7 @@
             display: none;
             text-align: center;
         }
+        /* نافذة منبثقة للخطأ */
         .modal {
             display: none;
             position: fixed;
@@ -109,6 +87,7 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            animation: fadeIn 0.3s ease-in-out;
         }
         .modal-content {
             background-color: #fff;
@@ -116,16 +95,16 @@
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             text-align: center;
-            animation: fadeIn 0.3s ease-in-out;
+            width: 300px;
         }
         .modal-content h2 {
-            color: #4CAF50;
+            color: #d32f2f;
             font-size: 20px;
             margin-bottom: 15px;
         }
         .modal-content button {
             padding: 10px 20px;
-            background-color: #4CAF50;
+            background-color: #d32f2f;
             color: #fff;
             border: none;
             border-radius: 8px;
@@ -134,7 +113,7 @@
             transition: background-color 0.3s;
         }
         .modal-content button:hover {
-            background-color: #45a049;
+            background-color: #c62828;
         }
         @keyframes fadeIn {
             from {
@@ -150,7 +129,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>إضافة بيانات جديدة</h1> <!-- تم تعديل العنوان هنا -->
+        <h1>إضافة بيانات جديدة</h1>
         <form id="dataForm">
             <label for="name">الاسم:</label>
             <input type="text" id="name" placeholder="أدخل الاسم" required>
@@ -160,28 +139,18 @@
             <input type="text" id="address" placeholder="أدخل العنوان" required>
             <div id="addressError" class="error-message">يرجى إدخال العنوان</div>
             
-            <label>المبلغ:</label>
-            <div class="currency-fields">
-                <input type="number" id="amountDinar" placeholder="بالدينار" min="0">
-                <input type="number" id="amountDollar" placeholder="بالدولار" min="0">
-            </div>
-            <div id="amountError" class="error-message">يرجى إدخال مبلغ إما بالدينار أو بالدولار</div>
-            
-            <label for="remainingAmount">المبلغ المتبقي:</label>
-            <input type="number" id="remainingAmount" placeholder="أدخل المبلغ المتبقي" min="0">
-            <div id="remainingAmountError" class="error-message">يرجى إدخال المبلغ المتبقي</div>
-            
-            <label for="record">السجل:</label>
-            <input type="text" id="record" placeholder="أدخل السجل" required>
-            <div id="recordError" class="error-message">يرجى إدخال السجل</div>
+            <label for="amount">المبلغ:</label>
+            <input type="number" id="amount" placeholder="أدخل المبلغ" min="0" required>
+            <div id="amountError" class="error-message">يرجى إدخال المبلغ</div>
             
             <button type="button" onclick="addData()">إضافة البيانات</button>
         </form>
     </div>
 
-    <div class="modal" id="successModal">
+    <!-- نافذة منبثقة للخطأ -->
+    <div class="modal" id="errorModal">
         <div class="modal-content">
-            <h2>تمت إضافة البيانات بنجاح!</h2>
+            <h2>حدث خطأ أثناء قراءة الملف من GitHub</h2>
             <button onclick="closeModal()">حسنًا</button>
         </div>
     </div>
@@ -190,50 +159,105 @@
         function addData() {
             const name = document.getElementById("name").value.trim();
             const address = document.getElementById("address").value.trim();
-            const amountDinar = document.getElementById("amountDinar").value.trim();
-            const amountDollar = document.getElementById("amountDollar").value.trim();
-            const remainingAmount = document.getElementById("remainingAmount").value.trim();
-            const record = document.getElementById("record").value.trim();
+            const amount = document.getElementById("amount").value.trim();
 
             const nameError = document.getElementById("nameError");
             const addressError = document.getElementById("addressError");
             const amountError = document.getElementById("amountError");
-            const remainingAmountError = document.getElementById("remainingAmountError");
-            const recordError = document.getElementById("recordError");
 
+            // إخفاء رسائل الخطأ في البداية
             nameError.style.display = "none";
             addressError.style.display = "none";
             amountError.style.display = "none";
-            remainingAmountError.style.display = "none";
-            recordError.style.display = "none";
 
             let hasError = false;
 
-            if (!name) nameError.style.display = "block", hasError = true;
-            if (!address) addressError.style.display = "block", hasError = true;
-            if (!amountDinar && !amountDollar) amountError.style.display = "block", hasError = true;
-            if (!remainingAmount) remainingAmountError.style.display = "block", hasError = true;
-            if (!record) recordError.style.display = "block", hasError = true;
+            // التحقق من الحقول
+            if (!name) {
+                nameError.style.display = "block";
+                hasError = true;
+            }
+            if (!address) {
+                addressError.style.display = "block";
+                hasError = true;
+            }
+            if (!amount) {
+                amountError.style.display = "block";
+                hasError = true;
+            }
 
+            // إذا كان هناك خطأ، نوقف إرسال البيانات
             if (hasError) return;
 
-            // عرض النافذة المنبثقة
-            const modal = document.getElementById("successModal");
-            modal.style.display = "flex";
+            // بناء البيانات التي سيتم إرسالها
+            const data = {
+                name: name,
+                address: address,
+                amount: amount,
+            };
 
-            // تفريغ الحقول بعد النجاح
-            document.getElementById("name").value = "";
-            document.getElementById("address").value = "";
-            document.getElementById("amountDinar").value = "";
-            document.getElementById("amountDollar").value = "";
-            document.getElementById("remainingAmount").value = "";
-            document.getElementById("record").value = "";
+            // إرسال البيانات إلى GitHub
+            const token = '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'; // استبدل بـ توكن GitHub
+            const repoOwner = 'raslanbasha'; // استبدل بـ اسم المستخدم في GitHub
+            const repoName = 'arslan'; // استبدل بـ اسم المستودع
+            const filePath = 'data.csv'; // مسار الملف الذي سيتم التعديل عليه
+
+            fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `token ${token}`,
+                    'Accept': 'application/vnd.github.v3+json'
+                }
+            })
+            .then(response => response.json())
+            .then(fileData => {
+                // قراءة محتويات الملف الحالي
+                const currentContent = atob(fileData.content);
+                const newData = `${name},${address},${amount}\n`; // إضافة البيانات الجديدة
+
+                // تحديث محتوى الملف
+                const updatedContent = currentContent + newData;
+                const encodedContent = btoa(updatedContent);
+
+                // إرسال التحديث إلى GitHub
+                fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    },
+                    body: JSON.stringify({
+                        message: 'إضافة بيانات جديدة',
+                        content: encodedContent,
+                        sha: fileData.sha // التحقق من أن الملف لم يتغير من قبل آخرين
+                    })
+                })
+                .then(response => response.json())
+                .then(result => {
+                    alert('تم إضافة البيانات بنجاح!');
+                    document.getElementById("dataForm").reset();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showErrorModal();
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showErrorModal();
+            });
         }
 
+        // إظهار نافذة الخطأ
+        function showErrorModal() {
+            const modal = document.getElementById("errorModal");
+            modal.style.display = "flex";
+        }
+
+        // إغلاق نافذة الخطأ
         function closeModal() {
-            const modal = document.getElementById("successModal");
+            const modal = document.getElementById("errorModal");
             modal.style.display = "none";
         }
     </script>
 </body>
-</html>
