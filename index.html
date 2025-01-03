@@ -3,1060 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>زمار أونلاين</title>
+    <title>تسجيل الدخول</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #1e1e2f;
+            background-color: #2d2d3e;
             color: #ffffff;
             text-align: center;
             margin: 0;
             padding: 0;
         }
-        .title {
-            color: #ffffff;
-            padding: 8px 0;
-            width: 100%;
-            text-align: center;
-            font-size: 22px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            border-bottom: 4px solid #00d1b2;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background: none; /* إزالة الخلفية */
-        }
-
-        .title:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-        }
 
         .container {
-            margin: 20px auto;
-            max-width: 800px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
         }
-        .group {
-            margin: 20px 0;
-        }
-        .group-title {
-            font-size: 18px;
-            color: #00d1b2;
-            margin-bottom: 10px;
-        }
-        video {
-            width: 100%;
-            max-width: 800px;
-            border: 2px solid #00d1b2;
+
+        .login-card {
+            background-color: #383c4a;
+            padding: 30px;
             border-radius: 10px;
-            display: none;
-            margin-top: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
         }
-        button {
-            font-size: 14px;
-            margin: 10px;
-            padding: 8px 16px;
-            background-color: #00d1b2;
+
+        .login-card h2 {
+            color: #00d1b2;
+            margin-bottom: 20px;
+        }
+
+        .login-card input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #00d1b2;
+            background-color: #4c4f60;
             color: #ffffff;
+            box-sizing: border-box;
+        }
+
+        .login-card button {
+            width: 100%;
+            padding: 12px;
+            background-color: #00d1b2;
             border: none;
             border-radius: 5px;
+            color: #ffffff;
+            font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease;
         }
-        button:hover {
+
+        .login-card button:hover {
             background-color: #009f8c;
         }
-        .advertisement {
-            margin: 20px auto;
-            max-width: 800px;
-            padding: 15px;
-            border: 2px dashed #00d1b2;
-            border-radius: 10px;
-            background-color: rgba(0, 209, 178, 0.1);
-            color: #ffffff;
-            font-size: 16px;
+
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #b0b0b0;
         }
-        .advertisement h2 {
+
+        .footer a {
             color: #00d1b2;
-            margin-bottom: 10px;
+            text-decoration: none;
         }
-        .advertisement p {
-            margin: 10px 0;
-            line-height: 1.5;
+
+        .footer a:hover {
+            text-decoration: underline;
         }
-        .news-section {
-            margin: 30px auto;
-            max-width: 800px;
-            background-color: #2e2e42;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-        }
-        .news-title {
-            font-size: 20px;
-            color: #00d1b2;
-            margin-bottom: 15px;
-        }
-        .news-content {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #ffffff;
-        }
+
+        /* تصميم الرسائل المنبثقة */
         .popup {
-            position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 600px;
-            background-color: #2e2e42;
-            border: 2px solid #00d1b2;
+            position: relative;
+            background-color: #4CAF50; /* أخضر */
+            color: white;
+            padding: 15px;
             border-radius: 10px;
-            padding: 15px 20px;
-            color: #ffffff;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            font-size: 16px;
+            width: 100%;
+            max-width: 300px;
+            margin-top: 10px;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
             display: none;
-            animation: slideDown 0.5s ease-out;
+            margin: 10px auto;
         }
+
+        /* تغيير لون الرسالة التي تطلب إدخال الرمز */
+        .popup.error {
+            background-color: #f44336; /* أحمر */
+        }
+
+        .popup.invalid {
+            background-color: #ff9800; /* برتقالي */
+        }
+
         .popup.active {
             display: block;
         }
-        .popup h3 {
-            color: #00d1b2;
-            margin: 0;
-            font-size: 20px;
-        }
-        .popup p {
-            font-size: 16px;
-            margin: 10px 0;
-        }
-        .popup button {
-            background-color: #00d1b2;
+
+        .test-version {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 8px;
             color: #ffffff;
-            border: none;
-            padding: 8px 12px;
+            font-family: 'Cairo', sans-serif;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 5px 10px;
             border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            margin-top: 10px;
-            transition: background-color 0.3s;
-        }
-        .popup button:hover {
-            background-color: #009f8c;
-        }
-        @keyframes slideDown {
-            from {
-                transform: translateX(-50%) translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(-50%) translateY(0);
-                opacity: 1;
-            }
-        }
-        .new-year-greeting {
-            margin: 20px auto;
-            padding: 20px;
-            background: linear-gradient(45deg, #ff7e5f, #feb47b);
-            border-radius: 10px;
-            max-width: 800px;
-            color: #ffffff;
-            font-size: 18px;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            animation: fadeIn 2s ease-out;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
         }
-        .new-year-greeting i {
-            font-size: 32px;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
+
+        /* تحسين الاستجابة للأجهزة الذكية */
+        @media (max-width: 768px) {
+            .login-card {
+                padding: 20px;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+
+            .login-card h2 {
+                font-size: 24px;
+            }
+
+            .login-card input,
+            .login-card button {
+                padding: 10px;
             }
         }
-.news-ticker {
-    width: 100%;
-    background-color: #00d1b2;
-    color: #ffffff;
-    padding: 10px 0;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    font-size: 16px;
-    white-space: nowrap;
-    direction: ltr; /* لضمان الاتجاه من اليسار لليمين */
-}
-.news-ticker-content {
-    display: inline-block;
-    padding-right: 100%; /* نقل النص إلى خارج الشاشة على اليمين */
-    animation: ticker-left-to-right 45s linear infinite;
-}
-@keyframes ticker-left-to-right {
-    from {
-        transform: translateX(-100%);
-    }
-    to {
-        transform: translateX(100%);
-    }
-}
- .test-version {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 8px; /* حجم الخط صغير */
-    color: #ffffff; /* لون الخط أبيض */
-    font-family: 'Cairo', sans-serif; /* نفس نوع الخط المستخدم في باقي الصفحة */
-    background-color: rgba(0, 0, 0, 0.6); /* خلفية مظللة قليلاً */
-    padding: 5px 10px; /* مساحة داخلية */
-    border-radius: 5px; /* زوايا مستديرة */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* تأثير الظل */
-    font-weight: bold; /* جعل النص عريضًا */
-}
-
-.new-updates {
-    margin: 20px auto;
-    padding: 20px;
-    background: linear-gradient(45deg, #ff6f61, #ffb347, #f7c9b0); /* خلفية بتدرج ألوان زاهية */
-    border-radius: 10px;
-    max-width: 800px;
-    color: #ffffff;
-    font-size: 18px;
-    text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.4);
-    font-weight: bold;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* تحسين الظل */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    flex-direction: row;
-}
-
-.new-updates i {
-    font-size: 40px; /* زيادة حجم الأيقونة */
-    color: #fff; /* تغيير لون الأيقونة إلى أبيض ليتماشى مع الخلفية */
-}
-
-.new-updates p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #ffffff;
-    text-align: center; /* ضبط النص في المنتصف */
-    margin: 0;
-}
-
-.new-updates:hover {
-    transform: scale(1.05); /* تأثير تكبير عند المرور */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* تأثير الظل عند المرور */
-}
-   
-   /* بداية تنسيق زر الثلاث نقاط */
-.menu-container {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-}
-
-.menu-icon {
-    font-size: 24px;
-    color: #ffffff;
-    cursor: pointer;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 8px;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s;
-}
-
-.menu-icon:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-/* نهاية تنسيق زر الثلاث نقاط */
-
-/* بداية تنسيق القائمة المنبثقة */
-.menu-popup {
-    display: none;
-    position: absolute;
-    top: 40px; /* لجعل القائمة تظهر تحت الزر */
-    left: 10px;
-    background-color: #2e2e42;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    width: 200px;
-    text-align: left;
-    z-index: 1000;
-}
-
-.menu-popup ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.menu-popup li {
-    padding: 12px 16px;
-    color: #ffffff;
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: background-color 0.3s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.menu-popup li:last-child {
-    border-bottom: none;
-}
-
-.menu-popup li:hover {
-    background-color: #00d1b2;
-    color: #000;
-}
-
-.menu-popup i {
-    font-size: 18px;
-    color: #00d1b2;
-}
-/* نهاية تنسيق القائمة المنبثقة */
-  
-  /* استيراد خط كايرو */
-@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
-
-/* تنسيق قسم أندية زمار الرياضية */
-.club-section {
-    text-align: center;
-    margin-top: 50px;
-    padding: 20px;
-    background-color: #f5f5f5; /* خلفية هادئة */
-    border-radius: 15px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    font-family: 'Cairo', sans-serif; /* استخدام خط كايرو */
-}
-
-/* تنسيق عنوان القسم */
-.club-section h1 {
-    font-size: 24px; /* حجم الخط صغير */
-    color: #333;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* تنسيق سلايدر الأندية */
-.club-slider {
-    display: flex;
-    overflow-x: auto; /* تفعيل التمرير الأفقي */
-    gap: 15px;
-    scroll-snap-type: x mandatory; /* تمكين السحب السلس للصور */
-    -webkit-overflow-scrolling: touch; /* تحسين التمرير على الأجهزة المحمولة */
-    padding-bottom: 20px; /* إضافة هامش أسفل السلايدر */
-}
-
-.club-slider::-webkit-scrollbar {
-    display: none; /* إخفاء شريط التمرير */
-}
-
-.club-slider .club-card {
-    flex-shrink: 0;
-    width: 250px; /* عرض البطاقة */
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    scroll-snap-align: center; /* لضمان محاذاة الصور في السلايدر */
-    transition: transform 0.3s ease-in-out;
-}
-
-/* تأثير التكبير عند المرور على صورة النادي */
-.club-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-/* تنسيق الصورة داخل كل بطاقة */
-.club-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 10px 10px 0 0; /* تعديل الزوايا العلوية فقط */
-}
-
-/* تنسيق اسم النادي أسفل الصورة */
-.club-name {
-    font-size: 14px;
-    color: #444;
-    font-weight: bold;
-    margin-top: 10px;
-    text-align: center;
-    padding-bottom: 15px;
-}
-  
-  .channels-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin-top: 30px;
-}
-
-.channel-button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #2e2e42;
-    border: 2px solid #00d1b2;
-    border-radius: 10px;
-    width: 100px;
-    padding: 10px;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.channel-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-.channel-button img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
-}
-
-.channel-button span {
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.bein-options {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.bein-options button {
-    background-color: #00d1b2;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.bein-options button:hover {
-    background-color: #009f8c;
-}
-   
-  
-  /* تصميم عام للقسم */
-.clubs-section {
-    position: relative;
-    width: 90%; /* تقليل العرض ليتناسب مع الشاشة */
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 15px;
-    background: linear-gradient(135deg, #ffefba, #ffffff);
-    border-radius: 15px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
-/* العنوان */
-.clubs-title {
-    text-align: center;
-    font-size: 22px;
-    color: #333;
-    margin-bottom: 15px;
-}
-
-/* سلايدر الأندية */
-.clubs-slider {
-    display: flex;
-    gap: 15px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 10px;
-}
-
-.club-item {
-    flex-shrink: 0;
-    width: 120px;
-    text-align: center;
-    position: relative;
-    scroll-snap-align: center;
-}
-
-.club-image {
-    width: 100%;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.club-image:hover {
-    transform: scale(1.05);
-}
-
-.club-name {
-    font-size: 14px;
-    color: #333;
-    margin-top: 8px;
-}
-
-/* نافذة منبثقة */
-.modal {
-    display: none; /* النافذة مخفية افتراضيًا */
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding-top: 60px;
-}
-
-.modal-content {
-    margin: auto;
-    display: block;
-    max-width: 80%;
-    max-height: 80%;
-}
-
-.close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #fff;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* تحسين استجابة التصميم */
-@media (max-width: 480px) {
-    .club-item {
-        width: 100px;
-    }
-    .clubs-title {
-        font-size: 18px;
-    }
-    .club-name {
-        font-size: 12px;
-    }
-}
-   
-   .urgent-news {
-    margin: 20px auto;
-    max-width: 800px;
-    background-color: #ff3b30; /* لون خلفية لافت */
-    color: #ffffff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    animation: slideIn 1s ease-out;
-}
-
-.urgent-news-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.urgent-icon {
-    font-size: 24px;
-    color: #ffffff;
-}
-
-.urgent-message {
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 0;
-}
-
-/* حركة التنقل */
-@keyframes slideIn {
-    from {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
     </style>
 </head>
 <body>
 
-<!-- بداية زر الثلاث نقاط والقائمة -->
-<div class="menu-container">
-    <i class="fas fa-ellipsis-v menu-icon" onclick="toggleMenu()"></i>
-    <div class="menu-popup" id="menuPopup">
-        <ul>
-            <li onclick="navigateToPage('live.html')">
-                <i class="fas fa-tv"></i> مباريات اليوم
-            </li>
-            <li onclick="navigateToPage('sports.html')">
-                <i class="fas fa-futbol"></i> القنوات الرياضية
-            </li>
-            <li onclick="navigateToPage('news.html')">
-                <i class="fas fa-newspaper"></i> الأخبار
-            </li>
-            <li
-            onclick="navigateToPage('news.html')">
-                <i class="fas fa-child"></i> اطفال مدينتي
-            </li>
-            <li onclick="navigateToPage('about.html')">
-                <i class="fas fa-info-circle"></i> عن التطبيق
-            </li>
-        </ul>
-    </div>
-</div>
-<!-- نهاية زر الثلاث نقاط والقائمة -->
-
-<div class="test-version">نسخة تجريبية</div>
-    <div class="popup" id="popup">
-        <h3>تنبيه مهم</h3>
-        <p>التطبيق حالياً في مرحلته الأولى لتجربة آلية عمله وتصميمه بما يتناسب مع ذوق المستخدم. لذا، قد لا تعمل القنوات بشكل كامل في الوقت الحالي، حيث أن العمل ما زال جارياً على إضافة وتحديث المحتوى
-
-</p>
-        <button onclick="closePopup()">حسنًا</button>
-    </div>
-
-    <h1 class="title">زمار أونلاين</h1>
-
-<div class="news-ticker">
-    <div class="news-ticker-content">
-        مرحبًا بكم في زمار أونلاين! <i class="fa-solid fa-soccer-ball"></i> آخر الأخبار: تحديث جديد للقنوات الرياضية متاح الآن <i class="fa-solid fa-soccer-ball"></i> قريبًا: إضافة المزيد من القنوات بدقة عالية <i class="fa-solid fa-soccer-ball"></i> تنبيه هام : سوف يتم منح اكواد تشغيل التطبيق حصرا لأهلنا في ناحية زمار الحبيبة <i class="fa-solid fa-soccer-ball"></i> بإمكان الأندية الرياضية في ناحية زمار أرسال صورة تجمع فريق ناديهم لعرضها في قسم الاندية الرياضية ضمن التطبيق <i class="fa-solid fa-child"></i> شاركنا صور اطفالك الحلوين لعرضها على تطبيق زمار اونلاين من خلال القسم المخصص لأطفال مدينتي
-    </div>
-</div>
-<!-- بداية تنسيق خبر عاجل -->
-<div class="urgent-news">
-    <div class="urgent-news-content">
-        <i class="fas fa-exclamation-circle urgent-icon"></i>
-        <p class="urgent-message">توضع الاخبار العاجلة هنا</p>
-    </div>
-</div>
-<!-- نهاية تنسيق خبر عاجل -->
-
-    <!-- تهنئة رأس السنة -->
-    <div class="new-year-greeting">
-        <i class="fas fa-fireworks"></i>
-        <p>كل عام وأنتم بخير بمناسبة رأس السنة الجديدة! نتمنى لكم عامًا مليئًا بالسعادة والنجاح. شكرًا لدعمكم المستمر </p>
-        <i class="fas fa-gift"></i>
-    </div>
-
+    <!-- الرسائل المنبثقة للنجاح والفشل -->
     <div class="container">
-        
-<!-- IRAQ TV -->
-<div class="group">
-    شاهد قنواتك المفضلة
-    
-    <!-- قسم القنوات -->
-<div class="channels-section">
-    <div class="channel-button" onclick="window.location.href='ssc.html'">
-        <img src="ssc.jpeg" alt="SSC Logo">
-        <span>SSC Sports</span>
-    </div>
-    <div class="channel-button" onclick="window.location.href='iraq.html'">
-        <img src="iraq.png" alt="Iraq Logo">
-        <span>IRAQ</span>
-    </div>
-    <div class="channel-button" onclick="toggleBeinOptions()">
-        <img src="bein.png" alt="Bein Logo">
-        <span>BeIN Sports</span>
-    </div>
-    <div id="bein-options" class="bein-options">
-        <button onclick="window.location.href='bein-1080.html'">1080p</button>
-        <button onclick="window.location.href='bein-360.html'">360p</button>
-        <button onclick="window.location.href='bein-240.html'">240p</button>
-    </div>
-</div>
+        <div class="login-card">
+            <h2>تسجيل الدخول</h2>
 
-<!-- سكربت لإظهار خيارات Bein -->
-<script>
-    function toggleBeinOptions() {
-        const options = document.getElementById('bein-options');
-        options.style.display = options.style.display === 'block' ? 'none' : 'block';
-    }
-</script>
+            <!-- حقل إدخال رمز الدخول -->
+            <input type="text" id="code" placeholder="أدخل رمز الدخول" required>
+            
+            <!-- زر تسجيل الدخول -->
+            <button onclick="login()">دخول</button>
 
-<!-- قسم القنوات -->
-<div class="channels-section">
-    <div class="channel-button" onclick="window.location.href='ssc.html'">
-        <img src="entertainment-television.png" alt="SSC Logo">
-        <span>BeIN الترفيه</span>
-    </div>
-    <div class="channel-button" onclick="window.location.href='iraq.html'">
-        <img src="kids.png" alt="Iraq Logo">
-        <span>KIDS</span>
-    </div>
-    <div class="channel-button" onclick="window.location.href='bein.html'">
-        <img src="mbc.png" alt="Bein Logo">
-        <span>قنوات MBC</span>
-    </div>
-</div>
-
-</div>
-
-        <!-- قنوات 
-        </video>
-        <video id="ssc3" controls>
-            <source src="https://path-to-ssc3.m3u8" type="application/x-mpegURL">
-        </video>
-    </div>
-<!-- رابط إلى مكتبة Font Awesome -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
-<div class="sponsor-section">
-    <!-- النص الأول (التطبيق برعاية) في الجهة اليمنى -->
-    <span class="sponsor-text">التطبيق برعاية</span>
-    
-    <!-- النص الثاني (كن الراعي الرسمي للتطبيق) في الجهة اليسرى -->
-    <span class="sponsor-name">كن الراعي الرسمي للتطبيق</span>
-</div>
-
-<style>
-/* تنسيق الحاوية باستخدام Flexbox */
-.sponsor-section {
-    display: flex; /* استخدام flexbox */
-    justify-content: space-between; /* توزيع النصوص على الجهتين */
-    align-items: center; /* محاذاة عمودية للنصوص */
-    padding: 10px; /* إضافة الحواف حول النصوص */
-    background-color: #f8f9fa; /* خلفية فاتحة للنص */
-    border-radius: 10px; /* زوايا دائرية */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* إضافة ظل خفيف */
-}
-
-.sponsor-text,
-.sponsor-name {
-    font-size: 14px; /* حجم الخط */
-    font-weight: bold; /* جعل النص عريض */
-    display: flex; /* جعل النصوص في سطر واحد */
-    align-items: center; /* محاذاة عمودية للنص */
-}
-
-.sponsor-text {
-    text-align: right; /* محاذاة النص لليمين */
-    color: #007bff; /* لون النص */
-    margin-right: 0; /* تأكد من عدم وجود أي مسافة إضافية */
-    order: 1; /* جعل النص في الجهة اليمنى */
-}
-
-.sponsor-name {
-    text-align: left; /* محاذاة النص لليسار */
-    color: #28a745; /* لون النص */
-    margin-left: 0; /* تأكد من عدم وجود أي مسافة إضافية */
-    order: 0; /* جعل النص في الجهة اليسرى */
-}
-
-</style>
-<!-- قسم الإضافات الجديدة -->
-<div class="new-updates">
-    <i class="fas fa-tools"></i>
-    <p>نحن نعمل على إضافة ميزات جديدة شاملة لتطبيقنا، بما في ذلك تحسين الأداء، إضافة قنوات جديدة، وتجربة مستخدم محسنة. ترقبوا التحديثات القادمة </p>
-    
-</div>
-    <!-- قسم الإعلان -->
-    <div <div class="advertisement">
-  <div class="content">
-  <h2>!..قريباً</h2>
-<i class="fas fa-graduation-cap"></i>
-    <div class="text">
-      
-      <p>
-        هذا الركن صُمّم خصيصاً لطلبتنا الأحبّة ليكون فضاءً يجمع كل ما تحتاجونه من ملازم ونتائج، 
-        ساعين دائماً لدعم خطواتكم نحو النجاح والتميز.
-      </p>
-    </div>
-  </div>
-</div>
-    </div>
-
-
-<!-- قسم أطفال مدينتي -->
-<div class="kids-section" onclick="navigateTo('kids.html')">
-    <div class="kids-content">
-        <!-- أيقونة جذابة -->
-        <div class="kids-icon">
-            <i class="fas fa-child"></i>
-        </div>
-        <!-- النصوص -->
-        <div class="kids-texts">
-            <h2 class="kids-title">أطفال مدينتي</h2>
-            <p class="kids-subtitle">شاركنا صور أطفالك لعرضها في التطبيق</p>
-        </div>
-    </div>
-</div>
-
-<style>
-/* تصميم عام للقسم */
-.kids-section {
-    position: relative;
-    width: 90%; /* تقليل العرض ليتناسب مع الشاشة */
-    max-width: 600px; /* تقليل الحد الأقصى للعرض */
-    margin: 20px auto;
-    padding: 15px; /* تصغير الحشوة الداخلية */
-    background: linear-gradient(135deg, #ffefba, #ffffff); /* خلفية جذابة */
-    border-radius: 15px; /* زوايا مستديرة أقل */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* تأثير ظل */
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-/* تأثير عند التمرير */
-.kids-section:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-}
-
-/* المحتوى الداخلي */
-.kids-content {
-    display: flex;
-    align-items: center;
-    gap: 15px; /* تقليل المسافة بين الأيقونة والنصوص */
-}
-
-/* أيقونة القسم */
-.kids-icon {
-    flex-shrink: 0;
-    width: 60px; /* تصغير حجم الأيقونة */
-    height: 60px;
-    background: #ffe3e3; /* خلفية للأيقونة */
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px; /* تصغير حجم الأيقونة */
-    color: #ff6f61; /* لون الأيقونة */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* النصوص */
-.kids-texts {
-    text-align: center; /* توسيط النص */
-}
-
-.kids-title {
-    font-size: 20px; /* تصغير العنوان */
-    color: #333333; /* لون داكن للعنوان */
-    margin: 0;
-}
-
-.kids-subtitle {
-    font-size: 14px; /* تصغير النص الوصفي */
-    color: #555555; /* لون رمادي للنص */
-    margin: 5px 0 0;
-}
-
-/* تحسين استجابة التصميم */
-@media (max-width: 480px) {
-    .kids-content {
-        flex-direction: column; /* تكديس العناصر عموديًا للشاشات الصغيرة */
-        align-items: center;
-    }
-
-    .kids-icon {
-        width: 50px; /* تصغير الأيقونة أكثر */
-        height: 50px;
-        font-size: 24px; /* تصغير حجم الأيقونة */
-    }
-
-    .kids-title {
-        font-size: 18px; /* تقليل حجم العنوان */
-    }
-
-    .kids-subtitle {
-        font-size: 12px; /* تقليل حجم النص الوصفي */
-    }
-}
-</style>
-
-<script>
-    function navigateTo(page) {
-        window.location.href = page;
-    }
-</script>
-
-<script>
-    function navigateTo(page) {
-        window.location.href = page;
-    }
-</script>
-
-<script>
-    function navigateTo(page) {
-        window.location.href = page;
-    }
-</script>
-
-    <!-- قسم الأخبار -->
-    <div class="news-section">
-        <div class="news-title">آخر الأخبار</div>
-        <div class="news-content">
-            <p>يسعدنا أن نقدم جميع الخدمات المتوفرة في النسخة التجريبية من تطبيق زمار أونلاين مجانًا لأحبائنا في ناحية زمار
-
-</p>
+            <!-- الرسائل المنبثقة أسفل الزر -->
+            <div class="popup error" id="popupError">
+                يجب إدخال رمز الدخول! <i class="fa fa-exclamation-circle"></i>
+            </div>
+            <div class="popup invalid" id="popupInvalid">
+                رمز الدخول غير صحيح! <i class="fa fa-exclamation-triangle"></i>
+            </div>
+            <div class="popup" id="popupSuccess">
+                تم تسجيل الدخول بنجاح! <i class="fa fa-check-circle"></i>
+            </div>
         </div>
     </div>
 
-<!-- قسم أندية زمار الرياضية -->
-<div class="clubs-section">
-    <h2 class="clubs-title">أندية زمار الرياضية</h2>
-    <div class="clubs-slider">
-        <!-- صورة النادي 1 -->
-        <div class="club-item">
-            <img src="20.jpg" alt="نادي 1" class="club-image" onclick="viewImage('20.jpg')">
-            <p class="club-name">نادي 1</p>
-        </div>
-        <!-- صورة النادي 2 -->
-        <div class="club-item">
-            <img src="10.jpg" alt="نادي 2" class="club-image" onclick="viewImage('20.jpg')">
-            <p class="club-name">نادي 2</p>
-        </div>
-        <!-- صورة النادي 3 -->
-        <div class="club-item">
-            <img src="30.jpg" alt="نادي 3" class="club-image" onclick="viewImage('30.jpg')">
-            <p class="club-name">نادي 3</p>
-        </div>
-        <!-- صورة النادي 4 -->
-        <div class="club-item">
-            <img src="60.jpg" alt="نادي 4" class="club-image" onclick="viewImage('60.jpg')">
-            <p class="club-name">نادي 4</p>
-        </div>
-        <!-- صورة النادي 5 -->
-        <div class="club-item">
-            <img src="50.jpg" alt="نادي 5" class="club-image" onclick="viewImage('50.jpg')">
-            <p class="club-name">نادي 5</p>
-        </div>
-    </div>
-</div>
+    <!-- نسخة تجريبية -->
+    <div class="test-version">نسخة تجريبية</div>
 
-<!-- نافذة منبثقة لعرض الصورة -->
-<div id="modal" class="modal">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img class="modal-content" id="modal-img">
-</div>
-</p>
+    <script>
+        // مصفوفة من الرموز الصحيحة
+        const validCodes = ["12345", "67890", "abcde", "54321", "xyz123"];
 
- <script>
-    // عرض النافذة المنبثقة بعد تأخير معين
-    window.onload = function() {
-        const popup = document.getElementById('popup');
-        setTimeout(() => {
-            popup.classList.add('active');
-        }, 5000); // تأخير لمدة 3 ثوانٍ
-    };
+        // دالة تسجيل الدخول
+        function login() {
+            var code = document.getElementById('code').value;
 
-    // إغلاق النافذة المنبثقة
-    function closePopup() {
-        const popup = document.getElementById('popup');
-        popup.classList.remove('active');
-    }
-
-        // تشغيل الفيديو المحدد
-        function playChannel(channelId) {
-            const videos = document.querySelectorAll('video');
-            videos.forEach(video => video.style.display = 'none');
-            videos.forEach(video => video.pause());
-            const selectedVideo = document.getElementById(channelId);
-            if (selectedVideo) {
-                selectedVideo.style.display = 'block';
-                selectedVideo.play();
+            // إذا كان الحقل فارغًا، تظهر رسالة تطلب إدخال الرمز
+            if (code === "") {
+                document.getElementById('popupError').classList.add('active');
+                setTimeout(function() {
+                    document.getElementById('popupError').classList.remove('active');
+                }, 3000); // إخفاء الرسالة بعد 3 ثواني
+            } else if (validCodes.includes(code)) {
+                // عرض الرسالة المنبثقة عند النجاح
+                document.getElementById('popupSuccess').classList.add('active');
+                
+                // تأخير الانتقال إلى الصفحة التالية
+                setTimeout(function() {
+                    window.location.href = "nextpage.html";  // تغيير هذا الرابط إلى الصفحة التي تريد الانتقال إليها
+                }, 2000);
+            } else {
+                // عرض الرسالة المنبثقة عند رمز غير صحيح
+                document.getElementById('popupInvalid').classList.add('active');
+                setTimeout(function() {
+                    document.getElementById('popupInvalid').classList.remove('active');
+                }, 3000); // إخفاء الرسالة بعد 3 ثواني
             }
         }
-  
-  // عرض وإخفاء القائمة
-function toggleMenu() {
-    const menuPopup = document.getElementById('menuPopup');
-    menuPopup.style.display = menuPopup.style.display === 'block' ? 'none' : 'block';
-
-    // إذا تم فتح القائمة، أضف حدث للنقر على أي مكان لإغلاقها
-    if (menuPopup.style.display === 'block') {
-        document.addEventListener('click', hideMenuOnOutsideClick);
-    } else {
-        document.removeEventListener('click', hideMenuOnOutsideClick);
-    }
-}
-
-// إخفاء القائمة عند النقر خارجها
-function hideMenuOnOutsideClick(event) {
-    const menuPopup = document.getElementById('menuPopup');
-    const menuIcon = document.querySelector('.menu-icon');
-    if (!menuPopup.contains(event.target) && !menuIcon.contains(event.target)) {
-        menuPopup.style.display = 'none';
-        document.removeEventListener('click', hideMenuOnOutsideClick);
-    }
-}
-
-// الانتقال إلى صفحة معينة
-function navigateToPage(page) {
-    window.location.href = page; // يتم نقل المستخدم إلى الصفحة المطلوبة
-}
-
-   
-   // فتح الصورة في نافذة منبثقة
-function viewImage(imageSrc) {
-    var modal = document.getElementById("modal");
-    var modalImg = document.getElementById("modal-img");
-    modal.style.display = "block";
-    modalImg.src = imageSrc;
-}
-
-// إغلاق النافذة المنبثقة
-function closeModal() {
-    var modal = document.getElementById("modal");
-    modal.style.display = "none";
-}
-
-// إغلاق النافذة عند النقر خارج الصورة
-window.onclick = function(event) {
-    var modal = document.getElementById("modal");
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
     </script>
-    
 
-</style>
-<!-- Smartsupp Live Chat script -->
-<script type="text/javascript">
-var _smartsupp = _smartsupp || {};
-_smartsupp.key = 'b8fb4868d0749ba7409d436b8e6a9060875fea98';
-window.smartsupp||(function(d) {
-  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
-  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-  c.type='text/javascript';c.charset='utf-8';c.async=true;
-  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
-})(document);
-</script>
-<noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
 </body>
 </html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أطفال مدينتي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(to bottom, #fbc2eb, #a6c1ee);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .gallery-title {
+            text-align: center;
+            color: #fff;
+            font-size: 28px;
+            margin: 20px 0;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .photo-card {
+            background: linear-gradient(145deg, #ffe3e3, #ffffff);
+            border-radius: 15px;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.6);
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: scale(1.05);
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3), -6px -6px 12px rgba(255, 255, 255, 0.8);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 200px; /* تحديد ارتفاع ثابت */
+            object-fit: cover; /* الحفاظ على نسبة الصورة وتعبئة البطاقة */
+            border-radius: 15px 15px 0 0;
+        }
+
+        .photo-info {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .photo-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ff6f61;
+        }
+
+        .photo-caption {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* نافذة منبثقة */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 15px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: #fff;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="gallery-title">أطفال مدينتي</h1>
+    <div class="gallery-container">
+        <!-- بطاقات الصور -->
+        <div class="photo-card" onclick="openModal('child1.jpg')">
+            <img src="child1.jpg" alt="طفل 1">
+            <div class="photo-info">
+                <p class="photo-name">علي أحمد</p>
+                <p class="photo-caption">بغداد</p>
+            </div>
+        </div>
+        <div class="photo-card" onclick="openModal('child2.jpg')">
+            <img src="child2.jpg" alt="طفل 2">
+            <div class="photo-info">
+                <p class="photo-name">سارة علي</p>
+                <p class="photo-caption">البصرة</p>
+            </div>
+        </div>
+        <div class="photo-card" onclick="openModal('child3.jpg')">
+            <img src="child3.jpg" alt="طفل 3">
+            <div class="photo-info">
+                <p class="photo-name">محمد كريم</p>
+                <p class="photo-caption">الموصل</p>
+            </div>
+        </div>
+        <div class="photo-card" onclick="openModal('child4.jpg')">
+            <img src="child4.jpg" alt="طفل 4">
+            <div class="photo-info">
+                <p class="photo-name">نور حسين</p>
+                <p class="photo-caption">كربلاء</p>
+            </div>
+        </div>
+        <div class="photo-card" onclick="openModal('child5.jpg')">
+            <img src="child5.jpg" alt="طفل 5">
+            <div class="photo-info">
+                <p class="photo-name">عمار يوسف</p>
+                <p class="photo-caption">النجف</p>
+            </div>
+        </div>
+        <div class="photo-card" onclick="openModal('child6.jpg')">
+            <img src="child6.jpg" alt="طفل 6">
+            <div class="photo-info">
+                <p class="photo-name">زهرة علي</p>
+                <p class="photo-caption">أربيل</p>
+            </div>
+        </div>
+        <div class="photo-card" onclick="openModal('child7.jpg')">
+            <img src="child7.jpg" alt="طفل 7">
+            <div class="photo-info">
+                <p class="photo-name">ليث سامي</p>
+                <p class="photo-caption">ذي قار</p>
+            </div>
+        </div>
+        <div class="photo-card" onclick="openModal('child8.jpg')">
+            <img src="child8.jpg" alt="طفل 8">
+            <div class="photo-info">
+                <p class="photo-name">ميساء عدنان</p>
+                <p class="photo-caption">السليمانية</p>
+            </div>
+        </div>
+        <div class="photo-card" onclick="openModal('child9.jpg')">
+            <img src="child9.jpg" alt="طفل 9">
+            <div class="photo-info">
+                <p class="photo-name">هاشم عبد</p>
+                <p class="photo-caption">بابل</p>
+            </div>
+        </div>
+        <div class="photo-card" onclick="openModal('child10.jpg')">
+            <img src="child10.jpg" alt="طفل 10">
+            <div class="photo-info">
+                <p class="photo-name">آمنة فيصل</p>
+                <p class="photo-caption">الأنبار</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة منبثقة -->
+    <div class="modal" id="modal">
+        <a href="#" class="modal-close" onclick="closeModal()">&times;</a>
+        <img src="" alt="صورة الطفل" id="modal-img">
+    </div>
+
+    <script>
+        function openModal(imageSrc) {
+            const modal = document.getElementById('modal');
+            const modalImg = document.getElementById('modal-img');
+            modalImg.src = imageSrc;
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('active');
+        }
+    </script>
+</body>
+</html>
