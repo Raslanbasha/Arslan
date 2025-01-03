@@ -1,1 +1,64 @@
-<html lang="en"> <head> <meta charset="utf-8" /> <title>sample m3u8 page</title> </head> <body> <!-- CSS --> <!-- file source is from: https://gist.github.com/Fazzani/8f89546e188f8086a46073dc5d4e2928 --> <!-- this html page is from: https://stackoverflow.com/questions/19782389/playing-m3u8-files-with-html-video-tag --> <!-- sample page: https://jlypnc.csb.app/ --> <link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet" /> <h1>sample m3u8</h1> <!-- HTML --> <video id="hls-example" class="video-js vjs-default-skin" width="400" height="300" controls > <source type="application/x-mpegURL" src="https://het129a.4rouwanda-shop.store/live/978480008877005/index.m3u8" /> </video> <!-- JS code --> <!-- If you'd like to support IE8 (for Video.js versions prior to v7) --> <script src="https://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.14.1/videojs-contrib-hls.js"></script> <script src="https://vjs.zencdn.net/7.2.3/video.js"></script> <script> var player = videojs("hls-example"); player.play(); </script> </body></html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>sample m3u8 page</title>
+    <style>
+      /* إزالة أي هوامش ومسافات */
+      body, html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #000; /* خلفية داكنة */
+        overflow: hidden; /* منع التمرير */
+      }
+
+      /* الفيديو في وسط الشاشة مع توسيعه ليغطي كامل العرض */
+      video {
+        width: 100%; /* جعل العرض 100% من الشاشة */
+        height: auto; /* الحفاظ على النسب الصحيحة */
+        max-width: 100%; /* جعل الفيديو يتناسب مع العرض */
+        max-height: 100vh; /* الحد من الارتفاع ليكون أقصى ارتفاع 100% من الشاشة */
+        object-fit: cover; /* تكبير الفيديو ليغطي الشاشة مع الحفاظ على النسب */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- CSS -->
+    <link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet" />
+    
+    <!-- HTML -->
+    <video id="hls-example" class="video-js vjs-default-skin" controls>
+      <source type="application/x-mpegURL" src="https://het129a.4rouwanda-shop.store/live/978480008877005/index.m3u8" />
+    </video>
+
+    <!-- JS code -->
+    <script src="https://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.14.1/videojs-contrib-hls.js"></script>
+    <script src="https://vjs.zencdn.net/7.2.3/video.js"></script>
+    <script>
+      var player = videojs("hls-example");
+
+      // عند تحميل الصفحة
+      window.onload = function() {
+        player.play(); // تشغيل الفيديو تلقائيًا
+
+        // طلب ملء الشاشة
+        var videoElement = document.getElementById('hls-example');
+
+        // طلب ملء الشاشة في المتصفحات الحديثة
+        if (videoElement.requestFullscreen) {
+          videoElement.requestFullscreen();
+        } else if (videoElement.webkitRequestFullscreen) { // Safari
+          videoElement.webkitRequestFullscreen();
+        } else if (videoElement.mozRequestFullScreen) { // Firefox
+          videoElement.mozRequestFullScreen();
+        } else if (videoElement.msRequestFullscreen) { // IE/Edge
+          videoElement.msRequestFullscreen();
+        }
+      };
+    </script>
+  </body>
+</html>
