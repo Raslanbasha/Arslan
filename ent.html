@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قنوات زمار أونلاين</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #1e1e2f;
+            color: #ffffff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .title {
+            color: #ffffff;
+            padding: 8px 0;
+            width: 100%;
+            text-align: center;
+            font-size: 22px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border-bottom: 4px solid #00d1b2;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: none;
+        }
+        .title:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .group {
+            margin-bottom: 40px;
+        }
+        .group-title {
+            font-size: 20px;
+            color: #00d1b2;
+            margin-bottom: 10px;
+        }
+        .channel-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .channel-card {
+            background-color: #2e2e42;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .channel-card:hover {
+            transform: scale(1.05);
+        }
+        .channel-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .channel-name {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<h1 class="title">زمار أونلاين</h1>
+
+<div class="container">
+    <!-- قنوات الأطفال -->
+    <div class="group">
+        <div class="group-title">قنوات الأطفال</div>
+        <div class="channel-grid">
+            <div class="channel-card" onclick="window.location.href='entertainment/bein-boomerang.html'">
+                <img src="placeholder-boomerang.png" alt="Boomerang">
+                <div class="channel-name">Boomerang</div>
+            </div>
+            <div class="channel-card" onclick="window.location.href='entertainment/bein-jeem.html'">
+                <img src="placeholder-jeem.png" alt="beIN Jeem">
+                <div class="channel-name">beIN Jeem</div>
+            </div>
+            <div class="channel-card" onclick="window.location.href='entertainment/bein-baraem.html'">
+                <img src="placeholder-baraem.png" alt="beIN Baraem">
+                <div class="channel-name">beIN Baraem</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- قنوات الطهي -->
+    <div class="group">
+        <div class="group-title">قنوات الطهي</div>
+        <div class="channel-grid">
+            <div class="channel-card" onclick="window.location.href='entertainment/bein-fatafeat.html'">
+                <img src="placeholder-fatafeat.png" alt="Fatafeat">
+                <div class="channel-name">Fatafeat</div>
+            </div>
+            <div class="channel-card" onclick="window.location.href='entertainment/bein-gourmet.html'">
+                <img src="placeholder-gourmet.png" alt="beIN Gourmet">
+                <div class="channel-name">beIN Gourmet</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- قنوات المسلسلات -->
+    <div class="group">
+        <div class="group-title">قنوات المسلسلات</div>
+        <div class="channel-grid">
+            <div class="channel-card" onclick="window.location.href='entertainment/bein-series1.html'">
+                <img src="placeholder-series1.png" alt="beIN Series 1">
+                <div class="channel-name">beIN Series 1</div>
+            </div>
+            <div class="channel-card" onclick="window.location.href='entertainment/bein-series2.html'">
+                <img src="placeholder-series2.png" alt="beIN Series 2">
+                <div class="channel-name">beIN Series 2</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- قنوات الأفلام -->
+    <div class="group">
+        <div class="group-title">قنوات الأفلام</div>
+        <div class="channel-grid">
+            <div class="channel-card" onclick="window.location.href='entertainment/bein-movies1.html'">
+                <img src="placeholder-movies1.png" alt="beIN Movies Premiere">
+                <div class="channel-name">beIN Movies Premiere</div>
+            </div>
+            <div class="channel-card" onclick="window.location.href='entertainment/bein-movies2.html'">
+                <img src="placeholder-movies2.png" alt="beIN Movies Action">
+                <div class="channel-name">beIN Movies Action</div>
+            </div>
+            <div class="channel-card" onclick="window.location.href='entertainment/bein-movies3.html'">
+                <img src="placeholder-movies3.png" alt="beIN Movies Drama">
+                <div class="channel-name">beIN Movies Drama</div>
+            </div>
+            <div class="channel-card" onclick="window.location.href='entertainment/bein-movies4.html'">
+                <img src="placeholder-movies4.png" alt="beIN Movies Family">
+                <div class="channel-name">beIN Movies Family</div>
+            </div>
+            <div class="channel-card" onclick="window.location.href='entertainment/bein-boxoffice.html'">
+                <img src="placeholder-boxoffice.png" alt="Box Office">
+                <div class="channel-name">Box Office</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
