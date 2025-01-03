@@ -1,49 +1,93 @@
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sample m3u8 page</title>
-    <style>
-      /* إزالة أي هوامش ومسافات */
-      body, html {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #000; /* خلفية داكنة */
-        overflow: hidden; /* منع التمرير */
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full-Screen Responsive Video Player</title>
+  <link rel="stylesheet" href="https://vjs.zencdn.net/8.0.4/video-js.css">
+  <style>
+    /* إعدادات الصفحة */
+    body, html {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      overflow: hidden;
+    }
 
-      /* الفيديو سيأخذ الأبعاد الأصلية */
-      video {
-        max-width: 100%; /* فيديو بحجم الشاشة لكن يحافظ على الأبعاد الأصلية */
-        max-height: 100vh; /* الحد من الارتفاع ليكون أقصى ارتفاع 100% من الشاشة */
-        object-fit: contain; /* الحفاظ على الأبعاد الأصلية بدون تشويه */
-      }
-    </style>
-  </head>
-  <body>
-    <!-- CSS -->
-    <link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet" />
-    
-    <!-- HTML -->
-    <video id="hls-example" class="video-js vjs-default-skin" controls>
-      <source type="application/x-mpegURL" src="https://het129a.4rouwanda-shop.store/live/978480008877005/index.m3u8" />
+    /* إعدادات الفيديو */
+    #player-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .video-js {
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      max-height: 100vh;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+  <!-- الفيديو -->
+  <div id="player-container">
+    <video id="player" class="video-js vjs-default-skin" controls preload="auto" autoplay muted>
+      <source src="https://het129a.4rouwanda-shop.store/live/978480008877005/index.m3u8" type="application/x-mpegURL">
     </video>
+  </div>
 
-    <!-- JS code -->
-    <script src="https://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.14.1/videojs-contrib-hls.js"></script>
-    <script src="https://vjs.zencdn.net/7.2.3/video.js"></script>
-    <script>
-      var player = videojs("hls-example");
+  <!-- تضمين مكتبات Video.js -->
+  <script src="https://vjs.zencdn.net/8.0.4/video.min.js"></script>
 
-      // عند تحميل الصفحة
-      window.onload = function() {
-        player.play(); // تشغيل الفيديو تلقائيًا
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // تهيئة المشغل
+      const player = videojs('player', {
+        autoplay: true,
+        muted: true,
+        fluid: true,
+        liveui: true,
+        preload: 'auto',
+      });
+
+      // معالجة التشغيل التلقائي
+      player.ready(() => {
+        player.play().catch(err => {
+          console.error("Autoplay failed:", err);
+          alert("لم يتمكن المشغل من بدء التشغيل تلقائيًا.");
+        });
+      });
+
+      // التعامل مع الأخطاء أثناء البث
+      player.on('error', () => {
+        const error = player.error();
+        console.error('خطأ في تشغيل الفيديو:', error);
+        alert('حدث خطأ أثناء تشغيل الفيديو: ' + (error ? error.message : 'غير معروف'));
+      });
+
+      // ضبط الأبعاد ديناميكيًا
+      const resizePlayer = () => {
+        const container = document.getElementById('player-container');
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        player.dimensions(width, height);
+        container.style.width = `${width}px`;
+        container.style.height = `${height}px`;
       };
-    </script>
-  </body>
+
+      // استجابة لتغيير حجم الشاشة
+      window.addEventListener('resize', resizePlayer);
+      resizePlayer();
+    });
+  </script>
+</body>
 </html>
