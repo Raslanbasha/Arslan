@@ -1,6 +1,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sample m3u8 page</title>
     <style>
       /* إزالة أي هوامش ومسافات */
@@ -15,13 +16,13 @@
         overflow: hidden; /* منع التمرير */
       }
 
-      /* الفيديو في وسط الشاشة مع توسيعه ليغطي كامل العرض */
+      /* الفيديو يتناسب مع شاشة الهاتف */
       video {
-        width: 100%; /* جعل العرض 100% من الشاشة */
+        width: 100%; /* العرض 100% من عرض الشاشة */
         height: auto; /* الحفاظ على النسب الصحيحة */
-        max-width: 100%; /* جعل الفيديو يتناسب مع العرض */
-        max-height: 100vh; /* الحد من الارتفاع ليكون أقصى ارتفاع 100% من الشاشة */
-        object-fit: cover; /* تكبير الفيديو ليغطي الشاشة مع الحفاظ على النسب */
+        max-width: 100%; /* ضمان أن الفيديو لا يتجاوز العرض */
+        max-height: 100vh; /* يضمن أن الفيديو لا يتجاوز ارتفاع الشاشة */
+        object-fit: contain; /* يظهر الفيديو بالكامل مع الحفاظ على النسب */
       }
     </style>
   </head>
@@ -44,20 +45,6 @@
       // عند تحميل الصفحة
       window.onload = function() {
         player.play(); // تشغيل الفيديو تلقائيًا
-
-        // طلب ملء الشاشة
-        var videoElement = document.getElementById('hls-example');
-
-        // طلب ملء الشاشة في المتصفحات الحديثة
-        if (videoElement.requestFullscreen) {
-          videoElement.requestFullscreen();
-        } else if (videoElement.webkitRequestFullscreen) { // Safari
-          videoElement.webkitRequestFullscreen();
-        } else if (videoElement.mozRequestFullScreen) { // Firefox
-          videoElement.mozRequestFullScreen();
-        } else if (videoElement.msRequestFullscreen) { // IE/Edge
-          videoElement.msRequestFullscreen();
-        }
       };
     </script>
   </body>
