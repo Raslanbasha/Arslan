@@ -869,7 +869,94 @@
 <div class="new-updates">
     <i class="fas fa-tools"></i>
     <p>نحن نعمل على إضافة ميزات جديدة شاملة لتطبيقنا، بما في ذلك تحسين الأداء، إضافة قنوات جديدة، وتجربة مستخدم محسنة. ترقبوا التحديثات القادمة </p>
-    
+    <!-- بداية قسم التعزية -->
+<div class="condolence-section">
+    <div class="condolence-content">
+        <!-- صورة المتوفي مع شريط أسود -->
+        <div class="image-container">
+            <img src="mand.jpg" alt="صورة المتوفي">
+            <div class="black-ribbon"></div>
+        </div>
+        <!-- نص التعزية -->
+        <div class="condolence-texts">
+            <h2 class="condolence-title">إنا لله وإنا إليه راجعون</h2>
+            <p class="condolence-message">
+                ببالغ الحزن والأسى، ننعى فقيدنا العزيز <strong>اسم المتوفي</strong> الذي وافته المنية. نسأل الله أن يتغمده بواسع رحمته ويسكنه فسيح جناته.
+            </p>
+        </div>
+    </div>
+</div>
+<!-- نهاية قسم التعزية -->
+
+<style>
+    /* بداية تنسيق قسم التعزية */
+    .condolence-section {
+        margin: 30px auto; /* مسافة خارجية */
+        padding: 20px; /* حواف داخلية */
+        background: linear-gradient(135deg, #2e2e2e, #4a4a4a); /* ألوان رمادية باهتة */
+        border-radius: 15px; /* زوايا مستديرة */
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* ظل خفيف */
+        text-align: center; /* توسيط النصوص */
+        color: #f5f5f5; /* لون النص */
+        font-family: 'Cairo', sans-serif; /* خط كايرو */
+    }
+
+    .condolence-content {
+        display: flex; /* توزيع العناصر أفقيًا */
+        align-items: center; /* محاذاة عمودية */
+        justify-content: center; /* توسيط العناصر أفقيًا */
+        gap: 20px; /* مسافة بين العناصر */
+        flex-wrap: wrap; /* السماح بالتكديس على الشاشات الصغيرة */
+    }
+
+    /* تنسيق صورة المتوفي */
+    .image-container {
+        position: relative; /* لجعل الشريط الأسود يتراكب */
+        width: 150px; /* عرض الصورة */
+        height: 150px; /* ارتفاع الصورة */
+        overflow: hidden; /* إخفاء أي جزء زائد */
+        border-radius: 15px; /* زوايا مستديرة */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ظل خفيف */
+    }
+
+    .image-container img {
+        width: 100%; /* عرض الصورة بالكامل */
+        height: 100%; /* ارتفاع الصورة بالكامل */
+        object-fit: cover; /* تغطية كاملة مع الحفاظ على نسبة العرض */
+    }
+
+    .black-ribbon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4); /* شريط أسود نصف شفاف */
+        transform: rotate(-45deg); /* إمالة الشريط */
+        transform-origin: center; /* نقطة الدوران */
+    }
+
+    /* نصوص التعزية */
+    .condolence-texts {
+        max-width: 600px; /* عرض النصوص */
+        text-align: center; /* توسيط النصوص */
+    }
+
+    .condolence-title {
+        font-size: 24px; /* حجم العنوان */
+        font-weight: bold; /* جعل العنوان عريضًا */
+        margin-bottom: 10px; /* مسافة أسفل العنوان */
+        color: #fff; /* لون النص أبيض */
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* تأثير ظل خفيف */
+    }
+
+    .condolence-message {
+        font-size: 16px; /* حجم النص الوصفي */
+        line-height: 1.6; /* ارتفاع السطور */
+        color: #dcdcdc; /* لون رمادي باهت */
+    }
+    /* نهاية تنسيق قسم التعزية */
+</style>
 </div>
    <!-- بداية قسم قريباً للطلبة -->
 <div class="students-section">
