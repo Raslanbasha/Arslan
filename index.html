@@ -642,7 +642,7 @@
 <div class="test-version">نسخة تجريبية</div>
     <div class="popup" id="popup">
         <h3>تنبيه مهم</h3>
-        <p>التطبيق حالياً في مرحلته الأولى لتجربة آلية عمله وتصميمه بما يتناسب مع ذوق المستخدم. لذا، قد لا تعمل القنوات بشكل كامل في الوقت الحالي، حيث أن العمل ما زال جارياً على إضافة وتحديث المحتوى
+        <p>التطبيق حالياً في مرحلته الأولى لتجربة آلية عمله وتصميمه بما يتناسب مع ذوق المستخدم حيث أن العمل ما زال جارياً على إضافة وتحديث المحتوى
 
 </p>
         <button onclick="closePopup()">حسنًا</button>
@@ -652,78 +652,165 @@
 
 <div class="news-ticker">
     <div class="news-ticker-content">
-        مرحبًا بكم في زمار أونلاين! <i class="fa-solid fa-soccer-ball"></i> آخر الأخبار: تحديث جديد للقنوات الرياضية متاح الآن <i class="fa-solid fa-soccer-ball"></i> قريبًا: إضافة المزيد من القنوات بدقة عالية <i class="fa-solid fa-soccer-ball"></i> تنبيه هام : سوف يتم منح اكواد تشغيل التطبيق حصرا لأهلنا في ناحية زمار الحبيبة <i class="fa-solid fa-soccer-ball"></i> بإمكان الأندية الرياضية في ناحية زمار أرسال صورة تجمع فريق ناديهم لعرضها في قسم الاندية الرياضية ضمن التطبيق <i class="fa-solid fa-child"></i> شاركنا صور اطفالك الحلوين لعرضها على تطبيق زمار اونلاين من خلال القسم المخصص لأطفال مدينتي
+        مرحبًا بكم في زمار أونلاين! <i class="fa-solid fa-soccer-ball"></i> آخر الأخبار: تحديث جديد للقنوات الرياضية متاح الآن <i class="fa-solid fa-soccer-ball"></i> قريبًا: إضافة المزيد من القنوات بدقة عالية <i class="fa-solid fa-soccer-ball"></i> تنبيه هام : سوف يتم منح اكواد تشغيل التطبيق حصرا لأهلنا في ناحية زمار الحبيبة <i class="fa-solid fa-soccer-ball"></i> بإمكان الأندية الرياضية في ناحية زمار أرسال صورة تجمع فريق ناديهم لعرضها في قسم الاندية الرياضية ضمن التطبيق <i class="fa-solid fa-child"></i> شاركنا صور اطفالك الحلوين لعرضها على تطبيق زمار اونلاين من خلال القسم المخصص لأطفال مدينتي <i class="fa-solid fa-moon"></i> تقبل الله صيامكم وقيامكم وصالح اعمالكم
     </div>
 </div>
 <!-- بداية تنسيق خبر عاجل -->
 <div class="urgent-news">
     <div class="urgent-news-content">
         <i class="fas fa-exclamation-circle urgent-icon"></i>
-        <p class="urgent-message">في حال عدم تشغيل القناة يرجى المحاولة مرة أخرى وستعمل بكفاءة عالية 
-
- </p>
+        <p class="urgent-message">تم اطلاق الوجبة السابعة من الرعاية الاجتماعية</p>
     </div>
 </div>
 <!-- نهاية تنسيق خبر عاجل -->
 
     <!-- تهنئة رأس السنة -->
     <div class="new-year-greeting">
-        <i class="fas fa-fireworks"></i>
-        <p>كل عام وأنتم بخير بمناسبة رأس السنة الجديدة! نتمنى لكم عامًا مليئًا بالسعادة والنجاح. شكرًا لدعمكم المستمر </p>
-        <i class="fas fa-gift"></i>
+        <i class="fas fa-"></i>
+        <p>يسر تطبيق زمار أونلاين أن يهنئكم بحلول شهر رمضان المبارك نسأل الله أن يجعله شهر خير وبركة عليكم وعلى أحبائكم
+
+</p>
+        <i class="fas fa-moon"></i>
     </div>
 
     <div class="container">
-        
-<!-- IRAQ TV -->
-<div class="group">
-    شاهد قنواتك المفضلة
-    
-    <!-- قسم القنوات -->
+      <!-- بداية قسم شاهد قنواتك المفضلة -->
 <div class="channels-section">
-    <div class="channel-button" onclick="window.location.href='ssc.html'">
-        <img src="ssc.jpeg" alt="SSC Logo">
-        <span>SSC Sports</span>
-    </div>
-    <div class="channel-button" onclick="window.location.href='iraq.html'">
-        <img src="iraq.png" alt="Iraq Logo">
-        <span>IRAQ</span>
-    </div>
-    <div class="channel-button" onclick="toggleBeinOptions()">
-        <img src="bein.png" alt="Bein Logo">
-        <span>BeIN Sports</span>
-    </div>
-    <div id="bein-options" class="bein-options">
-        <button onclick="window.location.href='bein-1080.html'">1080p</button>
-        <button onclick="window.location.href='bein-360.html'">360p</button>
-        <button onclick="window.location.href='bein-240.html'">240p</button>
+    <h2 class="channels-title">شاهد قنواتك المفضلة</h2>
+    <div class="channels-buttons">
+        <!-- زر قناة بي إن سبورت -->
+        <div class="channel-card" onclick="window.location.href='bein.html'">
+            <img src="bein.png" alt="BeIN Sports Logo">
+            <span>BeIN Sports</span>
+        </div>
+
+        <!-- زر قناة SSC -->
+        <div class="channel-card" onclick="window.location.href='ssc.html'">
+            <img src="ssc.png" alt="SSC Sports Logo">
+            <span>SSC Sports</span>
+        </div>
     </div>
 </div>
+<!-- نهاية قسم شاهد قنواتك المفضلة -->
 
-<!-- سكربت لإظهار خيارات Bein -->
-<script>
-    function toggleBeinOptions() {
-        const options = document.getElementById('bein-options');
-        options.style.display = options.style.display === 'block' ? 'none' : 'block';
+<style>
+    /* بداية تنسيق قسم شاهد قنواتك المفضلة */
+    .channels-section {
+        margin: 30px auto; /* مسافة خارجية */
+        padding: 20px; /* حواف داخلية */
+        background: linear-gradient(135deg, #1e88e5, #43a047); /* تدرج ألوان رياضية */
+        border-radius: 15px; /* زوايا مستديرة */
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* ظل جذاب */
+        text-align: center; /* توسيط النصوص */
+        color: #fff; /* لون النص أبيض */
+        font-family: 'Cairo', sans-serif; /* خط كايرو */
     }
-</script>
 
-<!-- قسم القنوات -->
-<div class="channels-section">
-    <div class="channel-button" onclick="window.location.href='ssc.html'">
-        <img src="enter.png" alt="SSC Logo">
-        <span>BeIN الترفيه</span>
-    </div>
-    <div class="channel-button" onclick="window.location.href='iraq.html'">
-        <img src="kids.png" alt="Iraq Logo">
-        <span>KIDS</span>
-    </div>
-    <div class="channel-button" onclick="window.location.href='bein.html'">
-        <img src="mbc.png" alt="Bein Logo">
-        <span>قنوات MBC</span>
+    .channels-title {
+        font-size: 24px; /* حجم العنوان */
+        font-weight: bold; /* جعل العنوان عريضًا */
+        margin-bottom: 20px; /* مسافة أسفل العنوان */
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* تأثير ظل خفيف */
+        color: #ffffff; /* لون النص أبيض */
+    }
+
+    .channels-buttons {
+        display: flex; /* توزيع العناصر أفقيًا */
+        justify-content: center; /* توسيط الأزرار */
+        gap: 20px; /* مسافة بين الأزرار */
+        flex-wrap: wrap; /* السماح بتكديس الأزرار على الشاشات الصغيرة */
+    }
+
+    .channel-card {
+        width: 150px; /* عرض البطاقة */
+        height: 180px; /* ارتفاع البطاقة */
+        background: #ffffff; /* خلفية البطاقة */
+        border-radius: 15px; /* زوايا مستديرة */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ظل البطاقة */
+        display: flex; /* توزيع المحتوى داخل البطاقة */
+        flex-direction: column; /* توزيع رأسي للعناصر */
+        justify-content: center; /* توسيط عمودي */
+        align-items: center; /* توسيط أفقي */
+        cursor: pointer; /* مؤشر اليد عند التمرير */
+        transition: transform 0.3s, box-shadow 0.3s; /* تأثير سلس عند التفاعل */
+    }
+
+    .channel-card:hover {
+        transform: scale(1.1); /* تكبير البطاقة قليلاً عند التمرير */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* زيادة الظل */
+    }
+
+    .channel-card img {
+        width: 80px; /* عرض الشعار */
+        height: 80px; /* ارتفاع الشعار */
+        margin-bottom: 10px; /* مسافة أسفل الشعار */
+        object-fit: contain; /* الحفاظ على أبعاد الصورة */
+        border-radius: 10px; /* زوايا مستديرة للصورة */
+    }
+
+    .channel-card span {
+        font-size: 16px; /* حجم النص */
+        font-weight: bold; /* جعل النص عريض */
+        color: #333333; /* لون النص */
+    }
+    /* نهاية تنسيق قسم شاهد قنواتك المفضلة */
+</style>
+
+
+<div class="ramadan-section">
+    <div class="ramadan-quotes" id="ramadanQuotes">
+        <i class="fas fa-moon"></i>
+        <p id="quoteText">رمضان كريم، تقبل الله منا ومنكم</p>
+        <i class="fas fa-star"></i>
     </div>
 </div>
 
+<style>
+    .ramadan-section {
+        margin: 20px auto;
+        padding: 20px;
+        background: linear-gradient(135deg, #ffdd99, #ffb347);
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        color: #fff;
+        font-family: 'Cairo', sans-serif;
+        text-align: center;
+    }
+
+    .ramadan-quotes {
+        margin-bottom: 15px;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .ramadan-quotes i {
+        font-size: 24px;
+        color: #fff;
+    }
+</style>
+
+<script>
+    // عبارات رمضانية
+    const quotes = [
+        "رمضان كريم، تقبل الله منا ومنكم",
+        "اللهم بلغنا ليلة القدر واغفر لنا فيها",
+        "اغتنموا الفرصة بالدعاء والذكر في هذا الشهر الفضيل",
+        "اللهم اجعلنا من عتقاء شهر رمضان"
+    ];
+    let currentQuoteIndex = 0;
+
+    function changeQuote() {
+        const quoteText = document.getElementById("quoteText");
+        currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+        quoteText.textContent = quotes[currentQuoteIndex];
+    }
+
+    // تغيير العبارة كل 5 ثوانٍ
+    setInterval(changeQuote, 5000);
+</script>
 </div>
 
         <!-- قنوات 
@@ -784,19 +871,85 @@
     <p>نحن نعمل على إضافة ميزات جديدة شاملة لتطبيقنا، بما في ذلك تحسين الأداء، إضافة قنوات جديدة، وتجربة مستخدم محسنة. ترقبوا التحديثات القادمة </p>
     
 </div>
-    <!-- قسم الإعلان -->
-    <div <div class="advertisement">
-  <div class="content">
-  <h2>!..قريباً</h2>
-<i class="fas fa-graduation-cap"></i>
-    <div class="text">
-      
-      <p>
-        هذا الركن صُمّم خصيصاً لطلبتنا الأحبّة ليكون فضاءً يجمع كل ما تحتاجونه من ملازم ونتائج، 
-        ساعين دائماً لدعم خطواتكم نحو النجاح والتميز.
-      </p>
+   <!-- بداية قسم قريباً للطلبة -->
+<div class="students-section">
+    <div class="students-content">
+        <!-- أيقونة قبعة التخرج داخل دائرة -->
+        <i class="fas fa-graduation-cap"></i>
+        <!-- النصوص المرافقة للأيقونة -->
+        <div class="students-texts">
+            <h2 class="students-title">قريباً للطلبة</h2>
+            <p class="students-description">
+                ركن خاص لطلابنا الأعزاء يحتوي على كل ما تحتاجونه من ملازم، نتائج، وأدوات تعليمية
+                لدعم رحلتكم نحو التفوق والنجاح.
+            </p>
+        </div>
     </div>
-  </div>
+</div>
+<!-- نهاية قسم قريباً للطلبة -->
+
+<style>
+    /* بداية تنسيق قسم قريباً للطلبة */
+    .students-section {
+        margin: 20px auto; /* مسافة خارجية لتوسيط القسم */
+        padding: 20px; /* مسافة داخلية حول المحتوى */
+        background: linear-gradient(135deg, #4caf50, #8bc34a, #c8e6c9); /* تدرج ألوان طلابية مشرقة */
+        border-radius: 15px; /* زوايا مستديرة */
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* إضافة ظل جميل */
+        text-align: center; /* توسيط النصوص */
+        color: #fff; /* لون النص أبيض */
+        font-family: 'Cairo', sans-serif; /* استخدام خط كايرو */
+    }
+
+    .students-content {
+        display: flex; /* توزيع العناصر بشكل أفقي */
+        align-items: center; /* محاذاة عمودية للعناصر */
+        justify-content: center; /* توسيط العناصر أفقياً */
+        gap: 15px; /* مسافة بين العناصر */
+        flex-wrap: wrap; /* السماح بتكديس العناصر على الشاشات الصغيرة */
+    }
+
+    .students-content i {
+        font-size: 50px; /* حجم الأيقونة */
+        color: #fff; /* لون الأيقونة أبيض */
+        background: #388e3c; /* خلفية دائرية خضراء */
+        width: 80px; /* عرض الدائرة */
+        height: 80px; /* ارتفاع الدائرة */
+        display: flex; /* جعل الأيقونة في المنتصف */
+        justify-content: center; /* توسيط الأيقونة أفقياً */
+        align-items: center; /* توسيط الأيقونة عمودياً */
+        border-radius: 50%; /* تحويل الشكل إلى دائرة */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* إضافة ظل خفيف للدائرة */
+    }
+
+    .students-texts {
+        text-align: center; /* توسيط النصوص */
+        max-width: 600px; /* عرض النص الأقصى */
+    }
+
+    .students-title {
+        font-size: 24px; /* حجم العنوان */
+        font-weight: bold; /* جعل العنوان عريضًا */
+        margin-bottom: 10px; /* مسافة أسفل العنوان */
+        color: #ffffff; /* لون العنوان أبيض */
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); /* تأثير ظل خفيف للنص */
+    }
+
+    .students-description {
+        font-size: 16px; /* حجم النص الوصفي */
+        line-height: 1.6; /* ارتفاع الأسطر */
+        color: #f9f9f9; /* لون النص الوصفي */
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* تأثير ظل خفيف */
+    }
+
+    /* تأثير التفاعل عند مرور الفأرة */
+    .students-section:hover {
+        transform: scale(1.02); /* تكبير القسم قليلاً عند التمرير */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* زيادة الظل */
+        transition: all 0.3s ease; /* إضافة حركة سلسة */
+    }
+    /* نهاية تنسيق قسم قريباً للطلبة */
+</style>
 </div>
     </div>
 
@@ -918,14 +1071,82 @@
     }
 </script>
 
-    <!-- قسم الأخبار -->
-    <div class="news-section">
-        <div class="news-title">آخر الأخبار</div>
-        <div class="news-content">
-            <p>يسعدنا أن نقدم جميع الخدمات المتوفرة في النسخة التجريبية من تطبيق زمار أونلاين مجانًا لأحبائنا في ناحية زمار
-
-</p>
+  <!-- بداية قسم آخر الأخبار -->
+<div class="news-section">
+    <div class="news-content">
+        <i class="fas fa-bullhorn"></i>
+        <div class="news-texts">
+            <h2 class="news-title">آخر الأخبار</h2>
+            <p class="news-message">
+                يسعدنا أن نقدم جميع الخدمات المتوفرة في النسخة التجريبية من تطبيق زمار أونلاين مجانًا
+                لأحبائنا في ناحية زمار
+            </p>
         </div>
+    </div>
+</div>
+<!-- نهاية قسم آخر الأخبار -->
+
+<style>
+    /* بداية تنسيق قسم آخر الأخبار */
+    .news-section {
+        margin: 20px auto; /* مسافة خارجية */
+        padding: 20px; /* حواف داخلية */
+        background: linear-gradient(135deg, #6a1b9a, #9c27b0, #ba68c8); /* تدرج ألوان بنفسجي هادئ */
+        border-radius: 15px; /* زوايا مستديرة */
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* ظل جذاب */
+        color: #fff; /* لون النص أبيض */
+        font-family: 'Cairo', sans-serif; /* خط كايرو */
+        text-align: center; /* توسيط المحتوى */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* حركة سلسة عند التفاعل */
+    }
+
+    .news-section:hover {
+        transform: scale(1.03); /* تكبير بسيط عند التمرير */
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); /* زيادة الظل */
+    }
+
+    .news-content {
+        display: flex; /* توزيع العناصر أفقيًا */
+        align-items: center; /* محاذاة عمودية */
+        justify-content: center; /* توسيط العناصر أفقيًا */
+        gap: 15px; /* مسافة بين الأيقونة والنصوص */
+        flex-wrap: wrap; /* السماح بالتكديس على الشاشات الصغيرة */
+    }
+
+    .news-content i {
+        font-size: 50px; /* حجم الأيقونة */
+        color: #ffffff; /* لون الأيقونة أبيض */
+        background: #7b1fa2; /* خلفية بنفسجية داكنة */
+        width: 80px; /* عرض دائري */
+        height: 80px; /* ارتفاع دائري */
+        display: flex; /* محاذاة المحتوى داخل الدائرة */
+        justify-content: center; /* توسيط أفقي */
+        align-items: center; /* توسيط عمودي */
+        border-radius: 50%; /* تحويل إلى دائرة */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* إضافة ظل */
+    }
+
+    .news-texts {
+        max-width: 600px; /* تحديد عرض النصوص */
+        text-align: center; /* توسيط النص */
+    }
+
+    .news-title {
+        font-size: 24px; /* حجم العنوان */
+        font-weight: bold; /* جعل النص عريضًا */
+        margin-bottom: 10px; /* مسافة أسفل العنوان */
+        color: #f3e5f5; /* لون بنفسجي فاتح مريح */
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* تأثير ظل خفيف */
+    }
+
+    .news-message {
+        font-size: 16px; /* حجم النص الوصفي */
+        line-height: 1.6; /* ارتفاع السطور */
+        color: #e1bee7; /* لون بنفسجي فاتح */
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* تأثير ظل للنص */
+    }
+    /* نهاية تنسيق قسم آخر الأخبار */
+</style>
     </div>
 
 <!-- قسم أندية زمار الرياضية -->
@@ -934,27 +1155,27 @@
     <div class="clubs-slider">
         <!-- صورة النادي 1 -->
         <div class="club-item">
-            <img src="club1.jpg" alt="نادي 1" class="club-image" onclick="viewImage('club1.jpg')">
+            <img src="20.jpg" alt="نادي 1" class="club-image" onclick="viewImage('20.jpg')">
             <p class="club-name">نادي 1</p>
         </div>
         <!-- صورة النادي 2 -->
         <div class="club-item">
-            <img src="club2.jpg" alt="نادي 2" class="club-image" onclick="viewImage('club2.jpg')">
+            <img src="10.jpg" alt="نادي 2" class="club-image" onclick="viewImage('20.jpg')">
             <p class="club-name">نادي 2</p>
         </div>
         <!-- صورة النادي 3 -->
         <div class="club-item">
-            <img src="club3.jpg" alt="نادي 3" class="club-image" onclick="viewImage('club3.jpg')">
+            <img src="30.jpg" alt="نادي 3" class="club-image" onclick="viewImage('30.jpg')">
             <p class="club-name">نادي 3</p>
         </div>
         <!-- صورة النادي 4 -->
         <div class="club-item">
-            <img src="club4.jpg" alt="نادي 4" class="club-image" onclick="viewImage('club4.jpg')">
+            <img src="60.jpg" alt="نادي 4" class="club-image" onclick="viewImage('60.jpg')">
             <p class="club-name">نادي 4</p>
         </div>
         <!-- صورة النادي 5 -->
         <div class="club-item">
-            <img src="club5.jpg" alt="نادي 5" class="club-image" onclick="viewImage('club5.jpg')">
+            <img src="50.jpg" alt="نادي 5" class="club-image" onclick="viewImage('50.jpg')">
             <p class="club-name">نادي 5</p>
         </div>
     </div>
@@ -1046,17 +1267,19 @@ window.onclick = function(event) {
 }
     </script>
     
-  
+
+</style>
 <!-- Smartsupp Live Chat script -->
 <script type="text/javascript">
 var _smartsupp = _smartsupp || {};
 _smartsupp.key = 'b8fb4868d0749ba7409d436b8e6a9060875fea98';
 window.smartsupp||(function(d) {
-	var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
-	s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-	c.type='text/javascript';c.charset='utf-8';c.async=true;
-	c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
 })(document);
 </script>
+<noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
 </body>
 </html>
