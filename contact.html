@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عن التطبيق</title>
+    <title>اتصل بنا</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'); /* مكتبة أيقونات FontAwesome */
 
         /* إعدادات الصفحة */
         body {
@@ -53,8 +54,28 @@
             font-size: 1.1em;
             line-height: 1.8;
             color: #5c5467;
-            text-align: justify;
             margin: 10px 0;
+        }
+
+        /* تنسيق الروابط */
+        .contact-item {
+            margin: 15px 0;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4b4453;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: #7e57c2;
+        }
+
+        .contact-item i {
+            margin-left: 10px;
+            font-size: 1.5em;
         }
 
         /* الفوتر */
@@ -100,13 +121,23 @@
 </head>
 <body>
     <div class="container">
-        <h1>عن التطبيق</h1>
-        <p>
-            تطبيق زمار أونلاين هو منصة شاملة تم تقديمها مجاناً، موجهة خصيصاً لخدمة أهالي ناحية زمار وقراها. يهدف التطبيق إلى توسيع نطاق الخدمات المتاحة ليشمل كافة الأقسام والاختصاصات، مع توفير العديد من الأدوات التي تسهل على المستخدمين الوصول إلى ما يحتاجونه بكل يسر وسهولة. من خلال هذا التطبيق، نسعى إلى تحسين جودة الحياة في المنطقة وتوفير حلول مبتكرة تساهم في تيسير الحياة اليومية للمواطنين، مع ضمان تقديم تجربة مستخدم مميزة.
-        </p>
+        <h1>اتصل بنا</h1>
+        <p>نحن هنا للإجابة على استفساراتك ومساعدتك في كل ما تحتاجه. لا تتردد في التواصل معنا عبر الوسائل التالية:</p>
+        
+        <!-- البريد الإلكتروني -->
+        <a href="mailto:zummaronline@gmail.com" class="contact-item">
+            <i class="fas fa-envelope"></i>
+            zummaronline@gmail.com
+        </a>
+        
+        <!-- حساب التلغرام -->
+        <a href="https://t.me/zummaronline" target="_blank" class="contact-item">
+            <i class="fab fa-telegram"></i>
+            @zummaronline
+        </a>
     </div>
     <footer>
-  
+     
     </footer>
 </body>
 </html>
