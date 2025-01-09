@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الطبيب - محرك بحث</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(to bottom, #5a189a, #9d4edd, #c77dff);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-top: 30px;
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        h1 i {
+            font-size: 2.5rem;
+            color: #fff;
+        }
+
+        .search-container {
+            margin: 30px auto;
+            max-width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            max-width: 500px;
+            padding: 15px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            text-align: right;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-button {
+            margin-top: 15px;
+            background: #7209b7;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .search-button:hover {
+            background: #560bad;
+        }
+
+        .suggestions {
+            position: absolute;
+            top: 60px;
+            background: #fff;
+            color: #333;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            display: none;
+            text-align: right;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .suggestions div {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .suggestions div:hover {
+            background: #f0f0f0;
+        }
+
+        .results {
+            margin-top: 20px;
+        }
+
+        .result-card {
+            background: #fff;
+            color: #333;
+            margin: 20px auto;
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 500px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: right;
+            direction: rtl;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .result-card h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .result-card p {
+            margin: 5px 0;
+            font-size: 1rem;
+        }
+
+        .result-card .icon {
+            margin-left: 8px;
+            color: #7209b7;
+        }
+
+        .call-button {
+            background: #00b894;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            font-size: 0.9rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .call-button:hover {
+            background: #01976b;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const input = document.getElementById("search-input");
+            const suggestionsContainer = document.getElementById("suggestions");
+            const resultsContainer = document.getElementById("results");
+
+            // جلب ملف Excel وقراءته
+            let doctors = [];
+            async function loadExcel() {
+                const response = await fetch("doctors.xlsx");
+                const arrayBuffer = await response.arrayBuffer();
+                const workbook = XLSX.read(arrayBuffer, { type: "array" });
+                const sheetName = workbook.SheetNames[0];
+                const sheet = workbook.Sheets[sheetName];
+                doctors = XLSX.utils.sheet_to_json(sheet);
+            }
+
+            loadExcel();
+
+            // إظهار الاقتراحات
+            input.addEventListener("input", function () {
+                const query = input.value.toLowerCase();
+                suggestionsContainer.innerHTML = "";
+                if (query) {
+                    const filteredSuggestions = doctors
+                        .map(doctor => doctor.التخصص)
+                        .filter(specialty => specialty && specialty.toLowerCase().includes(query));
+                    const uniqueSuggestions = [...new Set(filteredSuggestions)]; // إزالة التكرار
+
+                    if (uniqueSuggestions.length > 0) {
+                        suggestionsContainer.style.display = "block";
+                        uniqueSuggestions.forEach(suggestion => {
+                            const div = document.createElement("div");
+                            div.textContent = suggestion;
+                            div.addEventListener("click", function () {
+                                input.value = suggestion;
+                                suggestionsContainer.style.display = "none";
+                            });
+                            suggestionsContainer.appendChild(div);
+                        });
+                    } else {
+                        suggestionsContainer.style.display = "none";
+                    }
+                } else {
+                    suggestionsContainer.style.display = "none";
+                }
+            });
+
+            // البحث وعرض النتائج
+            document.getElementById("search-button").addEventListener("click", function () {
+                const query = input.value.toLowerCase();
+                resultsContainer.innerHTML = "";
+
+                if (query) {
+                    const results = doctors.filter(doctor =>
+                        doctor.التخصص && doctor.التخصص.toLowerCase().includes(query)
+                    );
+
+                    if (results.length > 0) {
+                        results.forEach(doctor => {
+                            const card = document.createElement("div");
+                            card.className = "result-card";
+                            card.innerHTML = `
+                                <h3><i class="fa fa-user-md icon"></i> ${doctor.الاسم}</h3>
+                                <p><i class="fa fa-stethoscope icon"></i> ${doctor.التخصص}</p>
+                                <p><i class="fa fa-map-marker icon"></i> ${doctor.العنوان}</p>
+                                <p>
+                                    <i class="fa fa-phone icon"></i> ${doctor.الهاتف}
+                                    <a href="tel:${doctor.الهاتف}" class="call-button">اتصل الآن</a>
+                                </p>
+                            `;
+                            resultsContainer.appendChild(card);
+                        });
+                    } else {
+                        resultsContainer.innerHTML = "<p>لم يتم العثور على نتائج.</p>";
+                    }
+                }
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+    <h1>
+        <i class="fa fa-user-md"></i>
+        الطبيب
+    </h1>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="ابحث عن طبيب...">
+        <button class="search-button" id="search-button">بحث</button>
+        <div class="suggestions" id="suggestions"></div>
+    </div>
+    <div class="results" id="results"></div>
+</body>
+</html>
