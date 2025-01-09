@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الحرفي - محرك بحث</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(to bottom, #5a189a, #9d4edd, #c77dff);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-top: 30px;
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        h1 i {
+            font-size: 2.5rem;
+            color: #fff;
+        }
+
+        .search-container {
+            margin: 30px auto;
+            max-width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            max-width: 500px;
+            padding: 15px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            text-align: right;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .autocomplete-list {
+            width: 90%;
+            max-width: 500px;
+            margin-top: 5px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: right;
+            position: absolute;
+            z-index: 10;
+            direction: rtl;
+        }
+
+        .autocomplete-item {
+            padding: 10px;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .autocomplete-item:hover {
+            background: #7209b7;
+            color: #fff;
+        }
+
+        .search-button {
+            margin-top: 15px;
+            background: #7209b7;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .search-button:hover {
+            background: #560bad;
+        }
+
+        .suggestions-buttons {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .suggestion-button {
+            background: #fff;
+            color: #7209b7;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s, color 0.3s;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .suggestion-button:hover {
+            background: #7209b7;
+            color: #fff;
+        }
+
+        .results {
+            margin-top: 20px;
+        }
+
+        .result-card {
+            background: #fff;
+            color: #333;
+            margin: 20px auto;
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 500px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: right;
+            direction: rtl;
+            font-family: 'Cairo', sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .result-card .icon-container {
+            font-size: 2rem;
+            color: #7209b7;
+            margin-left: 15px;
+        }
+
+        .result-card .content {
+            text-align: right;
+            flex-grow: 1;
+            margin-right: 15px;
+        }
+
+        .result-card h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .result-card p {
+            margin: 5px 0;
+            font-size: 1rem;
+        }
+
+        .call-button {
+            background: #00b894;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            font-size: 0.9rem;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .call-button:hover {
+            background: #01976b;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #f0f0f0;
+            text-align: center;
+            font-family: 'Cairo', sans-serif;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const input = document.getElementById("search-input");
+            const suggestionsContainer = document.getElementById("autocomplete-list");
+            const resultsContainer = document.getElementById("results");
+            const suggestionsButtonsContainer = document.getElementById("suggestions-buttons");
+
+            let craftsmen = [];
+            async function loadExcel() {
+                const response = await fetch("craftsmen.xlsx");
+                const arrayBuffer = await response.arrayBuffer();
+                const workbook = XLSX.read(arrayBuffer, { type: "array" });
+                const sheetName = workbook.SheetNames[0];
+                const sheet = workbook.Sheets[sheetName];
+                craftsmen = XLSX.utils.sheet_to_json(sheet);
+
+                const uniqueJobs = [...new Set(craftsmen.map(craftsman => craftsman.المهنة))];
+                uniqueJobs.forEach(job => {
+                    if (job) {
+                        const button = document.createElement("button");
+                        button.className = "suggestion-button";
+                        button.textContent = job;
+                        button.addEventListener("click", function () {
+                            searchByJob(job);
+                        });
+                        suggestionsButtonsContainer.appendChild(button);
+                    }
+                });
+            }
+
+            loadExcel();
+
+            input.addEventListener("input", function () {
+                const query = input.value.toLowerCase();
+                suggestionsContainer.innerHTML = "";
+
+                if (query) {
+                    const suggestions = craftsmen.filter(craftsman =>
+                        craftsman.الاسم && craftsman.الاسم.toLowerCase().includes(query)
+                    );
+
+                    suggestions.slice(0, 5).forEach(suggestion => {
+                        const item = document.createElement("div");
+                        item.className = "autocomplete-item";
+                        item.textContent = suggestion.الاسم;
+                        item.addEventListener("click", function () {
+                            input.value = suggestion.الاسم;
+                            suggestionsContainer.innerHTML = "";
+                            displayResults([suggestion]);
+                        });
+                        suggestionsContainer.appendChild(item);
+                    });
+                }
+            });
+
+            document.getElementById("search-button").addEventListener("click", function () {
+                const query = input.value.toLowerCase();
+                resultsContainer.innerHTML = "";
+
+                if (query) {
+                    const results = craftsmen.filter(craftsman =>
+                        craftsman.الاسم && craftsman.الاسم.toLowerCase().includes(query)
+                    );
+
+                    displayResults(results);
+                }
+            });
+
+            function searchByJob(job) {
+                resultsContainer.innerHTML = "";
+
+                const results = craftsmen.filter(craftsman =>
+                    craftsman.المهنة && craftsman.المهنة === job
+                );
+
+                displayResults(results);
+            }
+
+            function displayResults(results) {
+                resultsContainer.innerHTML = "";
+                if (results.length > 0) {
+                    results.forEach(craftsman => {
+                        const card = document.createElement("div");
+                        card.className = "result-card";
+                        card.innerHTML = `
+                            <div class="icon-container">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <div class="content">
+                                <h3>${craftsman.الاسم}</h3>
+                                <p><i class="fas fa-briefcase"></i> ${craftsman.المهنة}</p>
+                                <p><i class="fas fa-map-marker-alt"></i> ${craftsman.العنوان}</p>
+                                <p><i class="fas fa-phone-alt"></i> ${craftsman.الهاتف}</p>
+                            </div>
+                            <a href="tel:${craftsman.الهاتف}" class="call-button"><i class="fas fa-phone"></i> اتصل</a>
+                        `;
+                        resultsContainer.appendChild(card);
+                    });
+                } else {
+                    resultsContainer.innerHTML = "<p>لم يتم العثور على نتائج.</p>";
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+
+    <h1><i class="fas fa-tools"></i> الحرفي </h1>
+
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="ابحث عن الحرفي..." />
+        <div id="autocomplete-list" class="autocomplete-list"></div>
+        <button id="search-button" class="search-button">بحث</button>
+    </div>
+
+    <div id="suggestions-buttons" class="suggestions-buttons"></div>
+
+    <div id="results" class="results"></div>
+
+    <footer>
+        <p>خدمة الحرفي - زمار اونلاين</p>
+    </footer>
+
+</body>
+</html>
