@@ -50,6 +50,31 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
+        .autocomplete-list {
+            width: 90%;
+            max-width: 500px;
+            margin-top: 5px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: right;
+            position: absolute;
+            z-index: 10;
+            direction: rtl;
+        }
+
+        .autocomplete-item {
+            padding: 10px;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .autocomplete-item:hover {
+            background: #7209b7;
+            color: #fff;
+        }
+
         .search-button {
             margin-top: 15px;
             background: #7209b7;
@@ -122,11 +147,6 @@
             font-size: 1rem;
         }
 
-        .result-card .icon {
-            margin-left: 8px;
-            color: #7209b7;
-        }
-
         .call-button {
             background: #00b894;
             color: #fff;
@@ -156,8 +176,9 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const input = document.getElementById("search-input");
-            const suggestionsContainer = document.getElementById("suggestions-buttons");
+            const suggestionsContainer = document.getElementById("autocomplete-list");
             const resultsContainer = document.getElementById("results");
+            const suggestionsButtonsContainer = document.getElementById("suggestions-buttons");
 
             // جلب ملف Excel وقراءته
             let doctors = [];
@@ -169,7 +190,7 @@
                 const sheet = workbook.Sheets[sheetName];
                 doctors = XLSX.utils.sheet_to_json(sheet);
 
-                // إنشاء أزرار الاقتراحات من "التخصص"
+                // إنشاء أزرار التخصصات
                 const uniqueSpecialties = [...new Set(doctors.map(doctor => doctor.التخصص))];
                 uniqueSpecialties.forEach(specialty => {
                     if (specialty) {
@@ -179,14 +200,38 @@
                         button.addEventListener("click", function () {
                             searchBySpecialty(specialty);
                         });
-                        suggestionsContainer.appendChild(button);
+                        suggestionsButtonsContainer.appendChild(button);
                     }
                 });
             }
 
             loadExcel();
 
-            // البحث عن طريق الاسم
+            // إنشاء الاقتراحات أثناء الكتابة
+            input.addEventListener("input", function () {
+                const query = input.value.toLowerCase();
+                suggestionsContainer.innerHTML = "";
+
+                if (query) {
+                    const suggestions = doctors.filter(doctor =>
+                        doctor.الاسم && doctor.الاسم.toLowerCase().includes(query)
+                    );
+
+                    suggestions.slice(0, 5).forEach(suggestion => {
+                        const item = document.createElement("div");
+                        item.className = "autocomplete-item";
+                        item.textContent = suggestion.الاسم;
+                        item.addEventListener("click", function () {
+                            input.value = suggestion.الاسم;
+                            suggestionsContainer.innerHTML = "";
+                            displayResults([suggestion]);
+                        });
+                        suggestionsContainer.appendChild(item);
+                    });
+                }
+            });
+
+            // عرض النتائج عند الضغط على زر البحث
             document.getElementById("search-button").addEventListener("click", function () {
                 const query = input.value.toLowerCase();
                 resultsContainer.innerHTML = "";
@@ -213,18 +258,16 @@
 
             // عرض النتائج
             function displayResults(results) {
+                resultsContainer.innerHTML = "";
                 if (results.length > 0) {
                     results.forEach(doctor => {
                         const card = document.createElement("div");
                         card.className = "result-card";
                         card.innerHTML = `
-                            <h3><i class="fa fa-user-md icon"></i> ${doctor.الاسم}</h3>
-                            <p><i class="fa fa-stethoscope icon"></i> ${doctor.التخصص}</p>
-                            <p><i class="fa fa-map-marker icon"></i> ${doctor.العنوان}</p>
-                            <p>
-                                <i class="fa fa-phone icon"></i> ${doctor.الهاتف}
-                                <a href="tel:${doctor.الهاتف}" class="call-button">اتصل الآن</a>
-                            </p>
+                            <h3>${doctor.الاسم}</h3>
+                            <p>${doctor.التخصص}</p>
+                            <p>${doctor.العنوان}</p>
+                            <p>${doctor.الهاتف}</p>
                         `;
                         resultsContainer.appendChild(card);
                     });
@@ -234,21 +277,16 @@
             }
         });
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 <body>
-    <h1>
-        <i class="fa fa-user-md"></i>
-        الطبيب
-    </h1>
+    <h1>الطبيب</h1>
     <div class="search-container">
         <input type="text" id="search-input" placeholder="ابحث عن اسم الطبيب...">
+        <div id="autocomplete-list" class="autocomplete-list"></div>
         <button class="search-button" id="search-button">بحث</button>
     </div>
     <div class="suggestions-buttons" id="suggestions-buttons"></div>
     <div class="results" id="results"></div>
-    <footer>
-        خدمة الطبيب - زمار اونلاين
-    </footer>
+    <footer>خدمة الطبيب - زمار اونلاين</footer>
 </body>
 </html>
