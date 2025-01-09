@@ -168,8 +168,8 @@
                 suggestionsContainer.innerHTML = "";
                 if (query) {
                     const filteredSuggestions = doctors
-                        .map(doctor => doctor.التخصص)
-                        .filter(specialty => specialty && specialty.toLowerCase().includes(query));
+                        .map(doctor => doctor.الاسم)
+                        .filter(name => name && name.toLowerCase().includes(query));
                     const uniqueSuggestions = [...new Set(filteredSuggestions)]; // إزالة التكرار
 
                     if (uniqueSuggestions.length > 0) {
@@ -198,7 +198,7 @@
 
                 if (query) {
                     const results = doctors.filter(doctor =>
-                        doctor.التخصص && doctor.التخصص.toLowerCase().includes(query)
+                        doctor.الاسم && doctor.الاسم.toLowerCase().includes(query)
                     );
 
                     if (results.length > 0) {
@@ -231,7 +231,7 @@
         الطبيب
     </h1>
     <div class="search-container">
-        <input type="text" id="search-input" placeholder="ابحث عن طبيب...">
+        <input type="text" id="search-input" placeholder="ابحث عن اسم الطبيب...">
         <button class="search-button" id="search-button">بحث</button>
         <div class="suggestions" id="suggestions"></div>
     </div>
