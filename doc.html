@@ -68,28 +68,30 @@
             background: #560bad;
         }
 
-        .suggestions {
-            position: absolute;
-            top: 60px;
+        .suggestions-buttons {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .suggestion-button {
             background: #fff;
-            color: #333;
-            width: 90%;
-            max-width: 500px;
+            color: #7209b7;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1rem;
             border-radius: 10px;
-            overflow: hidden;
-            display: none;
-            text-align: right;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-        }
-
-        .suggestions div {
-            padding: 10px;
             cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s, color 0.3s;
+            font-family: 'Cairo', sans-serif;
         }
 
-        .suggestions div:hover {
-            background: #f0f0f0;
+        .suggestion-button:hover {
+            background: #7209b7;
+            color: #fff;
         }
 
         .results {
@@ -146,7 +148,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const input = document.getElementById("search-input");
-            const suggestionsContainer = document.getElementById("suggestions");
+            const suggestionsContainer = document.getElementById("suggestions-buttons");
             const resultsContainer = document.getElementById("results");
 
             // جلب ملف Excel وقراءته
@@ -158,40 +160,25 @@
                 const sheetName = workbook.SheetNames[0];
                 const sheet = workbook.Sheets[sheetName];
                 doctors = XLSX.utils.sheet_to_json(sheet);
+
+                // إنشاء أزرار الاقتراحات من "التخصص"
+                const uniqueSpecialties = [...new Set(doctors.map(doctor => doctor.التخصص))];
+                uniqueSpecialties.forEach(specialty => {
+                    if (specialty) {
+                        const button = document.createElement("button");
+                        button.className = "suggestion-button";
+                        button.textContent = specialty;
+                        button.addEventListener("click", function () {
+                            searchBySpecialty(specialty);
+                        });
+                        suggestionsContainer.appendChild(button);
+                    }
+                });
             }
 
             loadExcel();
 
-            // إظهار الاقتراحات
-            input.addEventListener("input", function () {
-                const query = input.value.toLowerCase();
-                suggestionsContainer.innerHTML = "";
-                if (query) {
-                    const filteredSuggestions = doctors
-                        .map(doctor => doctor.الاسم)
-                        .filter(name => name && name.toLowerCase().includes(query));
-                    const uniqueSuggestions = [...new Set(filteredSuggestions)]; // إزالة التكرار
-
-                    if (uniqueSuggestions.length > 0) {
-                        suggestionsContainer.style.display = "block";
-                        uniqueSuggestions.forEach(suggestion => {
-                            const div = document.createElement("div");
-                            div.textContent = suggestion;
-                            div.addEventListener("click", function () {
-                                input.value = suggestion;
-                                suggestionsContainer.style.display = "none";
-                            });
-                            suggestionsContainer.appendChild(div);
-                        });
-                    } else {
-                        suggestionsContainer.style.display = "none";
-                    }
-                } else {
-                    suggestionsContainer.style.display = "none";
-                }
-            });
-
-            // البحث وعرض النتائج
+            // البحث عن طريق الاسم
             document.getElementById("search-button").addEventListener("click", function () {
                 const query = input.value.toLowerCase();
                 resultsContainer.innerHTML = "";
@@ -201,26 +188,42 @@
                         doctor.الاسم && doctor.الاسم.toLowerCase().includes(query)
                     );
 
-                    if (results.length > 0) {
-                        results.forEach(doctor => {
-                            const card = document.createElement("div");
-                            card.className = "result-card";
-                            card.innerHTML = `
-                                <h3><i class="fa fa-user-md icon"></i> ${doctor.الاسم}</h3>
-                                <p><i class="fa fa-stethoscope icon"></i> ${doctor.التخصص}</p>
-                                <p><i class="fa fa-map-marker icon"></i> ${doctor.العنوان}</p>
-                                <p>
-                                    <i class="fa fa-phone icon"></i> ${doctor.الهاتف}
-                                    <a href="tel:${doctor.الهاتف}" class="call-button">اتصل الآن</a>
-                                </p>
-                            `;
-                            resultsContainer.appendChild(card);
-                        });
-                    } else {
-                        resultsContainer.innerHTML = "<p>لم يتم العثور على نتائج.</p>";
-                    }
+                    displayResults(results);
                 }
             });
+
+            // البحث عن طريق التخصص
+            function searchBySpecialty(specialty) {
+                resultsContainer.innerHTML = "";
+
+                const results = doctors.filter(doctor =>
+                    doctor.التخصص && doctor.التخصص === specialty
+                );
+
+                displayResults(results);
+            }
+
+            // عرض النتائج
+            function displayResults(results) {
+                if (results.length > 0) {
+                    results.forEach(doctor => {
+                        const card = document.createElement("div");
+                        card.className = "result-card";
+                        card.innerHTML = `
+                            <h3><i class="fa fa-user-md icon"></i> ${doctor.الاسم}</h3>
+                            <p><i class="fa fa-stethoscope icon"></i> ${doctor.التخصص}</p>
+                            <p><i class="fa fa-map-marker icon"></i> ${doctor.العنوان}</p>
+                            <p>
+                                <i class="fa fa-phone icon"></i> ${doctor.الهاتف}
+                                <a href="tel:${doctor.الهاتف}" class="call-button">اتصل الآن</a>
+                            </p>
+                        `;
+                        resultsContainer.appendChild(card);
+                    });
+                } else {
+                    resultsContainer.innerHTML = "<p>لم يتم العثور على نتائج.</p>";
+                }
+            }
         });
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
@@ -233,8 +236,8 @@
     <div class="search-container">
         <input type="text" id="search-input" placeholder="ابحث عن اسم الطبيب...">
         <button class="search-button" id="search-button">بحث</button>
-        <div class="suggestions" id="suggestions"></div>
     </div>
+    <div class="suggestions-buttons" id="suggestions-buttons"></div>
     <div class="results" id="results"></div>
 </body>
 </html>
