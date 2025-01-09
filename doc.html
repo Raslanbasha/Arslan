@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الطبيب</title>
+    <title>الطبيب - محرك بحث</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
     <!-- رابط مكتبة Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -136,6 +136,21 @@
             text-align: right;
             direction: rtl;
             font-family: 'Cairo', sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .result-card .icon-container {
+            font-size: 2rem;
+            color: #7209b7;
+            margin-left: 15px;
+        }
+
+        .result-card .content {
+            text-align: right;
+            flex-grow: 1;
+            margin-right: 15px;
         }
 
         .result-card h3 {
@@ -157,7 +172,6 @@
             font-size: 0.9rem;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 5px;
             text-decoration: none;
             display: inline-block;
         }
@@ -266,10 +280,15 @@
                         const card = document.createElement("div");
                         card.className = "result-card";
                         card.innerHTML = `
-                            <h3>${doctor.الاسم} <i class="fas fa-user-md"></i></h3>
-                            <p><i class="fas fa-stethoscope"></i> ${doctor.التخصص}</p>
-                            <p><i class="fas fa-map-marker-alt"></i> ${doctor.العنوان}</p>
-                            <p><i class="fas fa-phone-alt"></i> ${doctor.الهاتف}</p>
+                            <div class="icon-container">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <div class="content">
+                                <h3>${doctor.الاسم}</h3>
+                                <p><i class="fas fa-stethoscope"></i> ${doctor.التخصص}</p>
+                                <p><i class="fas fa-map-marker-alt"></i> ${doctor.العنوان}</p>
+                                <p><i class="fas fa-phone-alt"></i> ${doctor.الهاتف}</p>
+                            </div>
                             <a href="tel:${doctor.الهاتف}" class="call-button"><i class="fas fa-phone"></i> اتصل</a>
                         `;
                         resultsContainer.appendChild(card);
