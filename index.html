@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>زمار أونلاين</title>
@@ -940,10 +937,10 @@
         <i class="fas fa-moon"></i>
         <!-- النصوص -->
         <div class="greeting-texts">
-            <h2 class="greeting-title">رمضان كريم</h2>
+            <h2 class="greeting-title">رمضان مبارك</h2>
             <p class="greeting-message">
-                تقبل الله منا ومنكم صالح الأعمال. 
-                نتمنى لكم شهرًا مليئًا بالخير والبركة.
+                تقبل الله منا ومنكم صالح الأعمال
+
             </p>
         </div>
     </div>
@@ -956,84 +953,85 @@
 <style>
     /* بداية تنسيق قسم التهنئة بقدوم رمضان */
     .ramadan-greeting-section {
-        margin: 20px auto; /* مسافة خارجية */
-        padding: 15px; /* حواف داخلية صغيرة */
-        background: linear-gradient(135deg, #4b0082, #6a0dad, #e7a61a); /* ألوان متدرجة */
-        border-radius: 15px; /* زوايا مستديرة */
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* ظل خفيف */
-        text-align: center; /* توسيط النصوص */
-        color: #fff; /* لون النص */
-        font-family: 'Cairo', sans-serif; /* خط عربي أنيق */
-        max-width: 600px; /* عرض صغير للقسم */
-        animation: fadeIn 1.5s ease; /* حركة ظهور سلسة */
+        margin: 20px auto;
+        padding: 20px; /* تحديث الحواف */
+        background: linear-gradient(135deg, #5e4b8b, #836fff, #9370db); /* تحديث التدرجات اللونية */
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* تحديث الظل */
+        text-align: center;
+        color: #fff;
+        font-family: 'Cairo', sans-serif;
+        max-width: 600px;
+        animation: fadeIn 1.5s ease-in-out; /* تحديث الحركة */
     }
 
     .ramadan-greeting-section:hover {
-        transform: scale(1.02); /* تكبير بسيط عند التمرير */
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* زيادة الظل */
+        transform: scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         transition: all 0.3s ease;
     }
 
     .greeting-content {
-        display: flex; /* توزيع العناصر أفقيًا */
-        align-items: center; /* محاذاة عمودية */
-        justify-content: center; /* توسيط العناصر */
-        gap: 10px; /* مسافة صغيرة بين العناصر */
-        flex-wrap: wrap; /* السماح بالتكديس على الشاشات الصغيرة */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
     }
 
     .greeting-content i {
-        font-size: 50px; /* حجم صغير للأيقونة */
-        color: #e7a61a; /* لون ذهبي للأيقونة */
-        animation: moonRiseAndSet 3s infinite; /* حركة الغياب والظهور */
+        font-size: 50px;
+        color: #ffd700; /* تحديث اللون الذهبي */
+        text-shadow: 0 0 10px rgba(255, 223, 0, 0.8); /* تحديث التوهج */
+        animation: moonRiseAndSet 3s infinite;
     }
 
     @keyframes moonRiseAndSet {
         0% {
-            transform: translateY(0); /* الوضع الأساسي */
-            opacity: 1; /* مرئي بالكامل */
+            transform: translateY(0);
+            opacity: 1;
         }
         25% {
-            transform: translateY(30px); /* نزول تدريجي */
-            opacity: 0.8; /* شفافية خفيفة */
+            transform: translateY(30px);
+            opacity: 0.8;
         }
         50% {
-            transform: translateY(60px); /* غياب كامل */
-            opacity: 0; /* اختفاء */
+            transform: translateY(60px);
+            opacity: 0;
         }
         75% {
-            transform: translateY(-30px); /* صعود تدريجي */
-            opacity: 0.8; /* شفافية خفيفة */
+            transform: translateY(-30px);
+            opacity: 0.8;
         }
         100% {
-            transform: translateY(0); /* عودة للوضع الأساسي */
-            opacity: 1; /* مرئي بالكامل */
+            transform: translateY(0);
+            opacity: 1;
         }
     }
 
     .greeting-texts {
-        max-width: 400px; /* عرض صغير للنصوص */
+        max-width: 400px;
     }
 
     .greeting-title {
-        font-size: 24px; /* حجم صغير للعنوان */
-        font-weight: bold; /* جعل النص عريضًا */
-        color: #fff; /* لون النص */
-        text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3); /* تأثير ظل */
-        margin-bottom: 10px; /* تقليل المسافة أسفل العنوان */
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(131, 111, 255, 0.8); /* تحديث التوهج */
+        margin-bottom: 10px;
     }
 
     .greeting-message {
-        font-size: 14px; /* حجم صغير للنص */
-        line-height: 1.5; /* تقليل ارتفاع الأسطر */
-        color: #f3e5f5; /* لون نص فاتح */
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* ظل خفيف للنص */
+        font-size: 14px;
+        line-height: 1.5;
+        color: #f3e5f5;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* تحديث التوهج */
     }
 
     @keyframes fadeIn {
         from {
             opacity: 0;
-            transform: translateY(-10px);
+            transform: translateY(-20px); /* تحديث الحركة */
         }
         to {
             opacity: 1;
@@ -1042,6 +1040,7 @@
     }
     /* نهاية تنسيق قسم التهنئة بقدوم رمضان */
 </style>
+
 
  
 </style> 
@@ -1192,17 +1191,20 @@
     .gallery-section {
         padding: 30px;
         text-align: center;
-        background: linear-gradient(135deg, #ffe259, #ffa751); /* ألوان مبهجة */
+        background: linear-gradient(135deg, #5e4b8b, #836fff, #9370db); /* ألوان بنفسجية مبهجة */
         color: #ffffff;
         font-family: 'Cairo', sans-serif;
         border-radius: 20px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); /* ظل جذاب */
+        animation: fadeIn 1.5s ease-in-out; /* تأثير الظهور التدريجي */
     }
 
     .gallery-title {
         font-size: 30px;
         margin-bottom: 30px;
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        color: #fff;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* تأثير ظل */
+        animation: titleGlow 2s infinite alternate; /* تأثير توهج العنوان */
     }
 
     .swiper {
@@ -1220,34 +1222,36 @@
         position: relative;
         border-radius: 15px;
         overflow: hidden;
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* ظل للإطار */
         width: 90%;
         max-width: 500px;
         cursor: pointer;
-        transition: transform 0.3s;
+        transition: transform 0.3s ease-in-out;
+        background: linear-gradient(135deg, #836fff, #5e4b8b); /* خلفية بنفسجية للإطار */
     }
 
     .gallery-item img {
         width: 100%;
         height: auto;
         border-radius: 15px;
-        transition: transform 0.3s;
+        transition: transform 0.5s ease-in-out;
     }
 
     .gallery-item:hover img {
-        transform: scale(1.05); /* تكبير بسيط عند التمرير */
+        transform: scale(1.03); /* تكبير بسيط عند التمرير */
     }
 
     .gallery-info {
         position: absolute;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.7);
+        background: rgba(94, 75, 139, 0.7); /* خلفية بنفسجية شفافة */
         color: #fff;
         width: 100%;
         padding: 10px;
         text-align: center;
         font-size: 16px;
         line-height: 1.5;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     }
 
     .gallery-info i {
@@ -1255,16 +1259,19 @@
         margin-right: 5px;
     }
 
-    /* أزرار السلايدر */
-    .gallery-next,
-    .gallery-prev {
-        color: #fff;
-    }
+ /* أزرار السلايدر */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #ffffff !important; /* اللون الأبيض دائمًا مع الأولوية القصوى */
+    font-size: 24px; /* حجم الأزرار */
+    transition: transform 0.3s ease; /* تأثير حركة سلس */
+}
 
-    .gallery-next:hover,
-    .gallery-prev:hover {
-        color: #ff6f61; /* لون عند التمرير */
-    }
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    transform: scale(1.2); /* تكبير عند التمرير */
+    color: #ffffff !important; /* تأكيد أن اللون يظل أبيض */
+}
 
     /* نافذة عرض الصورة */
     .modal {
@@ -1306,11 +1313,35 @@
 
     .close:hover,
     .close:focus {
-        color: #f44336;
+        color: #9370db;
         text-decoration: none;
         cursor: pointer;
     }
+
+    /* تأثيرات إضافية */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes titleGlow {
+        from {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(131, 111, 255, 0.8);
+        }
+        to {
+            text-shadow: 0 0 20px rgba(131, 111, 255, 1), 0 0 40px rgba(255, 255, 255, 1);
+        }
+    }
 </style>
+
+
+
 
 <script>
     // تفعيل السلايدر باستخدام Swiper.js
@@ -1759,12 +1790,13 @@
     .ramadan-section {
         margin: 20px auto;
         padding: 20px;
-        background: linear-gradient(135deg, #ffdd99, #ffb347);
+        background: linear-gradient(135deg, #5e4b8b, #836fff, #9370db); /* تدرجات بنفسجية مبهجة */
         border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* ظل جذاب */
         color: #fff;
         font-family: 'Cairo', sans-serif;
         text-align: center;
+        animation: fadeIn 1.5s ease-in-out; /* تأثير الظهور التدريجي */
     }
 
     .ramadan-quotes {
@@ -1774,13 +1806,29 @@
         align-items: center;
         justify-content: center;
         gap: 10px;
+        color: #fff;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(131, 111, 255, 0.8); /* تأثير توهج */
     }
 
     .ramadan-quotes i {
         font-size: 24px;
-        color: #fff;
+        color: #ffd700; /* لون ذهبي للأيقونات */
+        text-shadow: 0 0 10px rgba(255, 223, 0, 0.8); /* توهج ذهبي */
+    }
+
+    /* تأثيرات إضافية */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 </style>
+
 
 <script>
     // عبارات رمضانية
@@ -2200,9 +2248,9 @@
     #news-section {
         margin: 20px auto;
         padding: 30px;
-        background: linear-gradient(135deg, #9b59b6, #8e44ad, #6a1b9a);
+        background: linear-gradient(135deg, #5e4b8b, #836fff, #9370db); /* تدرجات بنفسجية مبهجة */
         border-radius: 15px;
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* ظل ناعم */
         color: #fff;
         font-family: 'Cairo', sans-serif;
         text-align: center;
@@ -2215,13 +2263,18 @@
         font-weight: bold;
         color: #f8f3fc; /* بنفسجي لطيف */
         margin-bottom: 20px;
-        text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+        text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3); /* تأثير ظل للنص */
     }
 
     /* تصميم السلايدر باستخدام ID */
     #news-slider {
         position: relative;
         overflow: hidden;
+        min-height: 50px;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     #news-slider .news-slide {
@@ -2231,7 +2284,7 @@
         right: 0;
         opacity: 0;
         transform: translateY(20px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
+        transition: opacity 0.8s ease, transform 0.8s ease; /* تأثير انزلاق وظهور */
     }
 
     #news-slider .news-slide.active {
@@ -2240,23 +2293,14 @@
         position: relative;
     }
 
-    #news-slider {
-        min-height: 50px;
-        padding: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
     #news-slider .news-message {
         font-size: 18px;
         color: #f5e6fa; /* بنفسجي فاتح */
         max-width: 600px;
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* تأثير ظل للنص */
         margin: 0;
     }
 </style>
-
 <script>
     // تشغيل السلايدر بشكل مستقر
     document.addEventListener('DOMContentLoaded', function () {
@@ -2288,7 +2332,7 @@
 
     </div>
 
-<!-- بداية قسم أندية زمار الرياضية -->
+<!-- قسم أندية زمار الرياضية -->
 <div class="zamSports-section">
     <h2 class="zamSports-title">
         <i class="fas fa-trophy"></i> أندية زمار الرياضية
@@ -2316,7 +2360,6 @@
                     <div class="zamSports-info">نادي السلام</div>
                 </div>
             </div>
-            <!-- أضف المزيد من الصور هنا -->
         </div>
         <!-- أزرار التنقل -->
         <div class="swiper-button-next zamSports-next"></div>
@@ -2342,7 +2385,7 @@
     .zamSports-section {
         padding: 40px;
         text-align: center;
-        background: linear-gradient(135deg, #34d399, #22d3ee, #3b82f6, #9333ea); /* ألوان رياضية مبهجة */
+        background: linear-gradient(135deg, #5e4b8b, #836fff, #9370db); /* ألوان بنفسجية مبهجة */
         color: #ffffff;
         font-family: 'Cairo', sans-serif;
         border-radius: 25px;
@@ -2350,7 +2393,7 @@
     }
 
     .zamSports-title {
-        font-size: 20px;
+        font-size: 24px;
         margin-bottom: 30px;
         color: #fff;
         text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); /* ظل للنص */
@@ -2380,6 +2423,7 @@
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* ظل للصورة */
         cursor: pointer;
         transition: transform 0.3s, box-shadow 0.3s;
+        background: linear-gradient(135deg, #836fff, #5e4b8b); /* خلفية بنفسجية */
     }
 
     .zamSports-item:hover {
@@ -2396,7 +2440,7 @@
     .zamSports-info {
         position: absolute;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.6); /* خلفية شفافة */
+        background: rgba(94, 75, 139, 0.6); /* خلفية شفافة بنفسجية */
         color: #ffd700; /* لون النص ذهبي */
         width: 100%;
         padding: 10px;
@@ -2408,11 +2452,14 @@
     /* أزرار السلايدر */
     .zamSports-next,
     .zamSports-prev {
-        color: #fff;
+        color: #ffffff; /* لون أبيض دائم */
+        font-size: 24px;
+        transition: transform 0.3s ease;
     }
 
     .zamSports-next:hover,
     .zamSports-prev:hover {
+        transform: scale(1.2); /* تكبير عند التمرير */
         color: #ffd700; /* لون ذهبي عند التمرير */
     }
 
@@ -2456,7 +2503,7 @@
 
     .zam-close:hover,
     .zam-close:focus {
-        color: #f44336;
+        color: #9370db;
         text-decoration: none;
         cursor: pointer;
     }
@@ -2489,6 +2536,7 @@
         modal.style.display = "none";
     }
 </script>
+
 </p>
  <!-- بداية قسم التعزية -->
 <div class="condolence-section">
@@ -2580,87 +2628,14 @@
 
 
  <script>
-    // عرض النافذة المنبثقة بعد تأخير معين
-    window.onload = function() {
-        const popup = document.getElementById('popup');
-        setTimeout(() => {
-            popup.classList.add('active');
-        }, 5000); // تأخير لمدة 3 ثوانٍ
-    };
 
-    // إغلاق النافذة المنبثقة
-    function closePopup() {
-        const popup = document.getElementById('popup');
-        popup.classList.remove('active');
-    }
+</p>
+</p>
+</p>
+</p>
 
 
 
-
-        // تشغيل الفيديو المحدد
-        function playChannel(channelId) {
-            const videos = document.querySelectorAll('video');
-            videos.forEach(video => video.style.display = 'none');
-            videos.forEach(video => video.pause());
-            const selectedVideo = document.getElementById(channelId);
-            if (selectedVideo) {
-                selectedVideo.style.display = 'block';
-                selectedVideo.play();
-            }
-        }
-  
-  // عرض وإخفاء القائمة
-function toggleMenu() {
-    const menuPopup = document.getElementById('menuPopup');
-    menuPopup.style.display = menuPopup.style.display === 'block' ? 'none' : 'block';
-
-    // إذا تم فتح القائمة، أضف حدث للنقر على أي مكان لإغلاقها
-    if (menuPopup.style.display === 'block') {
-        document.addEventListener('click', hideMenuOnOutsideClick);
-    } else {
-        document.removeEventListener('click', hideMenuOnOutsideClick);
-    }
-}
-
-// إخفاء القائمة عند النقر خارجها
-function hideMenuOnOutsideClick(event) {
-    const menuPopup = document.getElementById('menuPopup');
-    const menuIcon = document.querySelector('.menu-icon');
-    if (!menuPopup.contains(event.target) && !menuIcon.contains(event.target)) {
-        menuPopup.style.display = 'none';
-        document.removeEventListener('click', hideMenuOnOutsideClick);
-    }
-}
-
-// الانتقال إلى صفحة معينة
-function navigateToPage(page) {
-    window.location.href = page; // يتم نقل المستخدم إلى الصفحة المطلوبة
-}
-
-   
-   // فتح الصورة في نافذة منبثقة
-function viewImage(imageSrc) {
-    var modal = document.getElementById("modal");
-    var modalImg = document.getElementById("modal-img");
-    modal.style.display = "block";
-    modalImg.src = imageSrc;
-}
-
-// إغلاق النافذة المنبثقة
-function closeModal() {
-    var modal = document.getElementById("modal");
-    modal.style.display = "none";
-}
-
-// إغلاق النافذة عند النقر خارج الصورة
-window.onclick = function(event) {
-    var modal = document.getElementById("modal");
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-    </script>
-    
 
 </style>
 <!-- Smartsupp Live Chat script -->
