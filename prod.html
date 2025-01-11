@@ -170,6 +170,8 @@
             cursor: pointer;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: background 0.3s;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .call-button:hover {
@@ -274,23 +276,15 @@
                                 <p><i class="fas fa-phone"></i> رقم البائع: ${item.رقم_البائع || 'غير متوفر'}</p>
                             </div>
                             <div>
-                                <button class="call-button" onclick="tel('${item.رقم_البائع}')">
+                                <a class="call-button" href="tel:${item.رقم_البائع || ''}">
                                     <i class="fas fa-phone"></i> اتصال
-                                </button>
+                                </a>
                             </div>
                         `;
                         resultsContainer.appendChild(card);
                     });
                 } else {
                     resultsContainer.innerHTML = "<p>لم يتم العثور على نتائج.</p>";
-                }
-            }
-
-            function makeCall(phoneNumber) {
-                if (phoneNumber) {
-                    window.location.href = `tel:${phoneNumber}`;
-                } else {
-                    alert("رقم البائع غير متوفر.");
                 }
             }
         });
