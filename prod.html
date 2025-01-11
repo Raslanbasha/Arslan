@@ -159,6 +159,22 @@
             margin: 5px 0;
             font-size: 1rem;
         }
+
+        .call-button {
+            background: #34a853;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s;
+        }
+
+        .call-button:hover {
+            background: #2c8c47;
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script>
@@ -168,7 +184,6 @@
             const resultsContainer = document.getElementById("results");
             const suggestionsButtonsContainer = document.getElementById("suggestions-buttons");
 
-            // تحميل ملف Excel
             let data = [];
             async function loadExcel() {
                 const response = await fetch("data.xlsx");
@@ -178,7 +193,6 @@
                 const sheet = workbook.Sheets[sheetName];
                 data = XLSX.utils.sheet_to_json(sheet);
 
-                // إنشاء أزرار الفئات
                 const uniqueCategories = [...new Set(data.map(item => item.الفئة))];
                 uniqueCategories.forEach(category => {
                     if (category) {
@@ -195,7 +209,6 @@
 
             loadExcel();
 
-            // عرض الاقتراحات عند الكتابة
             input.addEventListener("input", function () {
                 const query = input.value.toLowerCase();
                 suggestionsContainer.innerHTML = "";
@@ -219,7 +232,6 @@
                 }
             });
 
-            // البحث عند الضغط على زر البحث
             document.getElementById("search-button").addEventListener("click", function () {
                 const query = input.value.toLowerCase();
                 resultsContainer.innerHTML = "";
@@ -233,7 +245,6 @@
                 }
             });
 
-            // البحث حسب الفئة
             function searchByCategory(category) {
                 resultsContainer.innerHTML = "";
 
@@ -244,7 +255,6 @@
                 displayResults(results);
             }
 
-            // عرض النتائج
             function displayResults(results) {
                 resultsContainer.innerHTML = "";
                 if (results.length > 0) {
@@ -257,14 +267,30 @@
                             </div>
                             <div class="content">
                                 <h3>${item.المنتج}</h3>
-                                <p><i class="fas fa-tags"></i> ${item.الفئة}</p>
-                                <p><i class="fas fa-money-bill"></i> السعر: ${item.السعر}</p>
+                                <p><i class="fas fa-tags"></i> الفئة: ${item.الفئة || 'غير متوفرة'}</p>
+                                <p><i class="fas fa-money-bill"></i> السعر: ${item.السعر || 'غير متوفر'}</p>
+                                <p><i class="fas fa-warehouse"></i> الكمية: ${item.الكمية || 'غير متوفرة'}</p>
+                                <p><i class="fas fa-user"></i> المالك: ${item.المالك || 'غير متوفر'}</p>
+                                <p><i class="fas fa-phone"></i> رقم البائع: ${item.رقم_البائع || 'غير متوفر'}</p>
+                            </div>
+                            <div>
+                                <button class="call-button" onclick="makeCall('${item.رقم_البائع}')">
+                                    <i class="fas fa-phone"></i> اتصال
+                                </button>
                             </div>
                         `;
                         resultsContainer.appendChild(card);
                     });
                 } else {
                     resultsContainer.innerHTML = "<p>لم يتم العثور على نتائج.</p>";
+                }
+            }
+
+            function makeCall(phoneNumber) {
+                if (phoneNumber) {
+                    window.location.href = `tel:${phoneNumber}`;
+                } else {
+                    alert("رقم البائع غير متوفر.");
                 }
             }
         });
@@ -280,10 +306,8 @@
         <button id="search-button" class="search-button">بحث</button>
     </div>
 
-    <!-- أزرار الفئات -->
     <div id="suggestions-buttons" class="suggestions-buttons"></div>
 
-    <!-- نتائج البحث -->
     <div id="results" class="results"></div>
 
 </body>
