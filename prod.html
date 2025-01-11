@@ -161,6 +161,114 @@
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const input = document.getElementById("search-input");
+            const suggestionsContainer = document.getElementById("autocomplete-list");
+            const resultsContainer = document.getElementById("results");
+            const suggestionsButtonsContainer = document.getElementById("suggestions-buttons");
+
+            // تحميل ملف Excel
+            let data = [];
+            async function loadExcel() {
+                const response = await fetch("data.xlsx");
+                const arrayBuffer = await response.arrayBuffer();
+                const workbook = XLSX.read(arrayBuffer, { type: "array" });
+                const sheetName = workbook.SheetNames[0];
+                const sheet = workbook.Sheets[sheetName];
+                data = XLSX.utils.sheet_to_json(sheet);
+
+                // إنشاء أزرار الفئات
+                const uniqueCategories = [...new Set(data.map(item => item.الفئة))];
+                uniqueCategories.forEach(category => {
+                    if (category) {
+                        const button = document.createElement("button");
+                        button.className = "suggestion-button";
+                        button.textContent = category;
+                        button.addEventListener("click", function () {
+                            searchByCategory(category);
+                        });
+                        suggestionsButtonsContainer.appendChild(button);
+                    }
+                });
+            }
+
+            loadExcel();
+
+            // عرض الاقتراحات عند الكتابة
+            input.addEventListener("input", function () {
+                const query = input.value.toLowerCase();
+                suggestionsContainer.innerHTML = "";
+
+                if (query) {
+                    const suggestions = data.filter(item =>
+                        item.المنتج && item.المنتج.toLowerCase().includes(query)
+                    );
+
+                    suggestions.slice(0, 5).forEach(suggestion => {
+                        const item = document.createElement("div");
+                        item.className = "autocomplete-item";
+                        item.textContent = suggestion.المنتج;
+                        item.addEventListener("click", function () {
+                            input.value = suggestion.المنتج;
+                            suggestionsContainer.innerHTML = "";
+                            displayResults([suggestion]);
+                        });
+                        suggestionsContainer.appendChild(item);
+                    });
+                }
+            });
+
+            // البحث عند الضغط على زر البحث
+            document.getElementById("search-button").addEventListener("click", function () {
+                const query = input.value.toLowerCase();
+                resultsContainer.innerHTML = "";
+
+                if (query) {
+                    const results = data.filter(item =>
+                        item.المنتج && item.المنتج.toLowerCase().includes(query)
+                    );
+
+                    displayResults(results);
+                }
+            });
+
+            // البحث حسب الفئة
+            function searchByCategory(category) {
+                resultsContainer.innerHTML = "";
+
+                const results = data.filter(item =>
+                    item.الفئة && item.الفئة === category
+                );
+
+                displayResults(results);
+            }
+
+            // عرض النتائج
+            function displayResults(results) {
+                resultsContainer.innerHTML = "";
+                if (results.length > 0) {
+                    results.forEach(item => {
+                        const card = document.createElement("div");
+                        card.className = "result-card";
+                        card.innerHTML = `
+                            <div class="icon-container">
+                                <i class="fas fa-box"></i>
+                            </div>
+                            <div class="content">
+                                <h3>${item.المنتج}</h3>
+                                <p><i class="fas fa-tags"></i> ${item.الفئة}</p>
+                                <p><i class="fas fa-money-bill"></i> السعر: ${item.السعر}</p>
+                            </div>
+                        `;
+                        resultsContainer.appendChild(card);
+                    });
+                } else {
+                    resultsContainer.innerHTML = "<p>لم يتم العثور على نتائج.</p>";
+                }
+            }
+        });
+    </script>
 </head>
 <body>
 
