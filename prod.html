@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سوق زمار - محرك بحث</title>
+    <title>سوق زمار</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -87,7 +87,6 @@
             cursor: pointer;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: background 0.3s;
-            font-family: 'Cairo', sans-serif;
         }
 
         .search-button:hover {
@@ -112,7 +111,6 @@
             cursor: pointer;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: background 0.3s, color 0.3s;
-            font-family: 'Cairo', sans-serif;
         }
 
         .suggestion-button:hover {
@@ -134,7 +132,6 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             text-align: right;
             direction: rtl;
-            font-family: 'Cairo', sans-serif;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -162,117 +159,24 @@
             margin: 5px 0;
             font-size: 1rem;
         }
-
-        .call-button {
-            background: #00b894;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            font-size: 0.9rem;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .call-button:hover {
-            background: #01976b;
-        }
-
-        footer {
-            margin-top: 40px;
-            font-size: 0.9rem;
-            color: #f0f0f0;
-            text-align: center;
-            font-family: 'Cairo', sans-serif;
-        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const input = document.getElementById("search-input");
-            const suggestionsContainer = document.getElementById("autocomplete-list");
-            const resultsContainer = document.getElementById("results");
-            const suggestionsButtonsContainer = document.getElementById("suggestions-buttons");
-
-            // جلب ملف Excel وقراءته
-            let products = [];
-            async function loadExcel() {
-                const response = await fetch("products.xlsx");
-                const arrayBuffer = await response.arrayBuffer();
-                const workbook = XLSX.read(arrayBuffer, { type: "array" });
-                const sheetName = workbook.SheetNames[0];
-                const sheet = workbook.Sheets[sheetName];
-                products = XLSX.utils.sheet_to_json(sheet);
-
-                // إنشاء أزرار الفئات بناءً على البيانات
-                const uniqueCategories = [...new Set(products.map(product => product.الفئة))];
-                uniqueCategories.forEach(category => {
-                    if (category) {
-                        const button = document.createElement("button");
-                        button.className = "suggestion-button";
-                        button.textContent = category;
-                        button.addEventListener("click", function () {
-                            searchByCategory(category);
-                        });
-                        suggestionsButtonsContainer.appendChild(button);
-                    }
-                });
-            }
-
-            loadExcel();
-
-            // البحث حسب الفئة
-            function searchByCategory(category) {
-                resultsContainer.innerHTML = "";
-
-                const results = products.filter(product =>
-                    product.الفئة && product.الفئة === category
-                );
-
-                displayResults(results);
-            }
-
-            // عرض النتائج
-            function displayResults(results) {
-                resultsContainer.innerHTML = "";
-                if (results.length > 0) {
-                    results.forEach(product => {
-                        const card = document.createElement("div");
-                        card.className = "result-card";
-                        card.innerHTML = `
-                            <div class="icon-container">
-                                <i class="fas fa-box"></i>
-                            </div>
-                            <div class="content">
-                                <h3>${product.المنتج}</h3>
-                                <p><i class="fas fa-tags"></i> السعر: ${product.السعر} دينار</p>
-                                <p><i class="fas fa-cubes"></i> الكمية: ${product.الكمية}</p>
-                                <p><i class="fas fa-user"></i> البائع: ${product.المالك}</p>
-                                <p><i class="fas fa-phone-alt"></i> رقم البائع: ${product.رقم_البائع}</p>
-                            </div>
-                            <a href="tel:${product.رقم_البائع}" class="call-button"><i class="fas fa-phone"></i> اتصل</a>
-                        `;
-                        resultsContainer.appendChild(card);
-                    });
-                } else {
-                    resultsContainer.innerHTML = "<p>لم يتم العثور على نتائج.</p>";
-                }
-            }
-        });
-    </script>
 </head>
 <body>
+
     <h1><i class="fas fa-store"></i> سوق زمار </h1>
+
     <div class="search-container">
-        <input type="text" id="search-input" placeholder="ابحث عن منتج..." />
+        <input type="text" id="search-input" placeholder="ابحث عن المنتج..." />
         <div id="autocomplete-list" class="autocomplete-list"></div>
         <button id="search-button" class="search-button">بحث</button>
     </div>
+
+    <!-- أزرار الفئات -->
     <div id="suggestions-buttons" class="suggestions-buttons"></div>
+
+    <!-- نتائج البحث -->
     <div id="results" class="results"></div>
-    <footer>
-        <p>© سوق زمار - 2025</p>
-    </footer>
+
 </body>
 </html>
