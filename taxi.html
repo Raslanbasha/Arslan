@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب سيارة تكسي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        /* إعدادات عامة للصفحة */
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #f7f7f7, #eaeaea);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* شريط العنوان */
+        .header {
+            background-color: #FFC107;
+            color: #333;
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .header h1 i {
+            font-size: 30px;
+        }
+
+        /* باقي التنسيق */
+        .search-container {
+            margin-top: 20px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+        }
+
+        .search-container input {
+            width: 80%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .search-container input:focus {
+            border-color: #FFC107;
+            outline: none;
+            box-shadow: 0 0 8px rgba(255, 193, 7, 0.6);
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            background-color: #FFC107;
+            color: #333;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-container button:hover {
+            background-color: #e6ac00;
+        }
+
+        .alert-box {
+            margin-top: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-size: 14px;
+            opacity: 0;
+            pointer-events: none;
+            animation: fadeInOut 3s ease forwards;
+        }
+
+        .alert-box i {
+            font-size: 18px;
+            color: #FFC107;
+            margin-right: 5px;
+        }
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+                pointer-events: none;
+            }
+            10%, 90% {
+                opacity: 1;
+                pointer-events: auto;
+            }
+            100% {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+
+        /* عرض النتائج */
+        #results {
+            margin-top: 20px;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .result-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .result-card .icon {
+            font-size: 50px;
+            color: #FFC107;
+        }
+
+        .result-card h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .result-card p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .result-card .call-btn {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #FFC107;
+            color: #333;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .result-card .call-btn:hover {
+            background-color: #e6ac00;
+        }
+
+        /* توافق الشاشات الصغيرة */
+        @media (max-width: 600px) {
+            .result-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .result-card .icon {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1><i class="fas fa-taxi"></i> طلب سيارة تكسي</h1>
+    </header>
+
+    <section class="search-container">
+        <input type="text" id="searchQuery" placeholder="أدخل العنوان..." oninput="autocompleteSuggestions()">
+        <div id="autocompleteList" class="autocomplete-list"></div>
+        <button onclick="search()">بحث</button>
+        <div id="alertBox" class="alert-box" style="display: none;">
+            <i class="fas fa-exclamation-circle"></i>
+            <span id="alertMessage">رسالة التنبيه هنا</span>
+        </div>
+    </section>
+
+    <section id="results"></section>
+
+    <script>
+        const EXCEL_FILE_URL = 'data/taxis.xlsx';
+        let data = [];
+
+        async function fetchExcelData() {
+            const response = await fetch(EXCEL_FILE_URL);
+            const arrayBuffer = await response.arrayBuffer();
+            const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+            const sheetName = workbook.SheetNames[0];
+            const sheet = workbook.Sheets[sheetName];
+            data = XLSX.utils.sheet_to_json(sheet);
+        }
+
+        function showAlert(message) {
+            const alertBox = document.getElementById('alertBox');
+            const alertMessage = document.getElementById('alertMessage');
+            alertMessage.textContent = message;
+            alertBox.style.display = 'block';
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+            }, 3000);
+        }
+
+        function autocompleteSuggestions() {
+            const query = document.getElementById('searchQuery').value.toLowerCase();
+            const autocompleteList = document.getElementById('autocompleteList');
+            autocompleteList.innerHTML = "";
+
+            if (query) {
+                const suggestions = data
+                    .map(item => item['العنوان'])
+                    .filter((address, index, self) =>
+                        address && address.toLowerCase().includes(query) && self.indexOf(address) === index
+                    )
+                    .slice(0, 5);
+
+                autocompleteList.innerHTML = suggestions.map(suggestion => `
+                    <div class="autocomplete-item" onclick="selectSuggestion('${suggestion}')">${suggestion}</div>
+                `).join('');
+            }
+        }
+
+        function selectSuggestion(suggestion) {
+            document.getElementById('searchQuery').value = suggestion;
+            document.getElementById('autocompleteList').innerHTML = "";
+        }
+
+        async function search() {
+            const query = document.getElementById('searchQuery').value.trim();
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = "";
+
+            if (!query) {
+                showAlert('يرجى إدخال نص للبحث!');
+                return;
+            }
+
+            const results = data.filter(item =>
+                item['العنوان'] && item['العنوان'].toLowerCase().includes(query.toLowerCase())
+            );
+
+            if (results.length === 0) {
+                showAlert('لا توجد نتائج مطابقة!');
+                return;
+            }
+
+            resultsContainer.innerHTML = results.map(result => `
+                <div class="result-card">
+                    <i class="fas fa-car icon"></i>
+                    <div>
+                        <h2>اسم السائق: ${result['اسم السائق'] || 'غير متوفر'}</h2>
+                        <p>نوع السيارة: ${result['نوع السيارة'] || 'غير متوفر'}</p>
+                        <p>العنوان: ${result['العنوان'] || 'غير متوفر'}</p>
+                        <p>رقم صاحب التكسي: ${result['رقم صاحب التكسي'] || 'غير متوفر'}</p>
+                        <button class="call-btn" onclick="location.href='tel:${result['رقم صاحب التكسي'] || ''}';">
+                            <i class="fas fa-phone"></i> اتصال
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        fetchExcelData();
+    </script>
+</body>
+</html>
