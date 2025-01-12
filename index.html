@@ -649,6 +649,10 @@
              <a href="prod.html" class="menu-item">
                 <i class="fas fa-store"></i>
                 <span>سوق زمار</span>
+      </a>
+       <a href="taxi.html" class="menu-item">
+                <i class="fas fa-taxi"></i>
+                <span>طلب تكسي</span>           
           </a>
              <a href="kids.html" class="menu-item">
                 <i class="fas fa-child"></i>
@@ -940,6 +944,75 @@
     // لا حاجة لجافاسكربت إضافية، الشريط يعمل بسلاسة باستخدام CSS
 </script>
 </div>
+
+<!-- بداية قسم خدمة التكسي -->
+<div class="taxi-section">
+  <header>
+    <h1>خدمة التكسي</h1>
+    <p>أحجز الآن وتمتع برحلة آمنة إلى وجهتك</p>
+    <!-- زر الانتقال إلى taxi.html -->
+    <a href="taxi.html" class="taxi-btn">
+      <i class="fas fa-taxi"></i>
+      احجز الآن
+    </a>
+  </header>
+</div>
+<!-- نهاية قسم خدمة التكسي -->
+
+<!-- تضمين الخط والمكتبة -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+    /* إعداد الخلفية */
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: #f7f7f7;
+      color: #333;
+      text-align: center;
+      padding: 0;
+    }
+
+    /* رأس الصفحة */
+    .taxi-section header {
+      padding: 1.5rem; /* تقليل الارتفاع */
+      background: #ffc107; /* لون أصفر يرمز للتكسي */
+      color: #333;
+    }
+    .taxi-section header h1 {
+      font-size: 1.8rem; /* تصغير حجم العنوان */
+      margin: 0;
+    }
+    .taxi-section header p {
+      font-size: 1rem; /* تصغير حجم النص */
+      margin: 8px 0 15px;
+    }
+
+    /* زر التنقل */
+    .taxi-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #333;
+      color: #ffc107;
+      padding: 0.5rem 1.2rem; /* تقليل الارتفاع */
+      font-size: 0.9rem; /* تصغير حجم الخط */
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .taxi-btn i {
+      margin-left: 8px; /* تقليل المسافة بين الأيقونة والنص */
+      font-size: 1.1rem; /* تصغير حجم الأيقونة */
+    }
+    .taxi-btn:hover {
+      background: #ffc107;
+      color: #333;
+    }
+</style>
 
 <!-- بداية قسم التهنئة بقدوم رمضان -->
 <div class="ramadan-greeting-section">
