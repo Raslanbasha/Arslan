@@ -1129,88 +1129,75 @@
  
 </style> 
 
-      <!-- بداية قسم شاهد قنواتك المفضلة -->
-<div class="channels-section">
-    <h2 class="channels-title">شاهد قنواتك المفضلة</h2>
-    <div class="channels-buttons">
-        <!-- زر قناة بي إن سبورت -->
-        <div class="channel-card" onclick="window.location.href='bein.html'">
-            <img src="bein.png" alt="BeIN Sports Logo">
-            <span>BeIN Sports</span>
-        </div>
-
-        <!-- زر قناة SSC -->
-        <div class="channel-card" onclick="window.location.href='ssc.html'">
-            <img src="ssc.png" alt="SSC Sports Logo">
-            <span>SSC Sports</span>
-        </div>
-    </div>
+   <!-- بداية قسم حجز الطبيب -->
+<div class="doctor-section">
+  <header>
+    <h1>حجز موعد طبيب</h1>
+    <p>احجز موعدك الآن واستمتع بخدمة طبية مميزة</p>
+    <!-- زر الانتقال إلى doctor.html -->
+    <a href="doc.html" class="doctor-btn">
+      <i class="fas fa-user-md"></i>
+      احجز الآن
+    </a>
+  </header>
 </div>
-<!-- نهاية قسم شاهد قنواتك المفضلة -->
+<!-- نهاية قسم حجز الطبيب -->
+
+<!-- تضمين الخط والمكتبة -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-    /* بداية تنسيق قسم شاهد قنواتك المفضلة */
-    .channels-section {
-        margin: 30px auto; /* مسافة خارجية */
-        padding: 20px; /* حواف داخلية */
-        background: linear-gradient(135deg, #1e88e5, #43a047); /* تدرج ألوان رياضية */
-        border-radius: 15px; /* زوايا مستديرة */
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* ظل جذاب */
-        text-align: center; /* توسيط النصوص */
-        color: #fff; /* لون النص أبيض */
-        font-family: 'Cairo', sans-serif; /* خط كايرو */
+    /* إعداد الخلفية */
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: #f7f7f7;
+      color: #333;
+      text-align: center;
+      padding: 0;
     }
 
-    .channels-title {
-        font-size: 24px; /* حجم العنوان */
-        font-weight: bold; /* جعل العنوان عريضًا */
-        margin-bottom: 20px; /* مسافة أسفل العنوان */
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* تأثير ظل خفيف */
-        color: #ffffff; /* لون النص أبيض */
+    /* رأس الصفحة */
+    .doctor-section header {
+      padding: 1.5rem;
+      background: #28a745; /* لون أخضر */
+      color: #fff;
+    }
+    .doctor-section header h1 {
+      font-size: 1.8rem;
+      margin: 0;
+    }
+    .doctor-section header p {
+      font-size: 1rem;
+      margin: 8px 0 15px;
     }
 
-    .channels-buttons {
-        display: flex; /* توزيع العناصر أفقيًا */
-        justify-content: center; /* توسيط الأزرار */
-        gap: 20px; /* مسافة بين الأزرار */
-        flex-wrap: wrap; /* السماح بتكديس الأزرار على الشاشات الصغيرة */
+    /* زر التنقل */
+    .doctor-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      color: #28a745;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.9rem;
+      border: 2px solid #28a745; /* حدود خضراء */
+      border-radius: 30px;
+      text-decoration: none;
+      transition: 0.3s;
+      cursor: pointer;
     }
-
-    .channel-card {
-        width: 150px; /* عرض البطاقة */
-        height: 180px; /* ارتفاع البطاقة */
-        background: #ffffff; /* خلفية البطاقة */
-        border-radius: 15px; /* زوايا مستديرة */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ظل البطاقة */
-        display: flex; /* توزيع المحتوى داخل البطاقة */
-        flex-direction: column; /* توزيع رأسي للعناصر */
-        justify-content: center; /* توسيط عمودي */
-        align-items: center; /* توسيط أفقي */
-        cursor: pointer; /* مؤشر اليد عند التمرير */
-        transition: transform 0.3s, box-shadow 0.3s; /* تأثير سلس عند التفاعل */
+    .doctor-btn i {
+      margin-left: 8px;
+      font-size: 1.1rem;
     }
-
-    .channel-card:hover {
-        transform: scale(1.1); /* تكبير البطاقة قليلاً عند التمرير */
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* زيادة الظل */
+    .doctor-btn:hover {
+      background: #28a745;
+      color: #fff;
     }
-
-    .channel-card img {
-        width: 80px; /* عرض الشعار */
-        height: 80px; /* ارتفاع الشعار */
-        margin-bottom: 10px; /* مسافة أسفل الشعار */
-        object-fit: contain; /* الحفاظ على أبعاد الصورة */
-        border-radius: 10px; /* زوايا مستديرة للصورة */
-    }
-
-    .channel-card span {
-        font-size: 16px; /* حجم النص */
-        font-weight: bold; /* جعل النص عريض */
-        color: #333333; /* لون النص */
-    }
-    /* نهاية تنسيق قسم شاهد قنواتك المفضلة */
 </style>
-
+ <h2
 
 <!-- بداية قسم عرض الصور -->
 <div class="gallery-section">
@@ -1224,7 +1211,7 @@
                     <div class="gallery-info">
                         <i class="fas fa-map-marker-alt"></i> ناحية زمار
                         <br>
-                        <i class="fas fa-camera"></i> المصور: محمد جاسم
+                        <i class="fas fa-camera"></i> المصور: غير متوفر
                     </div>
                 </div>
             </div>
@@ -1235,7 +1222,7 @@
                     <div class="gallery-info">
                         <i class="fas fa-map-marker-alt"></i> ناحية زمار
                         <br>
-                        <i class="fas fa-camera"></i> المصور: نور الهدى
+                        <i class="fas fa-camera"></i> المصور: غير متوفر
                     </div>
                 </div>
             </div>
@@ -1246,7 +1233,7 @@
                     <div class="gallery-info">
                         <i class="fas fa-map-marker-alt"></i> ناحية زمار
                         <br>
-                        <i class="fas fa-camera"></i> المصور: علي مهدي
+                        <i class="fas fa-camera"></i> المصور: غير متوفر
                     </div>
                 </div>
             </div>
@@ -1710,7 +1697,7 @@
             </div>
             <h3 class="ad-title">إعلان مميز</h3>
             <p class="ad-text">احصل على أحدث العروض والخصومات الرائعة الآن!</p>
-            <a href="tel:+123456789" class="ad-button">اتصل الآن</a>
+            <a href="tel:" class="ad-button">اتصل الآن</a>
         </div>
 
         <div class="ad-card">
@@ -1719,7 +1706,7 @@
             </div>
             <h3 class="ad-title">إعلان VIP</h3>
             <p class="ad-text">خدمات مميزة تناسب احتياجاتك بشكل مثالي.</p>
-            <a href="tel:+987654321" class="ad-button">اتصل الآن</a>
+            <a href="tel:" class="ad-button">اتصل الآن</a>
         </div>
 
         <div class="ad-card">
@@ -1728,7 +1715,7 @@
             </div>
             <h3 class="ad-title">إعلان جديد</h3>
             <p class="ad-text">تابع أحدث المنتجات والخدمات المبتكرة في السوق!</p>
-            <a href="tel:+1122334455" class="ad-button">اتصل الآن</a>
+            <a href="tel:" class="ad-button">اتصل الآن</a>
         </div>
     </div>
 </div>
@@ -2163,7 +2150,7 @@
         </div>
         <div class="greeting-content">
             <h2 class="greeting-title">تهنئة خاصة</h2>
-            <p class="greeting-message">أطيب التهاني والتبريكات بمناسبة النجاح الباهر!</p>
+            <p class="greeting-message">هذا القسم مخصص للتهاني والتبريكات</p>
         </div>
     </div>
     <div class="greeting-slide">
@@ -2172,7 +2159,7 @@
         </div>
         <div class="greeting-content">
             <h2 class="greeting-title">تهنئة قلبية</h2>
-            <p class="greeting-message">كل عام وأنتم بخير بمناسبة عيد الميلاد!</p>
+            <p class="greeting-message">هذا القسم مخصص للتهاني والتبريكات</p>
         </div>
     </div>
     <div class="greeting-slide">
@@ -2181,7 +2168,7 @@
         </div>
         <div class="greeting-content">
             <h2 class="greeting-title">أجمل الأمنيات</h2>
-            <p class="greeting-message">نتمنى لكم دوام الصحة والسعادة في حياتكم!</p>
+            <p class="greeting-message">هذا القسم مخصص للتهاني والتبريكات</p>
         </div>
     </div>
 </div>
@@ -2314,13 +2301,13 @@
         <!-- شريحة الأخبار 2 -->
         <div class="news-slide">
             <p class="news-message">
-                تم افتتاح فرع جديد لتقديم الخدمات الرقمية في مركز المدينة.
+                منصة زمار اونلاين الاولى من نوعها على متسوى محافظة نينوى
             </p>
         </div>
         <!-- شريحة الأخبار 3 -->
         <div class="news-slide">
             <p class="news-message">
-                سيتم إطلاق ميزة حجز المواعيد الإلكترونية قريبًا.
+                سوق زمار الالكتروني بيع واشتري بكيفك
             </p>
         </div>
     </div>
@@ -2427,21 +2414,21 @@
             <div class="swiper-slide">
                 <div class="zamSports-item" onclick="openModal('club1.jpg', 'نادي زمار الرياضي')">
                     <img src="club1.jpg" alt="نادي زمار الرياضي">
-                    <div class="zamSports-info">نادي زمار الرياضي</div>
+                    <div class="zamSports-info">الاندية الرياضية</div>
                 </div>
             </div>
             <!-- صورة 2 -->
             <div class="swiper-slide">
                 <div class="zamSports-item" onclick="openModal('club2.jpg', 'نادي النجوم')">
                     <img src="club2.jpg" alt="نادي النجوم">
-                    <div class="zamSports-info">نادي النجوم</div>
+                    <div class="zamSports-info">الاندية الرياضية</div>
                 </div>
             </div>
             <!-- صورة 3 -->
             <div class="swiper-slide">
                 <div class="zamSports-item" onclick="openModal('club3.jpg', 'نادي السلام')">
                     <img src="club3.jpg" alt="نادي السلام">
-                    <div class="zamSports-info">نادي السلام</div>
+                    <div class="zamSports-info">الاندية الرياضية</div>
                 </div>
             </div>
         </div>
@@ -2622,95 +2609,62 @@
 </script>
 
 </p>
- <!-- بداية قسم التعزية -->
+<!-- بداية قسم التعزية -->
 <div class="condolence-section">
-    <div class="condolence-content">
-        <!-- صورة المتوفي مع شريط أسود -->
-        <div class="image-container">
-            <img src="mand.jpg" alt="صورة المتوفي">
-            <div class="black-ribbon"></div>
-        </div>
-        <!-- نص التعزية -->
-        <div class="condolence-texts">
-            <h2 class="condolence-title">إنا لله وإنا إليه راجعون</h2>
-            <p class="condolence-message">
-                ببالغ الحزن والأسى، ننعى فقيدنا العزيز <strong>محمد احمد</strong> الذي وافته المنية. نسأل الله أن يتغمده بواسع رحمته ويسكنه فسيح جناته.
-            </p>
-        </div>
+  <header>
+    <h1>رسالة تعزية</h1>
+    <p>نتقدم بأحر التعازي والمواساة لذوي الفقيد</p>
+    <!-- اسم المتوفي -->
+    <div class="deceased-name">
+      <h2>محمد احمد</h2>
+          <p> نسأل الله أن يتغمده برحمته</p>
     </div>
+  </header>
 </div>
 <!-- نهاية قسم التعزية -->
 
+<!-- تضمين الخط والمكتبة -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
-    /* بداية تنسيق قسم التعزية */
-    .condolence-section {
-        margin: 30px auto; /* مسافة خارجية */
-        padding: 20px; /* حواف داخلية */
-        background: linear-gradient(135deg, #2e2e2e, #4a4a4a); /* ألوان رمادية باهتة */
-        border-radius: 15px; /* زوايا مستديرة */
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* ظل خفيف */
-        text-align: center; /* توسيط النصوص */
-        color: #f5f5f5; /* لون النص */
-        font-family: 'Cairo', sans-serif; /* خط كايرو */
+    /* إعداد الخلفية */
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: #f7f7f7;
+      color: #333;
+      text-align: center;
+      padding: 0;
     }
 
-    .condolence-content {
-        display: flex; /* توزيع العناصر أفقيًا */
-        align-items: center; /* محاذاة عمودية */
-        justify-content: center; /* توسيط العناصر أفقيًا */
-        gap: 20px; /* مسافة بين العناصر */
-        flex-wrap: wrap; /* السماح بالتكديس على الشاشات الصغيرة */
+    /* رأس الصفحة */
+    .condolence-section header {
+      padding: 1.5rem;
+      background: #000; /* خلفية سوداء */
+      color: #fff; /* نص أبيض */
+    }
+    .condolence-section header h1 {
+      font-size: 1.8rem;
+      margin: 0;
+    }
+    .condolence-section header p {
+      font-size: 1rem;
+      margin: 8px 0 15px;
     }
 
-    /* تنسيق صورة المتوفي */
-    .image-container {
-        position: relative; /* لجعل الشريط الأسود يتراكب */
-        width: 150px; /* عرض الصورة */
-        height: 150px; /* ارتفاع الصورة */
-        overflow: hidden; /* إخفاء أي جزء زائد */
-        border-radius: 15px; /* زوايا مستديرة */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ظل خفيف */
+    /* اسم المتوفي */
+    .deceased-name h2 {
+      font-size: 1.5rem;
+      margin: 10px 0;
+      font-weight: bold;
+      color: #ffc107; /* لون ذهبي لجعل الاسم بارزًا */
     }
-
-    .image-container img {
-        width: 100%; /* عرض الصورة بالكامل */
-        height: 100%; /* ارتفاع الصورة بالكامل */
-        object-fit: cover; /* تغطية كاملة مع الحفاظ على نسبة العرض */
-    }
-
-    .black-ribbon {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.4); /* شريط أسود نصف شفاف */
-        transform: rotate(-45deg); /* إمالة الشريط */
-        transform-origin: center; /* نقطة الدوران */
-    }
-
-    /* نصوص التعزية */
-    .condolence-texts {
-        max-width: 600px; /* عرض النصوص */
-        text-align: center; /* توسيط النصوص */
-    }
-
-    .condolence-title {
-        font-size: 24px; /* حجم العنوان */
-        font-weight: bold; /* جعل العنوان عريضًا */
-        margin-bottom: 10px; /* مسافة أسفل العنوان */
-        color: #fff; /* لون النص أبيض */
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* تأثير ظل خفيف */
-    }
-
-    .condolence-message {
-        font-size: 16px; /* حجم النص الوصفي */
-        line-height: 1.6; /* ارتفاع السطور */
-        color: #dcdcdc; /* لون رمادي باهت */
-    }
-    /* نهاية تنسيق قسم التعزية */
-
-
+</style>
+ <h2
+  <h2
+ <h2
+</p>
  <script>
 
 </p>
