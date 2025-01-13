@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج إدخال البيانات</title>
+</head>
+<body>
+    <h1>نموذج إدخال بيانات المنتج</h1>
+    
+    <!-- نموذج الإدخال -->
+    <form id="productForm">
+        <label for="productName">اسم المنتج:</label>
+        <input type="text" id="productName" name="productName" required><br><br>
+        
+        <label for="productType">النوع:</label>
+        <input type="text" id="productType" name="productType" required><br><br>
+        
+        <label for="quantity">الكمية:</label>
+        <input type="number" id="quantity" name="quantity" required><br><br>
+        
+        <label for="price">السعر:</label>
+        <input type="number" id="price" name="price" required><br><br>
+        
+        <label for="phoneNumber">رقم الموبايل:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required><br><br>
+        
+        <button type="submit">نشر البيانات</button>
+    </form>
+
+    <p id="statusMessage"></p>
+
+    <script>
+        // إعداد التوكين وبيانات المستودع
+        const githubToken = "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"; // التوكين الخاص بك
+        const repoOwner = "Raslanbasha"; // اسم صاحب المستودع
+        const repoName = "Arslan"; // اسم المستودع
+
+        // وظيفة لإنشاء ملف CSV
+        function createCSV(data) {
+            let csvContent = "productName,productType,quantity,price,phoneNumber\n"; // عناوين الأعمدة
+            data.forEach(item => {
+                csvContent += `${item.productName},${item.productType},${item.quantity},${item.price},${item.phoneNumber}\n`;
+            });
+
+            return csvContent;
+        }
+
+        // وظيفة لإرسال البيانات إلى GitHub باستخدام API
+        async function submitDataToGitHub(data) {
+            const csvData = createCSV([data]);
+
+            const url = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/products_data.csv`;
+
+            const response = await fetch(url, {
+                method: "PUT",
+                headers: {
+                    "Authorization": `token ${githubToken}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    message: "إضافة بيانات منتج جديد",
+                    content: btoa(csvData), // ترميز البيانات إلى Base64
+                    branch: "main" // تأكد من أن الفرع الذي تستخدمه هو "main"
+                })
+            });
+
+            if (response.ok) {
+                document.getElementById("statusMessage").innerText = "تم نشر البيانات بنجاح!";
+            } else {
+                const errorData = await response.json(); // الحصول على تفاصيل الخطأ
+                console.error("Error details:", errorData); // عرض تفاصيل الخطأ في الكونسول
+                document.getElementById("statusMessage").innerText = `حدث خطأ أثناء نشر البيانات: ${errorData.message}`;
+            }
+        }
+
+        // معالجة إرسال النموذج
+        document.getElementById("productForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // جمع البيانات من النموذج
+            const productName = document.getElementById("productName").value;
+            const productType = document.getElementById("productType").value;
+            const quantity = document.getElementById("quantity").value;
+            const price = document.getElementById("price").value;
+            const phoneNumber = document.getElementById("phoneNumber").value;
+
+            // بناء البيانات
+            const productData = {
+                productName: productName,
+                productType: productType,
+                quantity: quantity,
+                price: price,
+                phoneNumber: phoneNumber
+            };
+
+            // إرسال البيانات إلى GitHub
+            submitDataToGitHub(productData);
+        });
+    </script>
+</body>
+</html>
