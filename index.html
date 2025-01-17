@@ -634,35 +634,35 @@
                 <i class="fas fa-home"></i>
                 <span>الرئيسية</span>
             </a>
-             <a href="mo.html" class="menu-item">
+             <a href="http://zmonline.free.nf/national_id_updates.php" class="menu-item">
                 <i class="fas fa-id-card"></i>
                 <span>جدول الموحدة</span>
             </a>
-       <a href="doc.html" class="menu-item">
+       <a href="http://zmonline.free.nf/show_healthcare.html" class="menu-item">
                 <i class="fas fa-user-md"></i>
                 <span>الطبيب</span>
             </a>
-             <a href="hrf.html" class="menu-item">
+             <a href="http://zmonline.free.nf/show_craftsmen.html" class="menu-item">
                 <i class="fas fa-hammer"></i>
                 <span>الحرفيين</span> 
            </a>
-             <a href="prod.html" class="menu-item">
+             <a href="http://zmonline.free.nf/soq.html" class="menu-item">
                 <i class="fas fa-store"></i>
                 <span>سوق زمار</span>
       </a>
-       <a href="taxi.html" class="menu-item">
+       <a href="http://zmonline.free.nf/show_taxis.html" class="menu-item">
                 <i class="fas fa-taxi"></i>
                 <span>طلب تكسي</span>           
           </a>
-             <a href="kids.html" class="menu-item">
+             <a href="http://zmonline.free.nf/manage_permissions.php" class="menu-item">
                 <i class="fas fa-child"></i>
-                <span>اطفال مدينتي</span>               
+                <span>ادارة المستخدم</span>               
             </a>
      
 
-            <a href="about.html" class="menu-item">
+            <a href="http://zmonline.free.nf/posts.php" class="menu-item">
                 <i class="fas fa-info-circle"></i>
-                <span>عن التطبيق</span>
+                <span>المطاعم</span>
             </a>
             <a href="contact.html" class="menu-item">
                 <i class="fas fa-envelope"></i>
@@ -950,69 +950,133 @@
   <header>
     <h1>خدمة التكسي</h1>
     <p>أحجز الآن وتمتع برحلة آمنة إلى وجهتك</p>
-    <!-- زر الانتقال إلى taxi.html -->
+    <!-- صورة التكسي داخل الإطار الأصفر -->
+    <div class="image-container">
+      <img src="taxi.png" alt="تكسي" class="taxi-image">
+    </div>
+    <!-- زر اطلب تكسي -->
     <a href="taxi.html" class="taxi-btn">
       <i class="fas fa-taxi"></i>
-      احجز الآن
+      اطلب تكسي
     </a>
   </header>
 </div>
 <!-- نهاية قسم خدمة التكسي -->
 
-<!-- تضمين الخط والمكتبة -->
+<!-- تضمين الخطوط والمكتبة -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-    /* إعداد الخلفية */
+    /* إعداد الجسم */
     body {
       margin: 0;
       font-family: 'Cairo', sans-serif;
       background: #f7f7f7;
       color: #333;
       text-align: center;
-      padding: 0;
     }
 
-    /* رأس الصفحة */
+    /* القسم الرئيسي */
     .taxi-section header {
-      padding: 1.5rem; /* تقليل الارتفاع */
-      background: #ffc107; /* لون أصفر يرمز للتكسي */
+      padding: 2rem 1rem; /* مسافة متساوية بين اليمين والشمال */
+      background: #ffc107; /* لون الخلفية */
       color: #333;
+      width: 100%; /* امتداد الخلفية بعرض الشاشة */
+      box-sizing: border-box; /* ضمان حساب البادينغ ضمن الحجم */
+      text-align: center;
     }
+
     .taxi-section header h1 {
-      font-size: 1.8rem; /* تصغير حجم العنوان */
+      font-size: 2rem;
       margin: 0;
     }
+
     .taxi-section header p {
-      font-size: 1rem; /* تصغير حجم النص */
+      font-size: 1rem;
       margin: 8px 0 15px;
     }
 
-    /* زر التنقل */
+    /* حاوية الصورة */
+    .image-container {
+      background: #fff; /* خلفية بيضاء */
+      border: 3px solid #333; /* إطار داكن */
+      border-radius: 50%; /* إطار دائري */
+      width: 120px;
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px auto;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* ظل خفيف */
+    }
+
+    /* صورة التكسي */
+    .taxi-image {
+      max-width: 80%; /* حجم الصورة داخل الحاوية */
+      height: auto;
+      border-radius: 50%; /* صورة مستديرة */
+    }
+
+    /* زر اطلب تكسي */
     .taxi-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       background: #333;
       color: #ffc107;
-      padding: 0.5rem 1.2rem; /* تقليل الارتفاع */
-      font-size: 0.9rem; /* تصغير حجم الخط */
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
       border: none;
       border-radius: 30px;
       text-decoration: none;
       transition: 0.3s;
       cursor: pointer;
+      margin-top: 15px;
     }
+
     .taxi-btn i {
-      margin-left: 8px; /* تقليل المسافة بين الأيقونة والنص */
-      font-size: 1.1rem; /* تصغير حجم الأيقونة */
+      margin-left: 8px;
+      font-size: 1.1rem;
     }
+
     .taxi-btn:hover {
       background: #ffc107;
       color: #333;
     }
+
+    /* تصميم متجاوب */
+    @media (max-width: 768px) {
+      .taxi-section header {
+        padding: 1.5rem 1rem;
+      }
+
+      .taxi-section header h1 {
+        font-size: 1.8rem;
+      }
+
+      .taxi-section header p {
+        font-size: 0.9rem;
+      }
+
+      .image-container {
+        width: 100px;
+        height: 100px;
+      }
+
+      .taxi-image {
+        max-width: 70%;
+      }
+
+      .taxi-btn {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+      }
+    }
 </style>
+
+
+
 
 <!-- بداية قسم التهنئة بقدوم رمضان -->
 <div class="ramadan-greeting-section">
@@ -1199,1414 +1263,19 @@
 </style>
  <h2
 
-<!-- بداية قسم عرض الصور -->
-<div class="gallery-section">
-    <h2 class="gallery-title"> صور من مدينتي</h2>
-    <div class="swiper gallerySwiper">
-        <div class="swiper-wrapper">
-            <!-- صورة 1 -->
-            <div class="swiper-slide">
-                <div class="gallery-item" onclick="openModal('image1.jpg', 'ناحية زمار', 'محمد جاسم')">
-                    <img src="image1.jpg" alt="ناحية زمار">
-                    <div class="gallery-info">
-                        <i class="fas fa-map-marker-alt"></i> ناحية زمار
-                        <br>
-                        <i class="fas fa-camera"></i> المصور: غير متوفر
-                    </div>
-                </div>
-            </div>
-            <!-- صورة 2 -->
-            <div class="swiper-slide">
-                <div class="gallery-item" onclick="openModal('image2.jpg', 'ناحية زمار', 'نور الهدى')">
-                    <img src="image2.jpg" alt="ناحية زمار">
-                    <div class="gallery-info">
-                        <i class="fas fa-map-marker-alt"></i> ناحية زمار
-                        <br>
-                        <i class="fas fa-camera"></i> المصور: غير متوفر
-                    </div>
-                </div>
-            </div>
-            <!-- صورة 3 -->
-            <div class="swiper-slide">
-                <div class="gallery-item" onclick="openModal('image3.jpg', 'ناحية زمار', 'علي مهدي')">
-                    <img src="image3.jpg" alt="ناحية زمار">
-                    <div class="gallery-info">
-                        <i class="fas fa-map-marker-alt"></i> ناحية زمار
-                        <br>
-                        <i class="fas fa-camera"></i> المصور: غير متوفر
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- أزرار التنقل -->
-        <div class="swiper-button-next gallery-next"></div>
-        <div class="swiper-button-prev gallery-prev"></div>
-    </div>
-</div>
 
-<!-- نافذة عرض الصورة -->
-<div id="modal" class="modal">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img class="modal-content" id="modalImage">
-    <div id="modalCaption" class="modal-caption"></div>
-</div>
 
-<!-- مكتبة Font Awesome للأيقونات -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<!-- مكتبة Swiper.js -->
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-<style>
-    /* قسم عرض الصور */
-    .gallery-section {
-        padding: 30px;
-        text-align: center;
-        background: linear-gradient(135deg, #5e4b8b, #836fff, #9370db); /* ألوان بنفسجية مبهجة */
-        color: #ffffff;
-        font-family: 'Cairo', sans-serif;
-        border-radius: 20px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); /* ظل جذاب */
-        animation: fadeIn 1.5s ease-in-out; /* تأثير الظهور التدريجي */
-    }
 
-    .gallery-title {
-        font-size: 30px;
-        margin-bottom: 30px;
-        color: #fff;
-        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* تأثير ظل */
-        animation: titleGlow 2s infinite alternate; /* تأثير توهج العنوان */
-    }
 
-    .swiper {
-        width: 100%;
-        padding: 20px 0;
-    }
 
-    .swiper-slide {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 
-    .gallery-item {
-        position: relative;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* ظل للإطار */
-        width: 90%;
-        max-width: 500px;
-        cursor: pointer;
-        transition: transform 0.3s ease-in-out;
-        background: linear-gradient(135deg, #836fff, #5e4b8b); /* خلفية بنفسجية للإطار */
-    }
 
-    .gallery-item img {
-        width: 100%;
-        height: auto;
-        border-radius: 15px;
-        transition: transform 0.5s ease-in-out;
-    }
 
-    .gallery-item:hover img {
-        transform: scale(1.03); /* تكبير بسيط عند التمرير */
-    }
-
-    .gallery-info {
-        position: absolute;
-        bottom: 0;
-        background: rgba(94, 75, 139, 0.7); /* خلفية بنفسجية شفافة */
-        color: #fff;
-        width: 100%;
-        padding: 10px;
-        text-align: center;
-        font-size: 16px;
-        line-height: 1.5;
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    }
-
-    .gallery-info i {
-        color: #ffd700; /* لون ذهبي للأيقونات */
-        margin-right: 5px;
-    }
-
- /* أزرار السلايدر */
-.swiper-button-next,
-.swiper-button-prev {
-    color: #ffffff !important; /* اللون الأبيض دائمًا مع الأولوية القصوى */
-    font-size: 24px; /* حجم الأزرار */
-    transition: transform 0.3s ease; /* تأثير حركة سلس */
-}
-
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-    transform: scale(1.2); /* تكبير عند التمرير */
-    color: #ffffff !important; /* تأكيد أن اللون يظل أبيض */
-}
-
-    /* نافذة عرض الصورة */
-    .modal {
-        display: none; /* مخفية افتراضيًا */
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
-    }
-
-    .modal-content {
-        margin: auto;
-        display: block;
-        max-width: 80%;
-        max-height: 80%;
-        border-radius: 10px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    }
-
-    .modal-caption {
-        margin: 10px auto;
-        text-align: center;
-        color: #ffffff;
-        font-size: 18px;
-    }
-
-    .close {
-        position: absolute;
-        top: 20px;
-        right: 35px;
-        color: #ffffff;
-        font-size: 40px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: #9370db;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    /* تأثيرات إضافية */
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes titleGlow {
-        from {
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(131, 111, 255, 0.8);
-        }
-        to {
-            text-shadow: 0 0 20px rgba(131, 111, 255, 1), 0 0 40px rgba(255, 255, 255, 1);
-        }
-    }
-</style>
-
-
-
-
-<script>
-    // تفعيل السلايدر باستخدام Swiper.js
-    const gallerySwiper = new Swiper('.gallerySwiper', {
-        loop: true, // السلايدر يدور بشكل دائري
-        navigation: {
-            nextEl: '.gallery-next',
-            prevEl: '.gallery-prev',
-        },
-    });
-
-    // عرض الصورة في نافذة
-    function openModal(imageSrc, location, photographer) {
-        const modal = document.getElementById("modal");
-        const modalImage = document.getElementById("modalImage");
-        const modalCaption = document.getElementById("modalCaption");
-
-        modal.style.display = "block";
-        modalImage.src = imageSrc;
-        modalCaption.innerHTML = `المكان: ${location} | المصور: ${photographer}`;
-    }
-
-    // إغلاق النافذة
-    function closeModal() {
-        const modal = document.getElementById("modal");
-        modal.style.display = "none";
-    }
-</script>
-
-<!-- بداية قسم عرض المبيعات -->
-<div class="sales-section">
-    <h2 class="sales-title">عروض خاصة</h2>
-    <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-            <!-- المنتج الأول -->
-            <div class="swiper-slide sales-card">
-                <div class="product-image">
-                    <img src="khassa.png" alt="صورة المنتج 1">
-                </div>
-                <div class="product-info">
-                    <h2 class="product-title">عرض خاص</h2>
-                    <p class="product-price">السعر: <span>غير متوفر</span></p>
-                    <p class="contact-info">رقم البائع: <strong>غير متوفر</strong></p>
-                </div>
-            </div>
-            <!-- المنتج الثاني -->
-            <div class="swiper-slide sales-card">
-                <div class="product-image">
-                    <img src="khassa.png" alt="صورة المنتج 2">
-                </div>
-                <div class="product-info">
-                    <h2 class="product-title">عرض خاص</h2>
-                    <p class="product-price">السعر: <span>غير متوفر</span></p>
-                    <p class="contact-info">رقم البائع: <strong>غير متوفر</strong></p>
-                </div>
-            </div>
-            <!-- أضف المزيد من المنتجات هنا -->
-        </div>
-        <!-- أزرار التنقل -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <!-- نقاط السلايدر -->
-        <div class="swiper-pagination"></div>
-    </div>
-</div>
-<!-- نهاية قسم عرض المبيعات -->
-
-<!-- إضافة مكتبة Swiper.js -->
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-<style>
-    /* بداية تنسيق قسم عرض المبيعات */
-    .sales-section {
-        margin: 30px auto; /* مسافة خارجية */
-        padding: 20px; /* حواف داخلية */
-        background: linear-gradient(135deg, #2b2b2b, #4e2a84, #e7a61a); /* ألوان فاخرة */
-        border-radius: 20px; /* زوايا مستديرة */
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* ظل فخم */
-        color: #fff; /* لون النص */
-        font-family: 'Cairo', sans-serif; /* خط كايرو */
-        text-align: center; /* توسيط النصوص */
-        max-width: 900px; /* عرض القسم */
-    }
-
-    .sales-title {
-        font-size: 28px; /* حجم العنوان */
-        font-weight: bold; /* جعل النص عريض */
-        margin-bottom: 20px; /* مسافة أسفل العنوان */
-        color: #fffde7; /* لون العنوان */
-        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); /* تأثير ظل خفيف */
-    }
-
-    .swiper {
-        width: 100%;
-        padding: 20px 0;
-    }
-
-    .swiper-slide {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .sales-card {
-        width: 250px; /* عرض البطاقة */
-        background: rgba(255, 255, 255, 0.1); /* خلفية شفافة */
-        padding: 20px; /* حواف داخلية */
-        border-radius: 15px; /* زوايا مستديرة */
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* ظل خفيف */
-        text-align: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease; /* حركة سلسة عند التفاعل */
-    }
-
-    .sales-card:hover {
-        transform: scale(1.05); /* تكبير البطاقة */
-        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3); /* زيادة الظل */
-    }
-
-    .product-image {
-        width: 200px; /* عرض الصورة */
-        height: 200px; /* ارتفاع الصورة */
-        border-radius: 15px; /* زوايا مستديرة للصورة */
-        overflow: hidden; /* إخفاء الزوائد */
-        border: 5px solid #e7a61a; /* إطار ذهبي */
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* ظل */
-        margin-bottom: 15px; /* مسافة أسفل الصورة */
-    }
-
-    .product-image img {
-        width: 100%; /* عرض الصورة بالكامل */
-        height: 100%; /* ارتفاع الصورة بالكامل */
-        object-fit: cover; /* تغطية الصورة */
-    }
-
-    .product-title {
-        font-size: 20px; /* حجم العنوان */
-        font-weight: bold; /* جعل النص عريضًا */
-        color: #e7a61a; /* لون ذهبي */
-        margin-bottom: 10px; /* مسافة أسفل العنوان */
-    }
-
-    .product-price {
-        font-size: 18px; /* حجم النص */
-        margin-bottom: 10px; /* مسافة أسفل النص */
-    }
-
-    .product-price span {
-        color: #e7a61a; /* لون السعر ذهبي */
-        font-weight: bold; /* جعل النص عريضًا */
-    }
-
-    .contact-info {
-        font-size: 16px; /* حجم النص */
-        color: #fff; /* لون النص أبيض */
-    }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-        color: #e7a61a; /* لون أزرار التنقل */
-    }
-
-    .swiper-pagination-bullet {
-        background: #e7a61a; /* لون نقاط السلايدر */
-    }
-    /* نهاية تنسيق قسم عرض المبيعات */
-</style>
-
-<script>
-    // تفعيل السلايدر باستخدام Swiper.js
-    const swiper = new Swiper('.mySwiper', {
-        loop: true, // السلايدر يدور بشكل دائري
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-    });
-</script>
-<!-- بداية قسم فيديو اليوم -->
-<div class="video-section">
-    <h2 class="video-title">فيديو اليوم</h2>
-    <div class="video-wrapper">
-        <iframe 
-            src="https://www.youtube.com/embed/0zhKi5NBRH0?autoplay=1&loop=1&playlist=0zhKi5NBRH0" 
-            class="video-player" 
-            allow="autoplay; encrypted-media" 
-            frameborder="0" 
-            allowfullscreen>
-        </iframe>
-        <div class="video-overlay"></div>
-    </div>
-</div>
-
-<style>
-    /* تصميم قسم فيديو اليوم */
-    .video-section {
-        padding: 40px;
-        text-align: center;
-        background: linear-gradient(135deg, #5e4b8b, #836fff, #9370db); /* ألوان بنفسجية مبهجة */
-        color: #ffffff;
-        font-family: 'Cairo', sans-serif;
-        border-radius: 25px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); /* ظل جذاب */
-        animation: fadeIn 1.5s ease-in-out; /* تأثير الظهور التدريجي */
-    }
-
-    .video-title {
-        font-size: 24px; /* تصغير حجم العنوان */
-        margin-bottom: 20px;
-        color: #fff;
-        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* تأثير ظل */
-        animation: titleGlow 2s infinite alternate; /* تأثير توهج العنوان */
-    }
-
-    .video-wrapper {
-        position: relative;
-        width: 90%;
-        max-width: 900px;
-        margin: 0 auto;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* ظل للإطار */
-        background: linear-gradient(135deg, #836fff, #5e4b8b); /* خلفية الإطار */
-    }
-
-    .video-player {
-        width: 100%;
-        height: 300px; /* تقليل ارتفاع الفيديو */
-        display: block;
-        border: none;
-        outline: none;
-        transition: transform 0.5s ease-in-out; /* تأثير حركة الفيديو */
-    }
-
-    .video-wrapper:hover .video-player {
-        transform: scale(1.03); /* تكبير بسيط عند التمرير */
-    }
-
-    .video-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, rgba(94, 75, 139, 0.5), rgba(131, 111, 255, 0.3));
-        pointer-events: none; /* السماح بالنقر على الفيديو */
-        mix-blend-mode: overlay; /* دمج الألوان مع الفيديو */
-    }
-
-    /* تأثيرات إضافية */
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes titleGlow {
-        from {
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(131, 111, 255, 0.8);
-        }
-        to {
-            text-shadow: 0 0 20px rgba(131, 111, 255, 1), 0 0 40px rgba(255, 255, 255, 1);
-        }
-    }
-</style>
-
-<!-- بداية قسم الإعلانات -->
-<div class="ads-slider">
-    <div class="ads-wrapper">
-        <div class="ad-card active">
-            <div class="ad-icon">
-                <i class="fas fa-bullhorn"></i>
-            </div>
-            <h3 class="ad-title">إعلان مميز</h3>
-            <p class="ad-text">احصل على أحدث العروض والخصومات الرائعة الآن!</p>
-            <a href="tel:" class="ad-button">اتصل الآن</a>
-        </div>
-
-        <div class="ad-card">
-            <div class="ad-icon">
-                <i class="fas fa-gem"></i>
-            </div>
-            <h3 class="ad-title">إعلان VIP</h3>
-            <p class="ad-text">خدمات مميزة تناسب احتياجاتك بشكل مثالي.</p>
-            <a href="tel:" class="ad-button">اتصل الآن</a>
-        </div>
-
-        <div class="ad-card">
-            <div class="ad-icon">
-                <i class="fas fa-star"></i>
-            </div>
-            <h3 class="ad-title">إعلان جديد</h3>
-            <p class="ad-text">تابع أحدث المنتجات والخدمات المبتكرة في السوق!</p>
-            <a href="tel:" class="ad-button">اتصل الآن</a>
-        </div>
-    </div>
-</div>
-
-<style>
-    /* الحاوية الرئيسية */
-    .ads-slider {
-        position: relative;
-        width: 100%; /* تغطية عرض الشاشة بالكامل */
-        max-width: 600px; /* أقصى عرض للحاوية */
-        margin: 40px auto;
-        overflow: hidden;
-        background: linear-gradient(135deg, #5e4b8b, #836fff, #9370db);
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        transition: height 0.5s ease-in-out;
-    }
-
-    /* الحاوية الداخلية */
-    .ads-wrapper {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    /* البطاقات الإعلانية */
-    .ad-card {
-        position: absolute;
-        width: 100%;
-        padding: 20px;
-        background: linear-gradient(135deg, #836fff, #5e4b8b);
-        border-radius: 15px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        text-align: center;
-        opacity: 0;
-        transform: scale(0.8);
-        transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-    }
-
-    .ad-card.active {
-        opacity: 1;
-        transform: scale(1);
-        position: relative;
-    }
-
-    /* الأيقونات */
-    .ad-icon {
-        font-size: 50px;
-        color: #fff;
-        background: linear-gradient(135deg, #ffd700, #ffa500);
-        width: 80px;
-        height: 80px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 50%;
-        margin: 0 auto 15px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    /* النصوص */
-    .ad-title {
-        font-size: 22px;
-        font-weight: bold;
-        margin-bottom: 10px;
-        color: #fff;
-    }
-
-    .ad-text {
-        font-size: 16px;
-        line-height: 1.5;
-        margin-bottom: 20px;
-        color: #fff;
-    }
-
-    /* زر الإعلان */
-    .ad-button {
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 14px;
-        font-weight: bold;
-        text-transform: uppercase;
-        color: #fff;
-        background: linear-gradient(135deg, #ff6f61, #ff4081);
-        border-radius: 20px;
-        text-decoration: none;
-        transition: background 0.3s ease, transform 0.3s ease;
-    }
-
-    .ad-button:hover {
-        background: linear-gradient(135deg, #ff4081, #ff6f61);
-        transform: translateY(-3px);
-    }
-
-    /* تأثير نبض للأيقونة */
-    @keyframes pulse {
-        0%, 100% {
-            transform: scale(1);
-        }
-        50% {
-            transform: scale(1.1);
-        }
-    }
-</style>
-
-<script>
-    const adsSlider = document.querySelector('.ads-slider');
-    const ads = document.querySelectorAll('.ad-card');
-    let currentAd = 0;
-
-    function updateSliderHeight() {
-        // ضبط ارتفاع الحاوية بناءً على الإعلان النشط
-        const activeAd = ads[currentAd];
-        adsSlider.style.height = `${activeAd.offsetHeight}px`;
-    }
-
-    function showNextAd() {
-        ads[currentAd].classList.remove('active'); // إخفاء الإعلان الحالي
-        currentAd = (currentAd + 1) % ads.length; // الانتقال إلى الإعلان التالي
-        ads[currentAd].classList.add('active'); // عرض الإعلان الجديد
-        updateSliderHeight(); // تحديث ارتفاع الحاوية
-    }
-
-    // تغيير الإعلان كل 5 ثوانٍ
-    setInterval(showNextAd, 5000);
-
-    // ضبط ارتفاع الحاوية عند التحميل
-    window.addEventListener('load', updateSliderHeight);
-    window.addEventListener('resize', updateSliderHeight);
-</script>
-
-<div class="ramadan-section">
-    <div class="ramadan-quotes" id="ramadanQuotes">
-        <i class="fas fa-moon"></i>
-        <p id="quoteText">رمضان كريم، تقبل الله منا ومنكم</p>
-       
-    </div>
-</div>
-
-<style>
-    .ramadan-section {
-        margin: 20px auto;
-        padding: 20px;
-        background: linear-gradient(135deg, #5e4b8b, #836fff, #9370db); /* تدرجات بنفسجية مبهجة */
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* ظل جذاب */
-        color: #fff;
-        font-family: 'Cairo', sans-serif;
-        text-align: center;
-        animation: fadeIn 1.5s ease-in-out; /* تأثير الظهور التدريجي */
-    }
-
-    .ramadan-quotes {
-        margin-bottom: 15px;
-        font-size: 18px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        color: #fff;
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(131, 111, 255, 0.8); /* تأثير توهج */
-    }
-
-    .ramadan-quotes i {
-        font-size: 24px;
-        color: #ffd700; /* لون ذهبي للأيقونات */
-        text-shadow: 0 0 10px rgba(255, 223, 0, 0.8); /* توهج ذهبي */
-    }
-
-    /* تأثيرات إضافية */
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-</style>
-
-
-<script>
-    // عبارات رمضانية
-    const quotes = [
-        "رمضان كريم، تقبل الله منا ومنكم",
-        "اللهم بلغنا ليلة القدر واغفر لنا فيها",
-        "اغتنموا الفرصة بالدعاء والذكر في هذا الشهر الفضيل",
-        "اللهم اجعلنا من عتقاء شهر رمضان"
-    ];
-    let currentQuoteIndex = 0;
-
-    function changeQuote() {
-        const quoteText = document.getElementById("quoteText");
-        currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
-        quoteText.textContent = quotes[currentQuoteIndex];
-    }
-
-    // تغيير العبارة كل 5 ثوانٍ
-    setInterval(changeQuote, 5000);
-</script>
-</div>
-
-        <!-- قنوات 
-        </video>
-        <video id="ssc3" controls>
-            <source src="https://path-to-ssc3.m3u8" type="application/x-mpegURL">
-        </video>
-    </div>
-<!-- رابط إلى مكتبة Font Awesome -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
-<div class="sponsor-section">
-    <!-- النص الأول (التطبيق برعاية) في الجهة اليمنى -->
-    <span class="sponsor-text">التطبيق برعاية</span>
-    
-    <!-- النص الثاني (كن الراعي الرسمي للتطبيق) في الجهة اليسرى -->
-    <span class="sponsor-name">كن الراعي الرسمي للتطبيق</span>
-</div>
-
-<style>
-/* تنسيق الحاوية باستخدام Flexbox */
-.sponsor-section {
-    display: flex; /* استخدام flexbox */
-    justify-content: space-between; /* توزيع النصوص على الجهتين */
-    align-items: center; /* محاذاة عمودية للنصوص */
-    padding: 10px; /* إضافة الحواف حول النصوص */
-    background-color: #f8f9fa; /* خلفية فاتحة للنص */
-    border-radius: 10px; /* زوايا دائرية */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* إضافة ظل خفيف */
-}
-
-.sponsor-text,
-.sponsor-name {
-    font-size: 14px; /* حجم الخط */
-    font-weight: bold; /* جعل النص عريض */
-    display: flex; /* جعل النصوص في سطر واحد */
-    align-items: center; /* محاذاة عمودية للنص */
-}
-
-.sponsor-text {
-    text-align: right; /* محاذاة النص لليمين */
-    color: #007bff; /* لون النص */
-    margin-right: 0; /* تأكد من عدم وجود أي مسافة إضافية */
-    order: 1; /* جعل النص في الجهة اليمنى */
-}
-
-.sponsor-name {
-    text-align: left; /* محاذاة النص لليسار */
-    color: #28a745; /* لون النص */
-    margin-left: 0; /* تأكد من عدم وجود أي مسافة إضافية */
-    order: 0; /* جعل النص في الجهة اليسرى */
-}
-
-</style>
-
-</div>
- 
-   <!-- بداية قسم قريباً للطلبة -->
-<div class="students-section">
-    <div class="students-content">
-        <!-- أيقونة قبعة التخرج داخل دائرة -->
-        <i class="fas fa-graduation-cap"></i>
-        <!-- النصوص المرافقة للأيقونة -->
-        <div class="students-texts">
-            <h2 class="students-title">قريباً للطلبة</h2>
-            <p class="students-description">
-                ركن خاص لطلابنا الأعزاء يحتوي على كل ما تحتاجونه من ملازم، نتائج، وأدوات تعليمية
-                لدعم رحلتكم نحو التفوق والنجاح.
-            </p>
-        </div>
-    </div>
-</div>
-<!-- نهاية قسم قريباً للطلبة -->
-
-<style>
-    /* بداية تنسيق قسم قريباً للطلبة */
-    .students-section {
-        margin: 20px auto; /* مسافة خارجية لتوسيط القسم */
-        padding: 20px; /* مسافة داخلية حول المحتوى */
-        background: linear-gradient(135deg, #4caf50, #8bc34a, #c8e6c9); /* تدرج ألوان طلابية مشرقة */
-        border-radius: 15px; /* زوايا مستديرة */
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* إضافة ظل جميل */
-        text-align: center; /* توسيط النصوص */
-        color: #fff; /* لون النص أبيض */
-        font-family: 'Cairo', sans-serif; /* استخدام خط كايرو */
-    }
-
-    .students-content {
-        display: flex; /* توزيع العناصر بشكل أفقي */
-        align-items: center; /* محاذاة عمودية للعناصر */
-        justify-content: center; /* توسيط العناصر أفقياً */
-        gap: 15px; /* مسافة بين العناصر */
-        flex-wrap: wrap; /* السماح بتكديس العناصر على الشاشات الصغيرة */
-    }
-
-    .students-content i {
-        font-size: 50px; /* حجم الأيقونة */
-        color: #fff; /* لون الأيقونة أبيض */
-        background: #388e3c; /* خلفية دائرية خضراء */
-        width: 80px; /* عرض الدائرة */
-        height: 80px; /* ارتفاع الدائرة */
-        display: flex; /* جعل الأيقونة في المنتصف */
-        justify-content: center; /* توسيط الأيقونة أفقياً */
-        align-items: center; /* توسيط الأيقونة عمودياً */
-        border-radius: 50%; /* تحويل الشكل إلى دائرة */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* إضافة ظل خفيف للدائرة */
-    }
-
-    .students-texts {
-        text-align: center; /* توسيط النصوص */
-        max-width: 600px; /* عرض النص الأقصى */
-    }
-
-    .students-title {
-        font-size: 24px; /* حجم العنوان */
-        font-weight: bold; /* جعل العنوان عريضًا */
-        margin-bottom: 10px; /* مسافة أسفل العنوان */
-        color: #ffffff; /* لون العنوان أبيض */
-        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); /* تأثير ظل خفيف للنص */
-    }
-
-    .students-description {
-        font-size: 16px; /* حجم النص الوصفي */
-        line-height: 1.6; /* ارتفاع الأسطر */
-        color: #f9f9f9; /* لون النص الوصفي */
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* تأثير ظل خفيف */
-    }
-
-    /* تأثير التفاعل عند مرور الفأرة */
-    .students-section:hover {
-        transform: scale(1.02); /* تكبير القسم قليلاً عند التمرير */
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* زيادة الظل */
-        transition: all 0.3s ease; /* إضافة حركة سلسة */
-    }
-    /* نهاية تنسيق قسم قريباً للطلبة */
-</style>
-</div>
-    </div>
-<!-- قسم أطفال مدينتي -->
-<div class="kids-section" onclick="location.href='kids.html'">
-    <div class="kids-content">
-        <div class="icon-circle">
-            <i class="fas fa-child"></i>
-        </div>
-        <h2 class="kids-title">أطفال مدينتي</h2>
-        <p class="kids-message">شاركنا صور أطفالك لعرضها في التطبيق</p>
-    </div>
-</div>
-
-<style>
-    /* تصميم قسم أطفال مدينتي */
-    .kids-section {
-        padding: 15px; /* تصغير المسافة الداخلية */
-        text-align: center;
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb); /* ألوان طفولية مبهجة */
-        color: #ffffff;
-        font-family: 'Cairo', sans-serif; /* خط أنيق */
-        border-radius: 15px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* ظل ناعم */
-        max-width: 500px; /* تقليل الحجم */
-        margin: 15px auto; /* توسيط العنصر مع تقليل المسافة */
-        cursor: pointer; /* مؤشر اليد عند النقر */
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .kids-section:hover {
-        transform: scale(1.05); /* تكبير بسيط عند التمرير */
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* زيادة الظل */
-    }
-
-    .kids-content {
-        color: #ffffff;
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* ظل خفيف للنص */
-    }
-
-    .icon-circle {
-        width: 60px; /* تصغير الدائرة */
-        height: 60px; /* تصغير الدائرة */
-        background: #fad0c4; /* لون خلفية قريب من التنسيق السابق */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 50%; /* شكل دائري */
-        margin: 0 auto 10px; /* توسيط الأيقونة وإضافة مسافة أسفلها */
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* ظل خفيف للدائرة */
-    }
-
-    .icon-circle i {
-        font-size: 30px; /* حجم أصغر للأيقونة */
-        color: #ff4081; /* لون الأيقونة */
-    }
-
-    .kids-title {
-        font-size: 22px; /* حجم أصغر للعنوان */
-        margin: 5px 0; /* مسافة صغيرة */
-    }
-
-    .kids-message {
-        font-size: 14px; /* حجم أصغر للرسالة */
-        margin: 0;
-        color: #fffee4; /* لون نص مريح */
-    }
-</style>
-
-<script>
-    function navigateTo(page) {
-        window.location.href = page;
-    }
-</script>
-
-<script>
-    function navigateTo(page) {
-        window.location.href = page;
-    }
-</script>
-
-<script>
-    function navigateTo(page) {
-        window.location.href = page;
-    }
-</script>
-
-<!-- بداية قسم التهاني -->
-<div class="greeting-slider-modern">
-    <div class="greeting-slide active">
-        <div class="greeting-image-container">
-            <img src="person1.jpg" alt="الشخص الأول" class="greeting-image">
-        </div>
-        <div class="greeting-content">
-            <h2 class="greeting-title">تهنئة خاصة</h2>
-            <p class="greeting-message">هذا القسم مخصص للتهاني والتبريكات</p>
-        </div>
-    </div>
-    <div class="greeting-slide">
-        <div class="greeting-image-container">
-            <img src="person2.jpg" alt="الشخص الثاني" class="greeting-image">
-        </div>
-        <div class="greeting-content">
-            <h2 class="greeting-title">تهنئة قلبية</h2>
-            <p class="greeting-message">هذا القسم مخصص للتهاني والتبريكات</p>
-        </div>
-    </div>
-    <div class="greeting-slide">
-        <div class="greeting-image-container">
-            <img src="person3.jpg" alt="الشخص الثالث" class="greeting-image">
-        </div>
-        <div class="greeting-content">
-            <h2 class="greeting-title">أجمل الأمنيات</h2>
-            <p class="greeting-message">هذا القسم مخصص للتهاني والتبريكات</p>
-        </div>
-    </div>
-</div>
-<!-- نهاية قسم التهاني -->
-
-<style>
-    /* السلايدر الرئيسي */
-    .greeting-slider-modern {
-        position: relative;
-        max-width: 700px;
-        margin: 30px auto;
-        overflow: hidden;
-        background: linear-gradient(135deg, #5e4b8b, #836fff, #9370db); /* ألوان حديثة */
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        padding: 40px 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 350px; /* تحديد ارتفاع مناسب */
-    }
-
-    /* كل شريحة */
-    .greeting-slide {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
-    }
-
-    .greeting-slide.active {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    /* صورة الشخص */
-    .greeting-image-container {
-        position: relative;
-        width: 150px;
-        height: 150px;
-        margin-bottom: 20px;
-        border-radius: 50%; /* صورة دائرية */
-        overflow: hidden;
-        animation: spinFrame 10s linear infinite; /* حركة الإطار */
-    }
-
-    .greeting-image-container::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: 6px solid transparent; /* إطار شفاف */
-        border-top: 6px solid #ffffff; /* لون الإطار */
-        border-radius: 50%; /* دائري */
-        animation: spin 5s linear infinite; /* حركة الإطار */
-    }
-
-    .greeting-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* تناسب الصورة */
-    }
-
-    /* النصوص */
-    .greeting-content {
-        text-align: center;
-        color: #ffffff;
-    }
-
-    .greeting-title {
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 10px;
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-    }
-
-    .greeting-message {
-        font-size: 18px;
-        line-height: 1.8;
-    }
-
-    /* حركة الإطار */
-    @keyframes spin {
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(360deg);
-        }
-    }
-</style>
-
-<script>
-    // التحكم في السلايدر
-    const slides = document.querySelectorAll('.greeting-slide');
-    let currentSlide = 0;
-
-    function showNextSlide() {
-        slides[currentSlide].classList.remove('active'); // إخفاء الشريحة الحالية
-        currentSlide = (currentSlide + 1) % slides.length; // الانتقال للشريحة التالية
-        slides[currentSlide].classList.add('active'); // عرض الشريحة الجديدة
-    }
-
-    // تغيير الشريحة كل 5 ثوانٍ
-    setInterval(showNextSlide, 5000);
-</script>
-</style>
-
-
-<!-- بداية قسم آخر الأخبار -->
-<div id="news-section">
-    <h2 id="news-title">آخر الأخبار</h2>
-    <div id="news-slider">
-        <!-- شريحة الأخبار 1 -->
-        <div class="news-slide active">
-            <p class="news-message">
-                يسعدنا أن نقدم جميع الخدمات المتوفرة في النسخة التجريبية من تطبيق زمار أونلاين مجانًا
-                لأحبائنا في ناحية زمار.
-            </p>
-        </div>
-        <!-- شريحة الأخبار 2 -->
-        <div class="news-slide">
-            <p class="news-message">
-                منصة زمار اونلاين الاولى من نوعها على متسوى محافظة نينوى
-            </p>
-        </div>
-        <!-- شريحة الأخبار 3 -->
-        <div class="news-slide">
-            <p class="news-message">
-                سوق زمار الالكتروني بيع واشتري بكيفك
-            </p>
-        </div>
-    </div>
-</div>
-<!-- نهاية قسم آخر الأخبار -->
-
-<style>
-    /* تنسيق القسم العام باستخدام ID */
-    #news-section {
-        margin: 20px auto;
-        padding: 30px;
-        background: linear-gradient(135deg, #5e4b8b, #836fff, #9370db); /* تدرجات بنفسجية مبهجة */
-        border-radius: 15px;
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* ظل ناعم */
-        color: #fff;
-        font-family: 'Cairo', sans-serif;
-        text-align: center;
-        max-width: 700px;
-        overflow: hidden;
-    }
-
-    #news-title {
-        font-size: 28px;
-        font-weight: bold;
-        color: #f8f3fc; /* بنفسجي لطيف */
-        margin-bottom: 20px;
-        text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3); /* تأثير ظل للنص */
-    }
-
-    /* تصميم السلايدر باستخدام ID */
-    #news-slider {
-        position: relative;
-        overflow: hidden;
-        min-height: 50px;
-        padding: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #news-slider .news-slide {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.8s ease, transform 0.8s ease; /* تأثير انزلاق وظهور */
-    }
-
-    #news-slider .news-slide.active {
-        opacity: 1;
-        transform: translateY(0);
-        position: relative;
-    }
-
-    #news-slider .news-message {
-        font-size: 18px;
-        color: #f5e6fa; /* بنفسجي فاتح */
-        max-width: 600px;
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* تأثير ظل للنص */
-        margin: 0;
-    }
-</style>
-<script>
-    // تشغيل السلايدر بشكل مستقر
-    document.addEventListener('DOMContentLoaded', function () {
-        const slides = document.querySelectorAll('#news-slider .news-slide');
-        const sliderContainer = document.querySelector('#news-slider');
-        let currentSlide = 0;
-
-        function showNextSlide() {
-            // إخفاء الشريحة الحالية
-            slides[currentSlide].classList.remove('active');
-
-            // الانتقال إلى الشريحة التالية
-            currentSlide = (currentSlide + 1) % slides.length;
-
-            // إظهار الشريحة الجديدة
-            slides[currentSlide].classList.add('active');
-
-            // تحديث ارتفاع السلايدر حسب حجم الشريحة الحالية
-            sliderContainer.style.minHeight = slides[currentSlide].offsetHeight + 'px';
-        }
-
-        // تعيين الارتفاع عند التحميل
-        sliderContainer.style.minHeight = slides[currentSlide].offsetHeight + 'px';
-
-        // تغيير الشريحة كل 4 ثوانٍ
-        setInterval(showNextSlide, 4000);
-    });
-</script>
 
     </div>
 
-<!-- قسم أندية زمار الرياضية -->
-<div class="zamSports-section">
-    <h2 class="zamSports-title">
-        <i class="fas fa-trophy"></i> أندية زمار الرياضية
-    </h2>
-    <div class="swiper zamSportsSwiper">
-        <div class="swiper-wrapper">
-            <!-- صورة 1 -->
-            <div class="swiper-slide">
-                <div class="zamSports-item" onclick="openModal('club1.jpg', 'نادي زمار الرياضي')">
-                    <img src="club1.jpg" alt="نادي زمار الرياضي">
-                    <div class="zamSports-info">الاندية الرياضية</div>
-                </div>
-            </div>
-            <!-- صورة 2 -->
-            <div class="swiper-slide">
-                <div class="zamSports-item" onclick="openModal('club2.jpg', 'نادي النجوم')">
-                    <img src="club2.jpg" alt="نادي النجوم">
-                    <div class="zamSports-info">الاندية الرياضية</div>
-                </div>
-            </div>
-            <!-- صورة 3 -->
-            <div class="swiper-slide">
-                <div class="zamSports-item" onclick="openModal('club3.jpg', 'نادي السلام')">
-                    <img src="club3.jpg" alt="نادي السلام">
-                    <div class="zamSports-info">الاندية الرياضية</div>
-                </div>
-            </div>
-        </div>
-        <!-- أزرار التنقل -->
-        <div class="swiper-button-next zamSports-next"></div>
-        <div class="swiper-button-prev zamSports-prev"></div>
-    </div>
-</div>
-
-<!-- نافذة عرض الصورة -->
-<div id="zamModal" class="zam-modal">
-    <span class="zam-close" onclick="closeModal()">&times;</span>
-    <img class="zam-modal-content" id="zamModalImage">
-    <div id="zamModalCaption" class="zam-modal-caption"></div>
-</div>
-
-<!-- مكتبة Font Awesome للأيقونات -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<!-- مكتبة Swiper.js -->
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-<style>
-    /* قسم أندية زمار الرياضية */
-    .zamSports-section {
-        padding: 40px;
-        text-align: center;
-        background: linear-gradient(135deg, #5e4b8b, #836fff, #9370db); /* ألوان بنفسجية مبهجة */
-        color: #ffffff;
-        font-family: 'Cairo', sans-serif;
-        border-radius: 25px;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* ظل ناعم */
-    }
-
-    .zamSports-title {
-        font-size: 20px;
-        margin-bottom: 30px;
-        color: #fff;
-        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); /* ظل للنص */
-    }
-
-    .zamSports-title i {
-        color: #ffd700; /* لون ذهبي للأيقونة */
-        margin-right: 10px;
-    }
-
-    /* تصميم السلايدر */
-    .zamSportsSwiper {
-        width: 100%;
-        padding: 20px 0;
-    }
-
-    .swiper-slide {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .zamSports-item {
-        position: relative;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* ظل للصورة */
-        cursor: pointer;
-        transition: transform 0.3s, box-shadow 0.3s;
-        background: linear-gradient(135deg, #836fff, #5e4b8b); /* خلفية بنفسجية */
-    }
-
-    .zamSports-item:hover {
-        transform: scale(1.05); /* تكبير بسيط عند التمرير */
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); /* ظل أكبر */
-    }
-
-    .zamSports-item img {
-        width: 100%;
-        height: auto;
-        border-radius: 15px;
-    }
-
-    .zamSports-info {
-        position: absolute;
-        bottom: 0;
-        background: rgba(94, 75, 139, 0.6); /* خلفية شفافة بنفسجية */
-        color: #ffd700; /* لون النص ذهبي */
-        width: 100%;
-        padding: 10px;
-        text-align: center;
-        font-size: 16px;
-        font-weight: bold;
-    }
-
-    /* أزرار السلايدر */
-    .zamSports-next,
-    .zamSports-prev {
-        color: #ffffff; /* لون أبيض دائم */
-        font-size: 24px;
-        transition: transform 0.3s ease;
-    }
-
-    .zamSports-next:hover,
-    .zamSports-prev:hover {
-        transform: scale(1.2); /* تكبير عند التمرير */
-        color: #ffd700; /* لون ذهبي عند التمرير */
-    }
-
-    /* نافذة عرض الصورة */
-    .zam-modal {
-        display: none; /* مخفية افتراضيًا */
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
-    }
-
-    .zam-modal-content {
-        margin: auto;
-        display: block;
-        max-width: 80%;
-        max-height: 80%;
-        border-radius: 10px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    }
-
-    .zam-modal-caption {
-        margin: 10px auto;
-        text-align: center;
-        color: #ffffff;
-        font-size: 18px;
-    }
-
-    .zam-close {
-        position: absolute;
-        top: 20px;
-        right: 35px;
-        color: #ffffff;
-        font-size: 40px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-    .zam-close:hover,
-    .zam-close:focus {
-        color: #9370db;
-        text-decoration: none;
-        cursor: pointer;
-    }
-</style>
-
-<script>
-    // تفعيل السلايدر باستخدام Swiper.js
-    const zamSportsSwiper = new Swiper('.zamSportsSwiper', {
-        loop: true, // السلايدر يدور بشكل دائري
-        navigation: {
-            nextEl: '.zamSports-next',
-            prevEl: '.zamSports-prev',
-        },
-    });
-
-    // عرض الصورة في نافذة
-    function openModal(imageSrc, clubName) {
-        const modal = document.getElementById("zamModal");
-        const modalImage = document.getElementById("zamModalImage");
-        const modalCaption = document.getElementById("zamModalCaption");
-
-        modal.style.display = "block";
-        modalImage.src = imageSrc;
-        modalCaption.innerHTML = clubName;
-    }
-
-    // إغلاق النافذة
-    function closeModal() {
-        const modal = document.getElementById("zamModal");
-        modal.style.display = "none";
-    }
-</script>
+   
 
 </p>
 <!-- بداية قسم التعزية -->
